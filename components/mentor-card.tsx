@@ -2,7 +2,7 @@
  * Mentor card: avatar, name, affiliation/role, expertise chips, and short bio.
  * Presentational (rendered from the server /mentors page).
  */
-import { Avatar, Chip } from '@heroui/react'
+import { Avatar, Chip, Typography } from '@heroui/react'
 import type { Entry, MentorFrontmatter } from '@/lib/content'
 
 function initials(name: string) {
@@ -24,12 +24,12 @@ export function MentorCard({
           <Avatar.Fallback>{initials(fm.name)}</Avatar.Fallback>
         </Avatar>
         <div>
-          <h3 className="font-semibold text-ink-strong leading-tight">
+          <Typography type="body" weight="semibold" className="leading-tight">
             {fm.name}
-          </h3>
-          <p className="text-sm text-muted">
+          </Typography>
+          <Typography type="body-sm" color="muted">
             {fm.role} · {fm.affiliation}
-          </p>
+          </Typography>
         </div>
       </div>
       <div className="flex flex-wrap gap-1.5">
@@ -39,7 +39,9 @@ export function MentorCard({
           </Chip>
         ))}
       </div>
-      <p className="text-sm text-muted leading-relaxed">{body.trim()}</p>
+      <Typography type="body-sm" color="muted">
+        {body.trim()}
+      </Typography>
       {fm.links ? (
         <div className="flex flex-wrap gap-x-4 gap-y-1 text-sm">
           {Object.entries(fm.links).map(([label, href]) => (

@@ -3,6 +3,7 @@
  * Country. Server component (static). Links come from `course.footerLinks`.
  */
 import Image from 'next/image'
+import { Typography } from '@heroui/react'
 import { course } from '@/data/course'
 
 export function SiteFooter() {
@@ -28,9 +29,13 @@ export function SiteFooter() {
               className="h-11 w-auto hidden dark:block"
             />
             <span aria-hidden="true" className="h-9 w-px bg-subtle" />
-            <div className="text-sm leading-tight">
-              <div className="font-semibold text-ink-strong">{course.code}</div>
-              <div className="text-muted">{course.school}</div>
+            <div className="leading-tight">
+              <Typography type="body-sm" weight="semibold">
+                {course.code}
+              </Typography>
+              <Typography type="body-sm" color="muted">
+                {course.school}
+              </Typography>
             </div>
           </div>
           <nav className="flex flex-wrap gap-x-5 gap-y-2 text-sm">
@@ -46,10 +51,8 @@ export function SiteFooter() {
           </nav>
         </div>
         <div className="border-t border-subtle pt-6 flex flex-col gap-3">
-          <h2 className="text-base font-semibold text-ink-strong">
-            Acknowledgement of Country
-          </h2>
-          <p className="text-sm text-muted leading-relaxed">
+          <Typography type="h6">Acknowledgement of Country</Typography>
+          <Typography type="body-sm" color="muted">
             UNSW respectfully acknowledges the Bidjigal, Biripai, Dharug, Gadigal,
             Gumbaynggirr, Ngunnawal and Wiradjuri peoples, on whose unceded lands
             we are privileged to learn, teach and work. We honour the Elders of
@@ -57,7 +60,7 @@ export function SiteFooter() {
             with whom we walk together. UNSW acknowledges the enduring connection
             of Aboriginal and Torres Strait Islander peoples to culture, community
             and Country.
-          </p>
+          </Typography>
           <a
             href="https://ulurustatement.org/"
             className="self-start text-sm font-medium text-ink-strong underline decoration-accent decoration-2 underline-offset-2 hover:decoration-ink-strong"

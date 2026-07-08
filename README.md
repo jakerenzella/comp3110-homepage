@@ -101,7 +101,7 @@ Tutors are listed in `data/tutors.json`. The lead tutor / course administrator h
       "name": "Sofia De Bellis",
       "role": "Course Administrator",
       "lead": true,
-      "photo": "/staff/sofia.svg"
+      "photo": "/staff/sofia.png"
     },
     { "name": "New Tutor", "role": "Tutor", "photo": "" }
   ]

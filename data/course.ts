@@ -85,7 +85,7 @@ export const course = {
       label: "Grading",
       icon: "grading",
       value: [
-        "Portfolio of Tasks (60%): evidence across your bootcamp and accelerator tasks, including individual contributions",
+        "Portfolio of Tasks (60%): evidence across your onboarding and accelerator tasks, including individual contributions",
         "Final Project (40%): your final deliverable, including your Demo Day performance and communication",
       ],
     },
@@ -98,8 +98,8 @@ export const course = {
 
   instructor: {
     name: "Jake Renzella",
-    role: "Course Instructor",
-    photo: "/staff/instructor.svg",
+    role: "Lecturer in Charge",
+    photo: "/staff/instructor.png",
     url: "https://www.unsw.edu.au/staff/jake-renzella", // TODO: confirm URL
   } as Staff,
 
@@ -108,7 +108,7 @@ export const course = {
   /** The five accelerator phases, in order, for the home-page timeline. */
   phases: [
     {
-      name: "Bootcamp",
+      name: "Onboarding",
       when: "Weeks 1-2",
       summary:
         "Find teams and identify your accelerator project.",

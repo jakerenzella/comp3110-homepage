@@ -6,7 +6,7 @@
  * styling (a sliding segmented-pill indicator) with no overrides.
  */
 import { useState } from 'react'
-import { Tabs } from '@heroui/react'
+import { Tabs, Typography } from '@heroui/react'
 import { EmptyState } from '@heroui-pro/react'
 import { ProjectCard } from './project-card'
 import { Icon } from './icon'
@@ -55,10 +55,10 @@ export function ProjectTabs({
       </Tabs.Panel>
 
       <Tabs.Panel id="sample">
-        <p className="text-muted mb-6 max-w-2xl">
+        <Typography type="body" color="muted" className="mb-6 max-w-2xl">
           Sample projects that illustrate the kind of deployed machine learning
           systems teams build across the term.
-        </p>
+        </Typography>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
           {projects.map((p) => (
             <ProjectCard key={p.slug} entry={p} />

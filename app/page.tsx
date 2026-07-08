@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Avatar } from "@heroui/react";
+import { Avatar, Typography } from "@heroui/react";
 import { EmptyState } from "@heroui-pro/react";
 import { course } from "@/data/course";
 import timetable from "@/data/timetable.json";
@@ -9,6 +9,7 @@ import { Section } from "@/components/section";
 import { Icon } from "@/components/icon";
 import { AcceleratorTimeline } from "@/components/accelerator-timeline";
 import { LogisticsTable } from "@/components/logistics-table";
+import { PersonCard } from "@/components/person-card";
 import { Timetable } from "@/components/timetable";
 import { FaqAccordion } from "@/components/faq-accordion";
 
@@ -30,12 +31,12 @@ export default function HomePage() {
     <div className="doc-column py-10 md:py-14 flex flex-col gap-16">
       {/* Header */}
       <header className="flex flex-col gap-4">
-        <h1 className="text-3xl md:text-4xl font-bold tracking-tight text-ink-strong">
+        <Typography type="h1">
           {course.code}: {course.title}
-        </h1>
-        <p className="text-xl text-muted leading-relaxed max-w-2xl">
+        </Typography>
+        <Typography type="body" color="muted" className="max-w-2xl">
           {course.tagline}
-        </p>
+        </Typography>
       </header>
 
       {/* Logistics */}
@@ -45,7 +46,7 @@ export default function HomePage() {
 
       {/* Overview */}
       <Section title="Overview" id="overview">
-        <div className="prose-doc">
+        <Typography.Prose>
           <p>
             What good is Artificial Intelligence if it can't be used by real
             people in real products to solve real problems?
@@ -103,23 +104,23 @@ export default function HomePage() {
               solve them.
             </li>
           </ul>
-        </div>
+        </Typography.Prose>
       </Section>
 
       {/* Timetable */}
       <Section title="Timetable" id="timetable">
-        <p className="text-muted mb-6">
+        <Typography type="body" color="muted" className="mb-6">
           Weekly class times for {timetable.term}.
-        </p>
+        </Typography>
         <Timetable />
       </Section>
 
       {/* Accelerator timeline */}
       <Section title="The accelerator" id="accelerator">
-        <p className="text-muted mb-6 max-w-2xl">
-          The term runs like a startup accelerator: a two-week bootcamp, three
+        <Typography type="body" color="muted" className="mb-6 max-w-2xl">
+          The term runs like a startup accelerator: a two-week onboarding, three
           build sprints with industry mentors, and a public Demo Day.
-        </p>
+        </Typography>
         <AcceleratorTimeline phases={course.phases} />
         <Link
           href="/accelerator"
@@ -132,67 +133,38 @@ export default function HomePage() {
 
       {/* Team */}
       <Section title="Team" id="team">
-        <h3 className="text-xs font-semibold uppercase tracking-wider text-muted mb-3">
-          Instructor
-        </h3>
-        <div className="flex items-center gap-4 p-4 border border-subtle rounded-sm bg-surface max-w-sm">
-          <Avatar size="lg">
-            <Avatar.Image src={course.instructor.photo} alt="" />
-            <Avatar.Fallback>
-              {initials(course.instructor.name)}
-            </Avatar.Fallback>
-          </Avatar>
-          <div>
-            <div className="font-semibold text-ink-strong">
-              {course.instructor.name}
-            </div>
-            {course.instructor.url ? (
-              <a
-                href={course.instructor.url}
-                className="text-sm text-muted hover:text-ink-strong"
-              >
-                {course.instructor.role}
-              </a>
-            ) : (
-              <span className="text-sm text-muted">
-                {course.instructor.role}
-              </span>
-            )}
-          </div>
+        <Typography
+          type="body-xs"
+          color="muted"
+          weight="semibold"
+          className="uppercase tracking-wider mb-3"
+        >
+          Lecturer in Charge
+        </Typography>
+        <div className="max-w-sm">
+          <PersonCard person={course.instructor} />
         </div>
 
-        <h3 className="text-xs font-semibold uppercase tracking-wider text-muted mt-6 mb-3">
+        <Typography
+          type="body-xs"
+          color="muted"
+          weight="semibold"
+          className="uppercase tracking-wider mt-6 mb-3"
+        >
           Tutors
-        </h3>
+        </Typography>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
           {tutors.map((tutor) => (
-            <div
-              key={tutor.name}
-              className={
-                "flex items-center gap-3 p-3 border rounded-sm bg-surface " +
-                (tutor.lead
-                  ? "border-subtle border-l-2 border-l-accent"
-                  : "border-subtle")
-              }
-            >
-              <Avatar size="md">
-                {tutor.photo ? <Avatar.Image src={tutor.photo} alt="" /> : null}
-                <Avatar.Fallback>{initials(tutor.name)}</Avatar.Fallback>
-              </Avatar>
-              <div className="min-w-0">
-                <div className="text-sm font-medium text-ink-strong truncate">
-                  {tutor.name}
-                </div>
-                <div className="text-xs text-muted truncate">{tutor.role}</div>
-              </div>
-            </div>
+            <PersonCard key={tutor.name} person={tutor} />
           ))}
         </div>
       </Section>
 
       {/* Mentors strip */}
       <Section title="Mentors" id="mentors">
-        <p className="text-muted mb-6 max-w-2xl">{course.mentorIntro}</p>
+        <Typography type="body" color="muted" className="mb-6 max-w-2xl">
+          {course.mentorIntro}
+        </Typography>
         {course.mentorsComingSoon ? (
           <EmptyState>
             <EmptyState.Media>
@@ -218,13 +190,13 @@ export default function HomePage() {
                       {initials(m.frontmatter.name)}
                     </Avatar.Fallback>
                   </Avatar>
-                  <div className="text-sm">
-                    <div className="font-medium text-ink-strong">
+                  <div>
+                    <Typography type="body-sm" weight="medium">
                       {m.frontmatter.name}
-                    </div>
-                    <div className="text-muted">
+                    </Typography>
+                    <Typography type="body-sm" color="muted">
                       {m.frontmatter.affiliation}
-                    </div>
+                    </Typography>
                   </div>
                 </div>
               ))}

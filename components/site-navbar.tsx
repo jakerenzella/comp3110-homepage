@@ -32,6 +32,8 @@ export function SiteNavbar() {
       className="border-b border-subtle bg-surface"
     >
       <Navbar.Header className="doc-column">
+        {/* Mobile: hamburger sits to the LEFT of the logo (rendered first). */}
+        <Navbar.MenuToggle className="md:hidden" />
         <Navbar.Brand>
           <Link href="/" className="flex items-center gap-3">
             {/* Inverted (white) crest swaps in for dark mode. */}
@@ -72,10 +74,8 @@ export function SiteNavbar() {
             </Navbar.Item>
           ))}
         </Navbar.Content>
-        <div className="flex items-center gap-2">
-          <ThemeToggle />
-          <Navbar.MenuToggle className="md:hidden" />
-        </div>
+        <Navbar.Spacer />
+        <ThemeToggle />
       </Navbar.Header>
       <Navbar.Menu>
         {NAV_LINKS.map((link) => (

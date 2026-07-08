@@ -1,5 +1,7 @@
 /** Shared section wrapper: a bordered heading + vertical rhythm, reused across
  *  pages so the whole site reads as one document set. */
+import { Typography } from '@heroui/react'
+
 export function Section({
   title,
   id,
@@ -12,9 +14,12 @@ export function Section({
   return (
     <section id={id} className="scroll-mt-24">
       {title ? (
-        <h2 className="text-2xl font-semibold text-ink-strong border-b border-subtle pb-2 mb-6">
+        <Typography
+          type="h2"
+          className="border-b border-subtle pb-2 mb-6"
+        >
           {title}
-        </h2>
+        </Typography>
       ) : null}
       {children}
     </section>

@@ -4,7 +4,7 @@
  */
 import Link from 'next/link'
 import Image from 'next/image'
-import { Chip } from '@heroui/react'
+import { Chip, Typography } from '@heroui/react'
 import type { Entry, ProjectFrontmatter } from '@/lib/content'
 
 export function ProjectCard({ entry }: { entry: Entry<ProjectFrontmatter> }) {
@@ -27,9 +27,9 @@ export function ProjectCard({ entry }: { entry: Entry<ProjectFrontmatter> }) {
       ) : null}
       <div className="flex flex-col gap-2 p-4">
         <div className="flex items-start justify-between gap-2">
-          <h3 className="font-semibold text-ink-strong leading-snug">
+          <Typography type="body" weight="semibold" className="leading-snug">
             {fm.title}
-          </h3>
+          </Typography>
           <span className="font-mono text-xs text-muted shrink-0 pt-1">
             {fm.year}
           </span>
@@ -39,7 +39,9 @@ export function ProjectCard({ entry }: { entry: Entry<ProjectFrontmatter> }) {
             {fm.award}
           </Chip>
         ) : null}
-        <p className="text-sm text-muted">{fm.team.join(', ')}</p>
+        <Typography type="body-sm" color="muted">
+          {fm.team.join(', ')}
+        </Typography>
         <div className="mt-1 flex flex-wrap gap-1.5">
           {fm.tags.map((tag) => (
             <span
