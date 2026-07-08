@@ -5,6 +5,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { usePathname, useRouter } from 'next/navigation'
 import { course } from '@/data/course'
+import { ThemeToggle } from './theme-toggle'
 
 const NAV_LINKS = [
   { href: '/', label: 'Home' },
@@ -33,13 +34,22 @@ export function SiteNavbar() {
       <Navbar.Header className="doc-column">
         <Navbar.Brand>
           <Link href="/" className="flex items-center gap-3">
+            {/* Inverted (white) crest swaps in for dark mode. */}
             <Image
               src="/brand/unsw-portrait.png"
               alt="UNSW Sydney"
               width={614}
               height={641}
               priority
-              className="h-10 w-auto"
+              className="h-10 w-auto dark:hidden"
+            />
+            <Image
+              src="/brand/unsw-portrait-inv.png"
+              alt="UNSW Sydney"
+              width={614}
+              height={643}
+              priority
+              className="h-10 w-auto hidden dark:block"
             />
             <span
               aria-hidden="true"
@@ -62,7 +72,10 @@ export function SiteNavbar() {
             </Navbar.Item>
           ))}
         </Navbar.Content>
-        <Navbar.MenuToggle className="md:hidden" />
+        <div className="flex items-center gap-2">
+          <ThemeToggle />
+          <Navbar.MenuToggle className="md:hidden" />
+        </div>
       </Navbar.Header>
       <Navbar.Menu>
         {NAV_LINKS.map((link) => (

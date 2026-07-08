@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
-import { getProjects, getProjectYears } from '@/lib/content'
-import { YearTabs } from '@/components/year-tabs'
+import { getProjects } from '@/lib/content'
+import { ProjectTabs } from '@/components/project-tabs'
 
 export const metadata: Metadata = {
   title: 'Projects',
@@ -10,7 +10,6 @@ export const metadata: Metadata = {
 
 export default function ProjectsPage() {
   const projects = getProjects()
-  const years = getProjectYears()
 
   return (
     <div className="doc-column py-10 md:py-14 flex flex-col gap-8">
@@ -23,7 +22,7 @@ export default function ProjectsPage() {
           Demo Day. Here is a selection of past work.
         </p>
       </header>
-      <YearTabs projects={projects} years={years} />
+      <ProjectTabs projects={projects} />
     </div>
   )
 }

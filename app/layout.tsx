@@ -3,6 +3,7 @@ import { Inter, JetBrains_Mono } from 'next/font/google'
 import localFont from 'next/font/local'
 import './globals.css'
 import { course } from '@/data/course'
+import { Providers } from './providers'
 import { AnnouncementBanner } from '@/components/announcement-banner'
 import { SiteNavbar } from '@/components/site-navbar'
 import { SiteFooter } from '@/components/site-footer'
@@ -49,12 +50,15 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${inter.variable} ${jetbrainsMono.variable} ${clancy.variable}`}
+      suppressHydrationWarning
     >
       <body className="min-h-screen flex flex-col">
-        <AnnouncementBanner announcement={course.announcement} />
-        <SiteNavbar />
-        <main className="grow w-full">{children}</main>
-        <SiteFooter />
+        <Providers>
+          <AnnouncementBanner announcement={course.announcement} />
+          <SiteNavbar />
+          <main className="grow w-full">{children}</main>
+          <SiteFooter />
+        </Providers>
       </body>
     </html>
   )

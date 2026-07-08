@@ -12,12 +12,20 @@ export function SiteFooter() {
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
           {/* Landscape UNSW logo locked up with the course + school */}
           <div className="flex items-center gap-3">
+            {/* Inverted (white) logo swaps in for dark mode. */}
             <Image
               src="/brand/unsw-landscape.png"
               alt="UNSW Sydney"
               width={915}
               height={383}
-              className="h-11 w-auto"
+              className="h-11 w-auto dark:hidden"
+            />
+            <Image
+              src="/brand/unsw-landscape-inv.png"
+              alt="UNSW Sydney"
+              width={918}
+              height={385}
+              className="h-11 w-auto hidden dark:block"
             />
             <span aria-hidden="true" className="h-9 w-px bg-subtle" />
             <div className="text-sm leading-tight">

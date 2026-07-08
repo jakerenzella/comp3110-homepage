@@ -3,6 +3,11 @@
 @import '@heroui/styles';
 @import '@heroui-pro/react/css';
 
+/* Drive Tailwind's `dark:` variant off our [data-theme='dark'] attribute (set
+   by the theme switch / theme-init) instead of the default prefers-color-scheme,
+   so `dark:` utilities stay in step with the rest of the theming. */
+@custom-variant dark (&:where([data-theme='dark'], [data-theme='dark'] *));
+
 /* ------------------------------------------------------------------ *
  * HeroUI Pro theme (exported from the HeroUI theme builder).
  * Added after @heroui/styles per the export instructions. Drives the
@@ -115,6 +120,41 @@
 
   /* Shared reading column — the whole site is one document set. */
   --container-doc: 800px;
+}
+
+/*
+  Dark mode. The @theme tokens above are light defaults; these blocks override
+  the same CSS variables so every `bg-paper` / `text-ink` / `border-subtle`
+  utility flips automatically. The HeroUI Pro theme has its own dark block
+  (keyed on the same [data-theme='dark']) so components adapt in step.
+
+  The theme switch (components/theme-toggle.tsx) always sets a concrete
+  data-theme, so the media query below only handles the no-JS / pre-hydration
+  "System" case where no explicit choice has been applied yet.
+*/
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --color-paper: #101111; /* page background */
+  --color-surface: #1a1c1c; /* cards / raised containers */
+  --color-ink: #e8e8e8; /* primary text */
+  --color-ink-strong: #ffffff; /* headings */
+  --color-muted: #9a9a9a; /* secondary text */
+  --color-subtle: #2c2e2e; /* 1px borders */
+  --color-banner: #24220a; /* dark yellow-tinted callout bg */
+  --color-accent: #d4c04a; /* duller yellow — bright UNSW yellow glares on dark */
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    color-scheme: dark;
+    --color-paper: #101111;
+    --color-surface: #1a1c1c;
+    --color-ink: #e8e8e8;
+    --color-ink-strong: #ffffff;
+    --color-muted: #9a9a9a;
+    --color-subtle: #2c2e2e;
+    --color-banner: #24220a;
+    --color-accent: #d4c04a;
+  }
 }
 
 /* Flat, document-like base. */

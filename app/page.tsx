@@ -1,14 +1,15 @@
 import Link from "next/link";
-import { Avatar, Table } from "@heroui/react";
+import { Avatar } from "@heroui/react";
+import { EmptyState } from "@heroui-pro/react";
 import { course } from "@/data/course";
 import timetable from "@/data/timetable.json";
 import tutorData from "@/data/tutors.json";
-import { getProjects, getMentors } from "@/lib/content";
+import { getMentors } from "@/lib/content";
 import { Section } from "@/components/section";
 import { Icon } from "@/components/icon";
 import { AcceleratorTimeline } from "@/components/accelerator-timeline";
+import { LogisticsTable } from "@/components/logistics-table";
 import { Timetable } from "@/components/timetable";
-import { ProjectCard } from "@/components/project-card";
 import { FaqAccordion } from "@/components/faq-accordion";
 
 function initials(name: string) {
@@ -17,10 +18,6 @@ function initials(name: string) {
 }
 
 export default function HomePage() {
-  const projects = getProjects();
-  const featured = course.featuredProjectSlugs
-    .map((slug) => projects.find((p) => p.slug === slug))
-    .filter((p): p is NonNullable<typeof p> => Boolean(p));
   const mentors = getMentors();
   const tutors = tutorData.tutors as {
     name: string;
@@ -28,12 +25,6 @@ export default function HomePage() {
     photo?: string;
     lead?: boolean;
   }[];
-
-  // Live lecture time(s) from the timetable, used in the Logistics "Lectures" row.
-  const lectureLine = timetable.classes
-    .filter((c) => c.type === "Lecture")
-    .map((c) => `${c.day} ${c.time}`)
-    .join(", ");
 
   return (
     <div className="doc-column py-10 md:py-14 flex flex-col gap-16">
@@ -49,50 +40,7 @@ export default function HomePage() {
 
       {/* Logistics */}
       <Section title="Logistics" id="logistics">
-        <Table>
-          <Table.ScrollContainer>
-            <Table.Content aria-label="Course logistics">
-              <Table.Header>
-                <Table.Column isRowHeader>Item</Table.Column>
-                <Table.Column>Details</Table.Column>
-              </Table.Header>
-              <Table.Body>
-                {course.logistics.map((item) => {
-                  // The Lectures row is driven live from the timetable JSON.
-                  const value =
-                    item.label === "Lectures" && lectureLine
-                      ? lectureLine
-                      : item.value;
-                  return (
-                    <Table.Row key={item.label}>
-                      <Table.Cell className="whitespace-nowrap align-top">
-                        <span className="flex items-center gap-2 font-semibold text-ink-strong">
-                          <Icon
-                            name={item.icon}
-                            size={18}
-                            className="text-muted"
-                          />
-                          {item.label}
-                        </span>
-                      </Table.Cell>
-                      <Table.Cell className="text-muted align-top">
-                        {Array.isArray(value) ? (
-                          <ul className="list-disc pl-5 space-y-1">
-                            {value.map((v) => (
-                              <li key={v}>{v}</li>
-                            ))}
-                          </ul>
-                        ) : (
-                          value
-                        )}
-                      </Table.Cell>
-                    </Table.Row>
-                  );
-                })}
-              </Table.Body>
-            </Table.Content>
-          </Table.ScrollContainer>
-        </Table>
+        <LogisticsTable />
       </Section>
 
       {/* Overview */}
@@ -138,7 +86,7 @@ export default function HomePage() {
             While we won't be taking any equity in your projects, the
             accelerator format provides a great structure to onboard you with
             the technical content of COMP3110, and then get you focused and
-            supported to make a real imapct with your COMP skills.
+            supported to make a real impact with your computing skills.
           </p>
           <h3>Informal prerequisites</h3>
           <ul>
@@ -242,34 +190,21 @@ export default function HomePage() {
         </div>
       </Section>
 
-      {/* Featured projects */}
-      <Section title="Featured projects" id="projects">
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
-          {featured.map((p) => (
-            <ProjectCard key={p.slug} entry={p} />
-          ))}
-        </div>
-        <Link
-          href="/projects"
-          className="mt-6 inline-flex items-center gap-1.5 font-semibold text-ink-strong underline decoration-accent decoration-2 underline-offset-4"
-        >
-          Browse all projects
-          <Icon name="arrow-right" size={16} />
-        </Link>
-      </Section>
-
       {/* Mentors strip */}
       <Section title="Mentors" id="mentors">
         <p className="text-muted mb-6 max-w-2xl">{course.mentorIntro}</p>
         {course.mentorsComingSoon ? (
-          <div className="border border-subtle rounded-sm bg-surface p-6 flex items-center gap-3">
-            <span className="inline-block border border-accent bg-banner text-ink-strong text-xs font-medium px-2 py-0.5 rounded-sm">
-              Coming soon
-            </span>
-            <span className="text-muted text-sm">
-              This term&rsquo;s mentors are being confirmed.
-            </span>
-          </div>
+          <EmptyState>
+            <EmptyState.Media>
+              <Icon name="group" size={24} />
+            </EmptyState.Media>
+            <EmptyState.Header>
+              <EmptyState.Title>Mentors coming soon</EmptyState.Title>
+              <EmptyState.Description>
+                This term&rsquo;s mentors are being confirmed.
+              </EmptyState.Description>
+            </EmptyState.Header>
+          </EmptyState>
         ) : (
           <>
             <div className="flex flex-wrap gap-5">
