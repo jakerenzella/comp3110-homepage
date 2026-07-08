@@ -85,8 +85,8 @@ export const course = {
       label: "Grading",
       icon: "grading",
       value: [
-        "Final project — build & deploy an ML application (65%), showcased at Demo Day",
-        "Two to three short assignments (30%)",
+        "Portfolio of Tasks (60%): evidence across your bootcamp and accelerator tasks, including individual contributions",
+        "Final Project (40%): your final deliverable, including your Demo Day performance and communication",
       ],
     },
     {
@@ -109,37 +109,37 @@ export const course = {
   phases: [
     {
       name: "Bootcamp",
-      when: "Weeks 1–2",
+      when: "Weeks 1-2",
       summary:
-        "Foundations sprint: tooling, data pipelines, and framing an ML problem around real stakeholders.",
+        "Find teams and identify your accelerator project.",
       icon: "rocket",
     },
     {
       name: "Sprint 1",
-      when: "Weeks 3–5",
+      when: "Weeks 3-5",
       summary:
-        "Ship a baseline model end-to-end. First mentor check-in and problem scoping with your team.",
+        "AI/ML/LLM prototype.",
       icon: "sprint",
     },
     {
       name: "Sprint 2",
-      when: "Weeks 6–8",
+      when: "Weeks 7-9",
       summary:
-        "Iterate on data and modelling. Add evaluation, monitoring, and a deployment path.",
+        "metrics, evals and model improvement.",
       icon: "sprint",
     },
     {
       name: "Sprint 3",
-      when: "Weeks 9–10",
+      when: "Weeks 9-10",
       summary:
-        "Harden the system: reliability, scaling, and the human factors of an ML product.",
+        "Polish and Demo Day preparations.",
       icon: "deploy",
     },
     {
       name: "Demo Day",
       when: "Week 10",
       summary:
-        "Teams present deployed systems to peers, mentors, and industry guests.",
+        "Each team gives a short, live presentation of a deployed system to an audience of peers, mentors, and industry guests.",
       icon: "trophy",
     },
   ] as Phase[],

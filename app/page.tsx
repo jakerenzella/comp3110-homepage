@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Avatar } from "@heroui/react";
+import { Avatar, Table } from "@heroui/react";
 import { course } from "@/data/course";
 import timetable from "@/data/timetable.json";
 import tutorData from "@/data/tutors.json";
@@ -49,37 +49,50 @@ export default function HomePage() {
 
       {/* Logistics */}
       <Section title="Logistics" id="logistics">
-        <div className="border border-subtle rounded-sm bg-surface divide-y divide-subtle">
-          {course.logistics.map((item) => {
-            // The Lectures row is driven live from the timetable JSON.
-            const value =
-              item.label === "Lectures" && lectureLine
-                ? lectureLine
-                : item.value;
-            return (
-              <div
-                key={item.label}
-                className="flex flex-col md:flex-row gap-2 md:gap-6 p-4 md:p-5"
-              >
-                <div className="flex items-center gap-2 md:w-40 shrink-0 font-semibold text-sm text-ink-strong">
-                  <Icon name={item.icon} size={18} className="text-muted" />
-                  {item.label}
-                </div>
-                <div className="flex-1 text-muted">
-                  {Array.isArray(value) ? (
-                    <ul className="list-disc pl-5 space-y-1">
-                      {value.map((v) => (
-                        <li key={v}>{v}</li>
-                      ))}
-                    </ul>
-                  ) : (
-                    value
-                  )}
-                </div>
-              </div>
-            );
-          })}
-        </div>
+        <Table>
+          <Table.ScrollContainer>
+            <Table.Content aria-label="Course logistics">
+              <Table.Header>
+                <Table.Column isRowHeader>Item</Table.Column>
+                <Table.Column>Details</Table.Column>
+              </Table.Header>
+              <Table.Body>
+                {course.logistics.map((item) => {
+                  // The Lectures row is driven live from the timetable JSON.
+                  const value =
+                    item.label === "Lectures" && lectureLine
+                      ? lectureLine
+                      : item.value;
+                  return (
+                    <Table.Row key={item.label}>
+                      <Table.Cell className="whitespace-nowrap align-top">
+                        <span className="flex items-center gap-2 font-semibold text-ink-strong">
+                          <Icon
+                            name={item.icon}
+                            size={18}
+                            className="text-muted"
+                          />
+                          {item.label}
+                        </span>
+                      </Table.Cell>
+                      <Table.Cell className="text-muted align-top">
+                        {Array.isArray(value) ? (
+                          <ul className="list-disc pl-5 space-y-1">
+                            {value.map((v) => (
+                              <li key={v}>{v}</li>
+                            ))}
+                          </ul>
+                        ) : (
+                          value
+                        )}
+                      </Table.Cell>
+                    </Table.Row>
+                  );
+                })}
+              </Table.Body>
+            </Table.Content>
+          </Table.ScrollContainer>
+        </Table>
       </Section>
 
       {/* Overview */}

@@ -37,9 +37,11 @@ export function YearTabs({
           <Tabs.Tab
             key={g.id}
             id={g.id}
-            className="cursor-pointer pb-2 -mb-px text-sm font-semibold text-muted border-b-2 border-transparent outline-none data-[selected=true]:text-ink-strong data-[selected=true]:border-accent"
+            className="relative cursor-pointer pb-2 text-sm font-semibold text-muted outline-none transition-colors data-[selected=true]:text-ink-strong"
           >
             {g.label}
+            {/* Animated underline that slides between tabs (react-aria shared element). */}
+            <Tabs.Indicator className="absolute -bottom-px left-0 right-0 h-0.5 rounded-full bg-accent" />
           </Tabs.Tab>
         ))}
       </Tabs.List>
