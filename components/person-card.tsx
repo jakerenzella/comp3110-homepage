@@ -2,9 +2,9 @@
 
 /**
  * Team member card built on HeroUI Pro `ItemCard`. When the person has a `url`
- * the ENTIRE card becomes a link via ItemCard's documented `render` prop
- * (https://heroui.pro/docs/react/components/item-card). Client component so the
- * render function stays out of the RSC boundary.
+ * the ENTIRE card is a link (wrapped in next/link). ItemCard's `render` prop is
+ * typed for a div element, so wrapping is the clean, type-safe way to turn a
+ * card into an anchor. See https://heroui.pro/docs/react/components/item-card.
  */
 import Link from 'next/link'
 import { Avatar } from '@heroui/react'
@@ -25,16 +25,13 @@ function initials(name: string) {
 
 export function PersonCard({ person }: { person: Person }) {
   const { name, role, photo, url, lead } = person
-  return (
+  const card = (
     <ItemCard
       // Lead tutor / course admin gets an accent edge (no component variant for it).
       className={lead ? 'border-l-2 border-l-accent' : undefined}
-      render={
-        url ? (props) => <Link href={url} {...props} /> : undefined
-      }
     >
       <ItemCard.Icon>
-        <Avatar size="md">
+        <Avatar size="lg">
           {photo ? <Avatar.Image src={photo} alt="" /> : null}
           <Avatar.Fallback>{initials(name)}</Avatar.Fallback>
         </Avatar>
@@ -44,5 +41,13 @@ export function PersonCard({ person }: { person: Person }) {
         <ItemCard.Description>{role}</ItemCard.Description>
       </ItemCard.Content>
     </ItemCard>
+  )
+
+  return url ? (
+    <Link href={url} className="block">
+      {card}
+    </Link>
+  ) : (
+    card
   )
 }
