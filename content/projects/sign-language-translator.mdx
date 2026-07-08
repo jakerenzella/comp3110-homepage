@@ -1,0 +1,33 @@
+---
+title: Auslan Sign Recognition
+year: 2024
+team: [Grace Liu, Hamza Ali]
+tags: [computer-vision, edge, accessibility]
+cover: /projects/auslan.svg
+demo: https://example.com/demo/auslan
+repo: https://github.com/example/auslan-recognition
+---
+
+## The problem
+
+Real-time recognition of Auslan (Australian Sign Language) can make everyday
+interactions more accessible — but only if it runs on a phone, offline, without
+sending video to a server. The team took on the constraints as the point.
+
+## What they built
+
+A lightweight pose-estimation front end feeds a temporal model that recognises a
+vocabulary of common signs on-device. The whole pipeline runs on a mid-range
+phone with no network connection.
+
+## Engineering highlights
+
+- **On-device inference** with a quantised model, keeping video off the network
+  entirely for privacy.
+- **A data-collection app** built with community input to gather signing samples
+  ethically and with consent.
+- **Latency budgeting** across pose extraction and classification to stay real-time.
+
+## What they'd do next
+
+Expand the vocabulary and work with Deaf community groups on evaluation.

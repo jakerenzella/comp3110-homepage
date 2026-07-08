@@ -1,0 +1,257 @@
+/* Order matters: Tailwind first, then HeroUI OSS styles, then HeroUI Pro. */
+@import 'tailwindcss';
+@import '@heroui/styles';
+@import '@heroui-pro/react/css';
+
+/* ------------------------------------------------------------------ *
+ * HeroUI Pro theme (exported from the HeroUI theme builder).
+ * Added after @heroui/styles per the export instructions. Drives the
+ * HeroUI component colors, radius (0 = sharp), borders, and type scale.
+ * ------------------------------------------------------------------ */
+:root,
+.light,
+.default,
+[data-theme='light'],
+[data-theme='default'] {
+  /* Theme Colors */
+  --background: oklch(97.02% 0.0 101.42);
+  --muted: oklch(55.17% 0.0 101.42);
+  --scrollbar: oklch(87.1% 0.0 101.42);
+  --surface-secondary: oklch(95.24% 0.0 101.42);
+  --surface-tertiary: oklch(93.73% 0.0 101.42);
+  --default: oklch(94.0% 0.0 101.42);
+  --accent: oklch(91.68% 0.1915 101.42);
+  --accent-foreground: var(--eclipse);
+  --success: oklch(67.37% 0.205 118.96);
+  --warning: oklch(69.33% 0.146 56.96);
+  --danger: oklch(62.32% 0.183 5.1);
+  --field-border: oklch(90.0% 0.0 101.42);
+  --border: oklch(90.0% 0.0 101.42);
+  --separator: oklch(92.0% 0.0 101.42);
+
+  /* Border Radius */
+  --radius: 0;
+  --field-radius: 0;
+
+  /* Border Width */
+  --border-width-field: 0.158456527111696px;
+  --field-border-width: 0.158456527111696px;
+
+  /* Font Sizes */
+  --text-xs: 0.6875rem;
+  --text-xs--line-height: calc(0.9 / 0.6875);
+  --text-sm: 0.8125rem;
+  --text-sm--line-height: calc(1.125 / 0.8125);
+  --text-base: 0.9375rem;
+  --text-base--line-height: calc(1.35 / 0.9375);
+  --text-lg: 1.0625rem;
+  --text-lg--line-height: calc(1.575 / 1.0625);
+  --text-xl: 1.1875rem;
+  --text-xl--line-height: calc(1.575 / 1.1875);
+  --text-2xl: 1.375rem;
+  --text-2xl--line-height: calc(1.8 / 1.375);
+  --text-3xl: 1.75rem;
+  --text-3xl--line-height: calc(2.025 / 1.75);
+  --text-4xl: 2rem;
+  --text-4xl--line-height: calc(2.25 / 2);
+  --text-5xl: 2.75rem;
+  --text-5xl--line-height: 0.9;
+  --text-6xl: 3.375rem;
+  --text-6xl--line-height: 0.9;
+  --text-7xl: 4rem;
+  --text-7xl--line-height: 0.9;
+  --text-8xl: 5.25rem;
+  --text-8xl--line-height: 0.9;
+  --text-9xl: 7rem;
+  --text-9xl--line-height: 0.9;
+}
+
+.dark,
+[data-theme='dark'] {
+  color-scheme: dark;
+  /* Theme Colors */
+  --background: oklch(12.0% 0.0 101.42);
+  --muted: oklch(70.5% 0.0 101.42);
+  --scrollbar: oklch(70.5% 0.0 101.42);
+  --surface: oklch(21.03% 0.0 101.42);
+  --surface-secondary: oklch(25.7% 0.0 101.42);
+  --surface-secondary-foreground: oklch(25.7% 0.0 101.42);
+  --surface-tertiary: oklch(27.21% 0.0 101.42);
+  --surface-tertiary-foreground: oklch(27.21% 0.0 101.42);
+  --overlay: oklch(21.03% 0.0 101.42);
+  --default: oklch(27.4% 0.0 101.42);
+  --accent: oklch(91.68% 0.1915 101.42);
+  --accent-foreground: var(--eclipse);
+  --success: oklch(67.37% 0.205 118.96);
+  --warning: oklch(69.33% 0.146 56.96);
+  --danger: oklch(62.32% 0.183 5.1);
+  --field-background: oklch(21.03% 0.0 101.42);
+  --field-placeholder: oklch(70.5% 0.0 101.42);
+  --field-border: oklch(28.0% 0.0 101.42);
+  --segment: oklch(39.64% 0.0 101.42);
+  --border: oklch(28.0% 0.0 101.42);
+  --separator: oklch(25.0% 0.0 101.42);
+}
+
+/*
+  Design tokens — Stitch "Academic Precision" system for COMP3110.
+  Registered with Tailwind v4 @theme so they generate utilities
+  (bg-paper, text-ink, border-subtle, text-accent, font-sans, ...).
+*/
+@theme {
+  --color-paper: #f9f9f9; /* page background */
+  --color-surface: #ffffff; /* cards / raised containers */
+  --color-ink: #1a1c1c; /* primary text */
+  --color-ink-strong: #000000; /* headings */
+  --color-muted: #555555; /* secondary text */
+  --color-subtle: #e5e5e5; /* 1px borders */
+  --color-accent: #ffeb00; /* UNSW yellow — used sparingly */
+  --color-banner: #fffdf0; /* pale-yellow announcement/callout bg */
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
+  /* Clancy (UNSW brand) for headers, falling back to the sans stack. */
+  --font-heading: var(--font-clancy), var(--font-inter), ui-sans-serif, sans-serif;
+
+  /* Shared reading column — the whole site is one document set. */
+  --container-doc: 800px;
+}
+
+/* Flat, document-like base. */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-size: 18px; /* body-lg base */
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Headers use the Clancy brand typeface site-wide (page titles, section
+   headings, prose headings, and card titles). */
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-heading);
+}
+
+/* Centered reading column reused by every page. */
+.doc-column {
+  width: 100%;
+  max-width: var(--container-doc);
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+}
+@media (min-width: 768px) {
+  .doc-column {
+    padding-inline: 2rem;
+  }
+}
+
+/*
+  Long-form MDX prose (accelerator, resources, project/mentor bodies).
+  Matches the type scale + yellow-underlined links from the Stitch design.
+*/
+.prose-doc {
+  color: var(--color-ink);
+  font-size: 18px;
+  line-height: 1.7;
+}
+.prose-doc h1 {
+  font-size: 2rem;
+  line-height: 1.2;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--color-ink-strong);
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+.prose-doc h2 {
+  font-size: 1.5rem;
+  line-height: 1.25;
+  font-weight: 600;
+  color: var(--color-ink-strong);
+  margin-top: 2.5rem;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--color-subtle);
+}
+.prose-doc h3 {
+  font-size: 1.25rem;
+  line-height: 1.3;
+  font-weight: 600;
+  color: var(--color-ink-strong);
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+}
+.prose-doc p {
+  margin-bottom: 1.25rem;
+}
+.prose-doc ul,
+.prose-doc ol {
+  margin-bottom: 1.25rem;
+  padding-left: 1.5rem;
+}
+.prose-doc ul {
+  list-style: disc;
+}
+.prose-doc ol {
+  list-style: decimal;
+}
+.prose-doc li {
+  margin-bottom: 0.5rem;
+}
+.prose-doc a {
+  color: var(--color-ink-strong);
+  font-weight: 500;
+  text-decoration: underline;
+  text-decoration-color: var(--color-accent);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+.prose-doc a:hover {
+  text-decoration-color: var(--color-ink-strong);
+}
+.prose-doc code {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-subtle);
+  border-radius: 4px;
+  padding: 0.1em 0.35em;
+}
+.prose-doc pre {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-subtle);
+  border-radius: 4px;
+  padding: 1rem;
+  overflow-x: auto;
+  margin-bottom: 1.25rem;
+}
+.prose-doc pre code {
+  border: 0;
+  padding: 0;
+  background: transparent;
+}
+.prose-doc blockquote {
+  border-left: 4px solid var(--color-accent);
+  background-color: var(--color-banner);
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.25rem;
+}
+.prose-doc blockquote p:last-child {
+  margin-bottom: 0;
+}
+.prose-doc hr {
+  border: 0;
+  border-top: 1px solid var(--color-subtle);
+  margin: 2.5rem 0;
+}

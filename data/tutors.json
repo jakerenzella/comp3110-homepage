@@ -1,0 +1,11 @@
+{
+  "note": "Course tutors. The lead tutor / course administrator has \"lead\": true and is listed first. `photo` is optional (falls back to initials).",
+  "tutors": [
+    {
+      "name": "Sofia De Bellis",
+      "role": "Course Administrator",
+      "lead": true,
+      "photo": "/staff/sofia.svg"
+    }
+  ]
+}

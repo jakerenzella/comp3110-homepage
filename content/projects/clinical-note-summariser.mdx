@@ -1,0 +1,34 @@
+---
+title: Clinical Note Summariser
+year: 2025
+team: [Chen Wei, Divya Rao, Sam Fletcher]
+tags: [NLP, LLMs, evaluation]
+cover: /projects/clinical.svg
+demo: https://example.com/demo/clinical
+repo: https://github.com/example/clinical-summariser
+---
+
+## The problem
+
+Clinicians spend hours turning free-text consultation notes into structured
+discharge summaries. The team built a system that drafts a summary a clinician
+can review and correct, rather than one that replaces them.
+
+## What they built
+
+A retrieval-augmented pipeline grounds a language model in the patient's own
+notes and a controlled medical vocabulary, then produces a structured draft with
+every claim linked back to a source sentence. A clinician's edits are captured as
+preference data to improve later drafts.
+
+## Engineering highlights
+
+- **Citation-grounded generation** — every line in the summary points to the note
+  it came from, so reviewers can verify quickly.
+- **A domain evaluation set** built with a clinical advisor, scoring factuality and
+  omission rather than fluency.
+- **Human-review UI** that measures edit distance as a live quality signal.
+
+## What they'd do next
+
+Fine-tune on the collected clinician edits and add specialty-specific templates.

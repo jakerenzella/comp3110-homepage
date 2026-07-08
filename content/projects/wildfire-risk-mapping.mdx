@@ -1,0 +1,32 @@
+---
+title: Wildfire Risk Mapping
+year: 2024
+team: [Lucia Romano, Max Bauer]
+tags: [geospatial, remote-sensing, deployment]
+cover: /projects/wildfire.svg
+demo: https://example.com/demo/wildfire
+repo: https://github.com/example/wildfire-risk
+---
+
+## The problem
+
+Fire agencies need to know where risk is concentrating days ahead. The team built
+a model that fuses satellite imagery and weather to map short-term wildfire risk
+across a region.
+
+## What they built
+
+A geospatial pipeline pulls multispectral satellite tiles and gridded weather,
+computes vegetation-dryness features, and predicts a risk surface that renders as
+an interactive map layer.
+
+## Engineering highlights
+
+- **Tiled inference** over large satellite scenes so the system scales to a whole
+  region without running out of memory.
+- **Calibrated risk scores** validated against historical fire records.
+- **A reproducible geospatial feature pipeline** with versioned inputs.
+
+## What they'd do next
+
+Incorporate live sensor feeds and push alerts to agency dashboards.

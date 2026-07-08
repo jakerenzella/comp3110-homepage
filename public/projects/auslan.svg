@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450" role="img" aria-label="Auslan Sign Recognition">
+  <rect width="800" height="450" fill="#f3f3f3"/>
+  <g stroke="#e0e0e0" stroke-width="1">
+    <path d="M0 112 H800 M0 225 H800 M0 337 H800 M160 0 V450 M320 0 V450 M480 0 V450 M640 0 V450"/>
+  </g>
+  <rect x="1" y="1" width="798" height="448" fill="none" stroke="#e5e5e5"/>
+  <rect x="40" y="40" width="56" height="8" fill="#ffeb00"/>
+  <text x="40" y="240" font-family="'JetBrains Mono', ui-monospace, monospace" font-size="13" fill="#999">/auslan</text>
+  <text x="40" y="400" font-family="Inter, ui-sans-serif, sans-serif" font-size="30" font-weight="600" fill="#1a1c1c">Auslan Sign Recognition</text>
+</svg>

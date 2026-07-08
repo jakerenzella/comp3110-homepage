@@ -1,0 +1,33 @@
+---
+title: Campus Energy Forecasting
+year: 2025
+team: [Priyanka Shah, Tom Nguyen]
+tags: [time-series, forecasting, deployment]
+cover: /projects/energy.svg
+demo: https://example.com/demo/energy
+repo: https://github.com/example/campus-energy
+---
+
+## The problem
+
+UNSW's campus draws megawatts of power with a daily and seasonal rhythm. Better
+day-ahead forecasts let facilities pre-cool buildings and shift load off peak
+tariffs. The team built a forecaster that facilities staff can actually act on.
+
+## What they built
+
+A probabilistic time-series model ingests weather forecasts, timetable occupancy,
+and historical meter data to predict per-building demand with uncertainty bands.
+Forecasts are published to a dashboard and refreshed hourly.
+
+## Engineering highlights
+
+- **Quantile forecasts** rather than point estimates, so operators see the risk
+  range, not a single misleadingly precise number.
+- **Backfilled feature store** so training and serving read features the same way.
+- **A retraining schedule** that automatically re-fits as new meter data lands.
+
+## What they'd do next
+
+Close the loop by feeding the forecasts into the building management system for
+automated pre-cooling.

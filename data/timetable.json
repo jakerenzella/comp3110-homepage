@@ -1,0 +1,38 @@
+{
+  "term": "Term 3, 2026",
+  "note": "Weekly class times for the current term. To update for a future term, edit the term label and the classes below. `day` must be a weekday name; `time` is the start time (e.g. \"2:00 PM\"); `location` is optional.",
+  "classes": [
+    {
+      "code": "COMP3110-T3U1-LEC/A:1",
+      "type": "Lecture",
+      "stream": "A",
+      "day": "Monday",
+      "time": "11:00 AM",
+      "location": ""
+    },
+    {
+      "code": "COMP3110-T3U1-LAB/01:1",
+      "type": "Lab",
+      "stream": "01",
+      "day": "Monday",
+      "time": "2:00 PM",
+      "location": ""
+    },
+    {
+      "code": "COMP3110-T3U1-LAB/02:1",
+      "type": "Lab",
+      "stream": "02",
+      "day": "Tuesday",
+      "time": "2:00 PM",
+      "location": ""
+    },
+    {
+      "code": "COMP3110-T3U1-LAB/03:1",
+      "type": "Lab",
+      "stream": "03",
+      "day": "Tuesday",
+      "time": "4:00 PM",
+      "location": ""
+    }
+  ]
+}

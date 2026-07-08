@@ -1,0 +1,34 @@
+---
+title: Warehouse Demand Forecasting
+year: 2024
+team: [Isabelle Martin, Jayden Park, Kofi Mensah]
+tags: [forecasting, MLOps, data-engineering]
+cover: /projects/warehouse.svg
+demo: https://example.com/demo/warehouse
+repo: https://github.com/example/warehouse-demand
+award: Best Technical Design
+---
+
+## The problem
+
+A regional distribution partner over-stocked slow items and ran out of fast ones.
+The team built a demand forecaster to drive smarter reorder points across
+thousands of SKUs.
+
+## What they built
+
+A hierarchical forecasting system reconciles predictions across product, category,
+and warehouse levels so the numbers add up, then feeds reorder recommendations to
+a planning dashboard.
+
+## Engineering highlights
+
+- **Hierarchical reconciliation** so store-level and category-level forecasts are
+  mutually consistent.
+- **A reproducible training pipeline** with data validation gates that block bad
+  batches before they reach the model.
+- **Backtesting harness** that simulates the reorder policy on held-out history.
+
+## What they'd do next
+
+Add promotions and supplier lead-time variability as first-class features.

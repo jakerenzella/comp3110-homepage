@@ -1,0 +1,38 @@
+---
+title: Real-time Fraud Detection
+year: 2025
+team: [Alice Wong, Ben Osei]
+tags: [streaming, MLOps, monitoring]
+cover: /projects/fraud.svg
+demo: https://example.com/demo/fraud
+repo: https://github.com/example/fraud-detection
+award: Demo Day Winner
+---
+
+## The problem
+
+Card fraud has to be caught in the few hundred milliseconds between a swipe and
+an authorisation decision. Batch scoring is too slow, and a model that is right
+but late is worthless. The team set out to build a streaming fraud detector that
+scores every transaction inline.
+
+## What they built
+
+A feature pipeline on a streaming backbone computes rolling aggregates (spend
+velocity, merchant-category entropy, device reuse) and serves them to a gradient
+boosted model behind a low-latency API. A shadow-deployment harness replays
+historical traffic so new models can be compared against production before they
+take real decisions.
+
+## Engineering highlights
+
+- **p99 scoring latency under 40ms** end-to-end, including feature lookups.
+- **Drift monitoring** on the live feature distribution, with alerts wired to the
+  team's on-call channel.
+- **Cost-sensitive evaluation** — the team optimised for dollars saved, not raw
+  accuracy, since a missed fraud costs far more than a false alarm.
+
+## What they'd do next
+
+Move from a single global model to per-segment models, and add a human-in-the-loop
+review queue for borderline scores.
