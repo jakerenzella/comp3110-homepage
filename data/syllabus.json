@@ -35,11 +35,9 @@
       "week": 1,
       "sprint": null,
       "accelerator": {
-        "topic": "Identifying societal opportunities",
-        "detail": "How to spot a problem worth solving, and what separates a real need from a neat idea.",
-        "people": [
-          "natasha-banks"
-        ],
+        "topic": "Teams and project selection",
+        "detail": "Teams form and commit to the problem they will carry through the term.",
+        "people": [],
         "materials": []
       },
       "mle": {
@@ -81,9 +79,11 @@
       "week": 2,
       "sprint": null,
       "accelerator": {
-        "topic": "Teams and project selection",
-        "detail": "Teams form and commit to the problem they will carry through the term.",
-        "people": [],
+        "topic": "Identifying societal opportunities",
+        "detail": "How to spot a problem worth solving, and what separates a real need from a neat idea.",
+        "people": [
+          "natasha-banks"
+        ],
         "materials": []
       },
       "mle": {

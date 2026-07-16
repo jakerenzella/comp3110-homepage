@@ -151,15 +151,11 @@ export const course = {
     },
     {
       q: "Are lectures recorded?",
-      a: "Yes. Lectures are recorded and made available to enrolled students on Moodle.",
+      a: "Yes. Lectures are recorded and made available to enrolled students on Youtube.",
     },
     {
       q: "What is the format of the class?",
       a: "Lectures for primary content and guest lectures, labs for hands on activity and accelerator check-ins, and the discussion fourm. We aim to engage with a number of industry practitioners both technical and non-technical.",
-    },
-    {
-      q: "Do I need prior deployment experience?",
-      a: "Not really. You need solid software engineering and ML fundamentals; the engineering and deployment skills are what this course teaches.",
     },
     {
       q: "How are teams and mentors available?",
