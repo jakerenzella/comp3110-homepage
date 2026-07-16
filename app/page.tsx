@@ -48,25 +48,20 @@ export default function HomePage() {
       <Section title="Overview" id="overview">
         <Typography.Prose>
           <p>
-            What good is Artificial Intelligence if it can't be used by real
-            people in real products to solve real problems?
+            What good is AI if doesn't solve real problems?
           </p>
           <p>
-            As Artificial Intelligence transforms our world, the role of Machine
-            Learning Engineers becomes increasingly critical in bringing AI
-            models to life. This course, Machine Learning Engineering, will
+            As AI transforms our world, the role of Machine
+            Learning Engineers becomes increasingly critical. This course, Machine Learning Engineering, will
             prepare you to operate at the intersection of software engineering
             and machine learning, equipping you with the skills to design,
             develop, deploy, and maintain robust machine learning systems that
-            solve real problems.
+            solve real problems for people.
           </p>
 
           <p>
-            Through hands-on learning and industry-aligned practices, you will
-            explore key areas such as data collection and sanitisation,
-            cloud-based deployment, model monitoring, and system scalability.
-            This course will prepare you to pursue careers as a Machine Learning
-            Engineer, but more importantly, to solve a real problem for society.
+            You will explore key areas such as data collection and sanitisation,
+            model design, and deployment.
           </p>
           <p>
             And in order to solve real problems, we must be able to identify
@@ -118,7 +113,7 @@ export default function HomePage() {
       {/* Accelerator timeline */}
       <Section title="The accelerator" id="accelerator">
         <Typography type="body" color="muted" className="mb-6 max-w-2xl">
-          The term runs like a startup accelerator: a two-week onboarding, three
+          The accelerator includes two-week onboarding, three
           build sprints with industry mentors, and a public Demo Day.
         </Typography>
         <AcceleratorTimeline phases={course.phases} />

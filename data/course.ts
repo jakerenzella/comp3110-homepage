@@ -60,7 +60,7 @@ export const course = {
   school: "UNSW School of Computer Science and Engineering",
   term: "UNSW Sydney · Term 2, 2025", // TODO: confirm the offering term
   tagline:
-    "An accelerator-style course for building machine learning systems that solve real problems in society.",
+    "An accelerator-style course for applying machine learning to solve real problems.",
 
   /**
    * Slim banner shown above the navbar. Set to `null` to hide it entirely

@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     template: '%s · COMP3110',
   },
   description:
-    'UNSW COMP3110: Machine Learning Engineering: an accelerator-style course for applying machine learning to solve real problems.',
+    'An accelerator-style course for applying machine learning to solve real problems.',
 }
 
 export default function RootLayout({
