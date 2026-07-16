@@ -66,10 +66,6 @@
             ]
           },
           {
-            "heading": "Rapid prototyping with LLMs",
-            "bullets": []
-          },
-          {
             "heading": "Model selection, routing and gateways",
             "bullets": [
               "Reading public benchmarks",
@@ -121,22 +117,13 @@
             "bullets": [
               "Prompting (n-shot)",
               "Retrieval (RAG)",
-              "Human Preference",
-              "Tuning"
-            ]
-          },
-          {
-            "heading": "Inference Optimisation",
-            "bullets": [
-              "Parameter tuning",
-              "Parameter-efficient fine-tuning: LoRA/QLoRA (e.g. Unsloth)"
-            ]
-          },
-          {
-            "heading": "Synthetic data and distillation",
-            "bullets": [
-              "Synthetic eval sets",
-              "Model distilling"
+              "Human preference (DPO/KTO)",
+              {
+                "text": "Fine-tuning",
+                "children": [
+                  "Parameter-efficient fine-tuning: LoRA/QLoRA (e.g. Unsloth)"
+                ]
+              }
             ]
           }
         ]
@@ -179,10 +166,7 @@
           {
             "heading": "Evals",
             "bullets": [
-              "Read your traces: open coding, one annotation per failure",
-              "Cluster annotations into failure modes (axial coding)",
-              "Let the failure modes decide which evals are worth writing",
-              "The anti-pattern: writing evals for failures you have never seen"
+              "TBC"
             ]
           },
           {
@@ -190,8 +174,7 @@
             "bullets": [
               "Score the judge against human labels on a held-out set (TPR/TNR)",
               "Binary pass/fail beats a Likert scale",
-              "Direct scoring for objective criteria, pairwise for subjective",
-              "Position, verbosity and self-enhancement bias"
+              "Direct scoring for objective criteria, pairwise for subjective"
             ]
           }
         ]
@@ -227,11 +210,12 @@
       "mle": {
         "sections": [
           {
-            "heading": "Model serving, monitoring and maintenance",
+            "heading": "Serving, security and regression",
             "bullets": [
-              "Security",
-              "Developer experience",
-              "Regressions"
+              "Regressions",
+              "Prompt injection",
+              "System-prompt leakage",
+              "Least privilege for tools"
             ]
           }
         ]
@@ -249,18 +233,12 @@
       "mle": {
         "sections": [
           {
-            "heading": "Model serving, monitoring and maintenance",
+            "heading": "Monitoring and observability",
             "bullets": [
-              "Ease of recovery",
-              "Logging and dashboards"
-            ]
-          },
-          {
-            "heading": "Tracing and observability",
-            "bullets": [
-              "Agent trace & span",
-              "Logging",
-              "Model drift"
+              "Logging and dashboards",
+              "Agent traces and spans",
+              "Model drift",
+              "Ease of recovery"
             ]
           }
         ]
@@ -278,15 +256,11 @@
       "mle": {
         "sections": [
           {
-            "heading": "Deployment",
+            "heading": "Deployment, serving and cost",
             "bullets": [
-              "Building a path to serve the model rather than running it by hand in a notebook: latency, batching, and cost"
-            ]
-          },
-          {
-            "heading": "Contributing to open-source systems",
-            "bullets": [
-              "Guest lecture"
+              "Serve your model behind an API",
+              "Latency and batching",
+              "Caching and quantisation"
             ]
           }
         ]
@@ -304,10 +278,10 @@
       "mle": {
         "sections": [
           {
-            "heading": "Prompt injection and agentic security",
+            "heading": "Launch readiness",
             "bullets": [
-              "Direct and indirect injection",
-              "System-prompt leakage"
+              "Stress-test the deployment before it meets real users",
+              "A final guardrails and safety pass"
             ]
           }
         ]
