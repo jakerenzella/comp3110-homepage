@@ -1,0 +1,317 @@
+{
+  "term": "Term 3, 2026",
+  "note": "Weekly syllabus shown on /syllabus. Edit the weeks below to update the site; no code changes needed. `week` is the week number (used as the row id, so keep it unique). `sprint` colour-codes the row with a left-edge stripe and must be an `id` from `sprints` below, or null for weeks outside a sprint. The table renders two columns: `mle` (the Technical column) and `accelerator` (the venture-building strand, often led by a guest). `mle` keeps the outline's own format: a list of `sections`, each with a `heading` and `bullets`, where a bullet is a string or an object with `text` and nested `children`. Use an empty `sections` list for a week with no outline content. `accelerator` has a `topic` (short title), a `detail` (a sentence), `people` (a list of ids from data/people.json, shown as chips with a hover profile; empty for sessions with no named guest), and `materials`: a list of links where `label` is the link text and `href` is a URL or a path under public/ (e.g. \"/slides/week-1.pdf\"). Leave `materials` empty ([]) for anything not published yet. Each week still carries a `technical` field, the old 'Engineering' column that was merged into `mle` with the syllabus builder; it is no longer rendered and can be pruned once the merge is trusted.",
+  "sprints": [
+    {
+      "id": 1,
+      "name": "Sprint 1",
+      "when": "Weeks 3-5"
+    },
+    {
+      "id": 2,
+      "name": "Sprint 2",
+      "when": "Weeks 7-9"
+    },
+    {
+      "id": 3,
+      "name": "Sprint 3",
+      "when": "Weeks 9-10"
+    }
+  ],
+  "tracks": [
+    {
+      "id": "accelerator",
+      "name": "Accelerator",
+      "blurb": "Venture-building sessions, usually led by an industry guest."
+    },
+    {
+      "id": "mle",
+      "name": "MLE",
+      "blurb": "Topics from the Machine Learning Engineering course outline."
+    }
+  ],
+  "weeks": [
+    {
+      "week": 1,
+      "sprint": null,
+      "accelerator": {
+        "topic": "Identifying societal opportunities",
+        "detail": "How to spot a problem worth solving, and what separates a real need from a neat idea.",
+        "people": [
+          "natasha-banks"
+        ],
+        "materials": []
+      },
+      "mle": {
+        "sections": [
+          {
+            "heading": "Course intro",
+            "bullets": [
+              "What is ML engineering?",
+              "How will this course work"
+            ]
+          },
+          {
+            "heading": "Law of the instrument",
+            "bullets": [
+              {
+                "text": "Do we really need ML?",
+                "children": [
+                  "for your product or problem",
+                  "Approaches to AI"
+                ]
+              },
+              "ML vs MLE vs Engineering",
+              "Predictive models vs Generative models"
+            ]
+          },
+          {
+            "heading": "Rapid prototyping with LLMs",
+            "bullets": []
+          },
+          {
+            "heading": "Model selection, routing and gateways",
+            "bullets": [
+              "Reading public benchmarks",
+              "Model API costs",
+              "Model routing",
+              "Caching, limits and logging"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": 2,
+      "sprint": null,
+      "accelerator": {
+        "topic": "Teams and project selection",
+        "detail": "Teams form and commit to the problem they will carry through the term.",
+        "people": [],
+        "materials": []
+      },
+      "mle": {
+        "sections": [
+          {
+            "heading": "Data",
+            "bullets": [
+              "Raw and tidy data",
+              "Data sanitisation",
+              "Training and holdout",
+              "Storage",
+              "Pipelines"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": 3,
+      "sprint": 1,
+      "accelerator": {
+        "topic": "Scoping with a mentor",
+        "detail": "Sprint 1 begins. Teams gain access to mentors and scope the problem down to something achievable in a term.",
+        "people": [],
+        "materials": []
+      },
+      "mle": {
+        "sections": [
+          {
+            "heading": "Model development",
+            "bullets": [
+              "Prompting (n-shot)",
+              "Retrieval (RAG)",
+              "Human Preference",
+              "Tuning"
+            ]
+          },
+          {
+            "heading": "Inference Optimisation",
+            "bullets": [
+              "Parameter tuning",
+              "Parameter-efficient fine-tuning: LoRA/QLoRA (e.g. Unsloth)"
+            ]
+          },
+          {
+            "heading": "Synthetic data and distillation",
+            "bullets": [
+              "Synthetic eval sets",
+              "Model distilling"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": 4,
+      "sprint": 1,
+      "accelerator": {
+        "topic": "Talking to users",
+        "detail": "Validating the problem with the people who have it, before the build hardens around a guess.",
+        "people": [],
+        "materials": []
+      },
+      "mle": {
+        "sections": [
+          {
+            "heading": "Agents and tool use",
+            "bullets": [
+              "Model, tool, result, repeat",
+              "Designing a tool catalogue",
+              "Agent failure: last good/first bad state",
+              "MCP"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": 5,
+      "sprint": 1,
+      "accelerator": {
+        "topic": "Baseline review",
+        "detail": "Teams present the baseline and the objective it is measured against.",
+        "people": [],
+        "materials": []
+      },
+      "mle": {
+        "sections": [
+          {
+            "heading": "Evals",
+            "bullets": [
+              "Read your traces: open coding, one annotation per failure",
+              "Cluster annotations into failure modes (axial coding)",
+              "Let the failure modes decide which evals are worth writing",
+              "The anti-pattern: writing evals for failures you have never seen"
+            ]
+          },
+          {
+            "heading": "LLM as a judge",
+            "bullets": [
+              "Score the judge against human labels on a held-out set (TPR/TNR)",
+              "Binary pass/fail beats a Likert scale",
+              "Direct scoring for objective criteria, pairwise for subjective",
+              "Position, verbosity and self-enhancement bias"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": 6,
+      "sprint": null,
+      "accelerator": {
+        "topic": "Flexibility week",
+        "detail": "No new content.",
+        "people": [],
+        "materials": []
+      },
+      "mle": {
+        "sections": [
+          {
+            "heading": "Mid-term break",
+            "bullets": []
+          }
+        ]
+      }
+    },
+    {
+      "week": 7,
+      "sprint": 2,
+      "accelerator": {
+        "topic": "Positioning and users",
+        "detail": "Who the system is for, and what it has to be better than to be worth using.",
+        "people": [],
+        "materials": []
+      },
+      "mle": {
+        "sections": [
+          {
+            "heading": "Model serving, monitoring and maintenance",
+            "bullets": [
+              "Security",
+              "Developer experience",
+              "Regressions"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": 8,
+      "sprint": 2,
+      "accelerator": {
+        "topic": "Measuring impact",
+        "detail": "Tying the metric you improved to the outcome someone actually cares about.",
+        "people": [],
+        "materials": []
+      },
+      "mle": {
+        "sections": [
+          {
+            "heading": "Model serving, monitoring and maintenance",
+            "bullets": [
+              "Ease of recovery",
+              "Logging and dashboards"
+            ]
+          },
+          {
+            "heading": "Tracing and observability",
+            "bullets": [
+              "Agent trace & span",
+              "Logging",
+              "Model drift"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": 9,
+      "sprint": 2,
+      "accelerator": {
+        "topic": "Design, reliability, scale and cost",
+        "detail": "Sprint 3 starts alongside deployment: what it takes for the thing to survive real use.",
+        "people": [],
+        "materials": []
+      },
+      "mle": {
+        "sections": [
+          {
+            "heading": "Deployment",
+            "bullets": [
+              "Building a path to serve the model rather than running it by hand in a notebook: latency, batching, and cost"
+            ]
+          },
+          {
+            "heading": "Contributing to open-source systems",
+            "bullets": [
+              "Guest lecture"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "week": 10,
+      "sprint": 3,
+      "accelerator": {
+        "topic": "Landing page and Demo Day",
+        "detail": "Finish the landing page, sharpen the pitch, and present at Demo Day.",
+        "people": [],
+        "materials": []
+      },
+      "mle": {
+        "sections": [
+          {
+            "heading": "Prompt injection and agentic security",
+            "bullets": [
+              "Direct and indirect injection",
+              "System-prompt leakage"
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

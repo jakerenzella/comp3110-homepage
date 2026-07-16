@@ -8,6 +8,7 @@
  * injects its own pre-hydration script (no FOUC) and persists the choice.
  */
 import { ThemeProvider } from 'next-themes'
+import { Toast } from '@heroui/react'
 
 export function Providers({ children }: { children: React.ReactNode }) {
   return (
@@ -18,6 +19,8 @@ export function Providers({ children }: { children: React.ReactNode }) {
       disableTransitionOnChange
     >
       {children}
+      {/* Mounted once for the whole app; `toast()` from anywhere targets it. */}
+      <Toast.Provider />
     </ThemeProvider>
   )
 }

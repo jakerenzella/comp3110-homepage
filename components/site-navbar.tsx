@@ -7,8 +7,9 @@ import { usePathname, useRouter } from 'next/navigation'
 import { course } from '@/data/course'
 import { ThemeToggle } from './theme-toggle'
 
+// No "Home" entry: the COMP3110 brand in the header is the home link.
 const NAV_LINKS = [
-  { href: '/', label: 'Home' },
+  { href: '/syllabus', label: 'Syllabus' },
   { href: '/accelerator', label: 'Accelerator' },
   { href: '/projects', label: 'Projects' },
   { href: '/mentors', label: 'Mentors' },

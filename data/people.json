@@ -1,0 +1,15 @@
+{
+  "note": "People named in the syllabus (guest lecturers, session leads). A week's track lists `people: [\"<id>\"]` in syllabus.json and the site renders each id as a chip with a hover card. `id` is the slug used from syllabus.json, so keep it unique and stable. `name` is shown on the chip, including any title (e.g. \"Ms Natasha Banks\"). `role` and `affiliation` form the line under the name; either may be an empty string. `bio` is a sentence or two. `achievements` is a short list of bullet points (keep to 2-4; an empty list hides the section). `photo` is optional and falls back to initials: put images in public/staff/ or public/mentors/. `href` is optional and links to the person's page (external URL, or a path on this site); the hover card hides the link when it is absent.",
+  "people": [
+    {
+      "id": "natasha-banks",
+      "name": "Natasha Banks",
+      "role": "TBC: role",
+      "affiliation": "TBC: affiliation",
+      "bio": "TBC: a sentence or two on who Natasha is and the work she draws on for the societal opportunities session.",
+      "achievements": [],
+      "photo": null,
+      "href": null
+    }
+  ]
+}

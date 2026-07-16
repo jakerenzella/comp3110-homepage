@@ -113,6 +113,17 @@
   --color-accent: #ffeb00; /* UNSW yellow — used sparingly */
   --color-banner: #fffdf0; /* pale-yellow announcement/callout bg */
 
+  /* Accelerator sprint accents — the left-edge stripe on syllabus rows and the
+     legend swatches. Kept off yellow so they never compete with --color-accent.
+     Hues are spread across the wheel (cyan / violet / orange) and saturated
+     rather than muted: in a few px of stripe there is too little area for a
+     soft colour to register, and near-neighbour hues stop being tellable
+     apart. They also differ in lightness, so the three stay distinguishable
+     for red-green colour blindness and in greyscale print. */
+  --color-sprint-1: #0e7c86; /* teal */
+  --color-sprint-2: #6d4bd8; /* violet */
+  --color-sprint-3: #d4522a; /* orange */
+
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
   /* Clancy (UNSW brand) for headers, falling back to the sans stack. */
@@ -142,6 +153,10 @@
   --color-subtle: #2c2e2e; /* 1px borders */
   --color-banner: #24220a; /* dark yellow-tinted callout bg */
   --color-accent: #d4c04a; /* duller yellow — bright UNSW yellow glares on dark */
+  /* Lifted well above the light-mode hues, which go muddy on dark paper. */
+  --color-sprint-1: #2fc6d6;
+  --color-sprint-2: #a78bfa;
+  --color-sprint-3: #ff8a5c;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme]) {
@@ -154,6 +169,9 @@
     --color-subtle: #2c2e2e;
     --color-banner: #24220a;
     --color-accent: #d4c04a;
+    --color-sprint-1: #2fc6d6;
+    --color-sprint-2: #a78bfa;
+    --color-sprint-3: #ff8a5c;
   }
 }
 
