@@ -27,11 +27,14 @@ export type Announcement = {
   linkLabel?: string;
 };
 
+/** A logistics line: plain text, or text that links out. */
+export type LogisticsLine = string | { text: string; href: string };
+
 export type LogisticsItem = {
   label: string;
   icon: IconName;
   /** A single line, or a bulleted list of lines. */
-  value: string | string[];
+  value: LogisticsLine | LogisticsLine[];
 };
 
 export type Staff = {
@@ -92,7 +95,16 @@ export const course = {
     {
       label: "Contact",
       icon: "mail",
-      value: "jake.renzella@unsw.edu.au · Course forum on Ed", // TODO: confirm forum
+      value: [
+        {
+          text: "jake.renzella@unsw.edu.au",
+          href: "mailto:jake.renzella@unsw.edu.au",
+        },
+        {
+          text: "Course forum on Ed",
+          href: "https://edstem.org/au/courses/38140/discussion",
+        },
+      ],
     },
   ] as LogisticsItem[],
 
@@ -186,6 +198,7 @@ export const course = {
       href: "https://www.handbook.unsw.edu.au/undergraduate/courses/2026/COMP3110",
     },
     { label: "Moodle", href: "https://moodle.telt.unsw.edu.au/" },
+    { label: "Ed forum", href: "https://edstem.org/au/courses/38140/discussion" },
     {
       label: "CSE",
       href: "https://www.unsw.edu.au/engineering/our-schools/computer-science-and-engineering",

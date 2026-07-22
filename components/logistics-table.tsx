@@ -9,10 +9,17 @@
  * the RSC boundary.
  */
 import type { ReactNode } from 'react'
-import { Table } from '@heroui/react'
+import { Link, Table } from '@heroui/react'
+import type { LogisticsLine } from '@/data/course'
 import { course } from '@/data/course'
 import timetable from '@/data/timetable.json'
 import { Icon } from './icon'
+
+/** A logistics line renders as text, or as a link when the data gives an href. */
+function Line({ line }: { line: LogisticsLine }) {
+  if (typeof line === 'string') return <>{line}</>
+  return <Link href={line.href}>{line.text}</Link>
+}
 
 // Live lecture time(s) from the timetable drive the "Lectures" row.
 const lectureLine = timetable.classes
@@ -53,11 +60,13 @@ const rows: Row[] = course.logistics.map((entry) => {
     details: Array.isArray(value) ? (
       <ul className="list-disc pl-5 space-y-1">
         {value.map((v) => (
-          <li key={v}>{v}</li>
+          <li key={typeof v === 'string' ? v : v.href}>
+            <Line line={v} />
+          </li>
         ))}
       </ul>
     ) : (
-      value
+      <Line line={value} />
     ),
   }
 })
