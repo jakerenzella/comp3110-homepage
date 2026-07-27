@@ -70,7 +70,10 @@ export const course = {
    * (the layout reserves no space when null, so there is no layout shift).
    */
   // Set to an object to show a slim banner above the navbar; null hides it.
-  announcement: null as Announcement | null,
+  announcement: {
+    message:
+      "This site is under active development. All content is indicative only and subject to change.",
+  } as Announcement | null,
 
   logistics: [
     {
