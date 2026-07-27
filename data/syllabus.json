@@ -15,7 +15,7 @@
     {
       "id": 3,
       "name": "Sprint 3",
-      "when": "Weeks 9-10"
+      "when": "Week 10"
     }
   ],
   "tracks": [
@@ -270,8 +270,8 @@
       "week": 10,
       "sprint": 3,
       "accelerator": {
-        "topic": "Landing page and Demo Day",
-        "detail": "Finish the landing page, sharpen the pitch, and present at Demo Day.",
+        "topic": "Polish and Demo Day prep",
+        "detail": "Finish the landing page, sharpen the pitch, and rehearse for Demo Day.",
         "people": [],
         "materials": []
       },
@@ -285,6 +285,19 @@
             ]
           }
         ]
+      }
+    },
+    {
+      "week": 11,
+      "sprint": null,
+      "accelerator": {
+        "topic": "Demo Day",
+        "detail": "Each team gives a short, live presentation of a deployed system to peers, mentors, and industry guests.",
+        "people": [],
+        "materials": []
+      },
+      "mle": {
+        "sections": []
       }
     }
   ]

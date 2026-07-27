@@ -142,14 +142,14 @@ export const course = {
     },
     {
       name: "Sprint 3",
-      when: "Weeks 9-10",
+      when: "Week 10",
       summary:
         "Polish and Demo Day preparations.",
       icon: "deploy",
     },
     {
       name: "Demo Day",
-      when: "Week 10",
+      when: "Week 11",
       summary:
         "Each team gives a short, live presentation of a deployed system to an audience of peers, mentors, and industry guests.",
       icon: "trophy",
