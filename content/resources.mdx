@@ -10,22 +10,72 @@ These are some tools and readings we have found helpful.
 ## Tooling
 
 - [Git & GitHub](https://docs.github.com/): you should be familiar from Gitlab in COMP1531.
-- [DVC](https://dvc.org/): version control for data and models.
-- [Weights & Biases](https://wandb.ai/): experiment tracking and dashboards.
 - [Docker](https://docs.docker.com/): packaging your tools so they run everywhere.
 - [FastAPI](https://fastapi.tiangolo.com/): a straightforward way to serve a model
   behind an API.
+- [Hugging Face Hub](https://huggingface.co/docs/hub/datasets): git-backed hosting for
+  your datasets, models, and eval sets.
+- [DVC](https://dvc.org/): version control for data and models, if your data lives
+  outside the Hub.
+- [Weights & Biases](https://wandb.ai/): experiment tracking and dashboards for
+  training runs.
+- [W&B Weave](https://docs.wandb.ai/weave): tracing and evaluation for LLM
+  applications. This is the one most teams will actually need in Sprint 2.
+- [Unsloth](https://unsloth.ai/docs/get-started/fine-tuning-llms-guide): fine-tuning
+  and RL that fits on a free Colab or Kaggle tier.
+- [vLLM](https://docs.vllm.ai/): the production standard for serving a model to more
+  than one user at a time. Pair it with [Ollama](https://ollama.com/) for local
+  development.
 
 ## Readings
 
-- *Designing Machine Learning Systems* — Chip Huyen (O'Reilly, 2022). The closest
-  thing to a textbook for this course.
-- [Rules of Machine Learning](https://developers.google.com/machine-learning/guides/rules-of-ml)
-  — Google's field guide to ML engineering.
-- [The ML Test Score](https://research.google/pubs/pub46555/) — a rubric for
+### Core texts
+
+- *AI Engineering: Building Applications with Foundation Models* by Chip Huyen
+  (O'Reilly, 2025). The closest thing to a textbook for this course: prompting, RAG,
+  fine-tuning, agents, dataset engineering, and the latency and cost of serving
+  foundation models. There is a free companion repo at
+  [chiphuyen/aie-book](https://github.com/chiphuyen/aie-book).
+- *Designing Machine Learning Systems* by Chip Huyen (O'Reilly, 2022). Chip's earlier
+  book on classical ML systems, and the direct inspiration for parts of this course.
+
+### Engineering practice
+
+- [What We've Learned From A Year of Building with LLMs](https://applied-llms.org/):
+  tactics, operations, and strategy from six people who shipped real LLM products.
+- [Your AI Product Needs Evals](https://hamel.dev/blog/posts/evals/) and
+  [The Ultimate AI Evals FAQ](https://hamelhusain.substack.com/p/the-ultimate-ai-evals-faq-now-new):
+  Hamel Husain on the error-analysis loop that turns vibe checks into a metric.
+- [Rules of Machine Learning](https://developers.google.com/machine-learning/guides/rules-of-ml):
+  Google's field guide to ML engineering. Predates LLMs and is still right.
+- [The ML Test Score](https://research.google/pubs/pub46555/): a rubric for
   production-readiness.
-- [Hidden Technical Debt in Machine Learning Systems](https://papers.nips.cc/paper/2015/hash/86df7dcfd896fcaf2674f757a2463eba-Abstract.html)
-  — why ML systems rot.
+- [Hidden Technical Debt in Machine Learning Systems](https://papers.nips.cc/paper/2015/hash/86df7dcfd896fcaf2674f757a2463eba-Abstract.html):
+  why ML systems rot.
+
+### If you are building agents
+
+- [Building Effective Agents](https://www.anthropic.com/engineering/building-effective-agents)
+  (Anthropic): start simple and composable, and only reach for an agent when you need one.
+- [A Practical Guide to Building Agents](https://cdn.openai.com/business-guides-and-resources/a-practical-guide-to-building-agents.pdf)
+  (OpenAI): architecture, tooling, and guardrails.
+
+## Courses and playbooks
+
+- [Google MLCC: Large Language Models](https://developers.google.com/machine-learning/crash-course/llm):
+  free and self-paced, from tokens to transformers. Good if you want the fundamentals
+  we do not have lecture time for.
+- [Hugging Face LLM Course](https://huggingface.co/learn/llm-course): the Transformers,
+  Datasets, and Tokenizers ecosystem, end to end.
+- [Hugging Face smol-course](https://huggingface.co/learn/smol-course): a faster track
+  aimed at engineers. Supervised fine-tuning, preference alignment, evaluation, and
+  vision language models.
+- [The Smol Training Playbook](https://huggingface.co/spaces/HuggingFaceTB/smol-training-playbook):
+  an honest account of training SmolLM3, including the loss spikes and the 2am
+  debugging. A useful antidote to tidy paper narratives.
+- [FineWeb](https://huggingface.co/datasets/HuggingFaceFW/fineweb): a fully documented
+  data curation pipeline with the ablations shown. Evidence for the claim that your
+  data matters more than your model.
 
 ## Compute credits
 
@@ -33,4 +83,3 @@ These are some tools and readings we have found helpful.
   {/* TODO: link to the internal request form / instructions */}
 - **Cloud credits**: teams can apply for cloud provider credits for deployment.
   {/* TODO: confirm this term's provider and credit amount */}
-

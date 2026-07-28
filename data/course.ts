@@ -100,8 +100,8 @@ export const course = {
       icon: "mail",
       value: [
         {
-          text: "jake.renzella@unsw.edu.au",
-          href: "mailto:jake.renzella@unsw.edu.au",
+          text: "CS3110@unsw.edu.au",
+          href: "mailto:CS3110@unsw.edu.au",
         },
         {
           text: "Course forum on Ed",
