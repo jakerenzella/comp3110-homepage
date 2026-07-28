@@ -17,7 +17,9 @@ export default function SyllabusPage() {
         <Typography type="body" color="muted" className="max-w-2xl">
           What each week covers across the technical and accelerator tracks for{' '}
           {syllabus.term}, and the materials that go with them. Materials are
-          published as the term progresses.
+          published as the term progresses. Teaching runs{' '}
+          {syllabus.teachingPeriod}: each row is dated with the Monday of that
+          week, and week 6 is the non-teaching flexibility week.
         </Typography>
       </header>
       {/* Single-line note, so the message is the Title rather than a

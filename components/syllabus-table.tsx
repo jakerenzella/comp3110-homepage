@@ -14,9 +14,6 @@
  * the accelerator cell rather than in a column of their own, since a link
  * belongs to one session and not to the week.
  *
- * The old "Engineering" column (`technical`) was merged into `mle` via the
- * syllabus builder and has been pruned from the data.
- *
  * Weeks that belong to an accelerator sprint carry a coloured stripe down the
  * left edge, keyed to the legend below the table. The stripe is a left border
  * on the first cell rather than on the row: `<tr>` borders don't render under
@@ -63,9 +60,30 @@ type Outline = {
 
 type WeekEntry = {
   week: number
+  /** Monday of the week, ISO `YYYY-MM-DD`. Optional so a term without dates
+   *  filled in still renders. */
+  starts?: string
   sprint: number | null
   accelerator: Session
   mle: Outline
+}
+
+const MONTHS = [
+  'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+  'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec',
+]
+
+/**
+ * `2026-09-14` -> `14 Sep`. Parsed and formatted by hand rather than through
+ * `Date`/`toLocaleDateString`: those depend on the runtime's timezone and ICU
+ * data, which differ between the SSR build and the browser and would show up as
+ * a hydration mismatch.
+ */
+function formatWeekStart(iso: string | undefined): string | null {
+  if (!iso) return null
+  const [, month, day] = iso.split('-').map(Number)
+  if (!month || !day || month < 1 || month > 12) return null
+  return `${day} ${MONTHS[month - 1]}`
 }
 
 /**
@@ -221,15 +239,18 @@ export function SyllabusTable() {
 
   const rows: Row[] = (syllabus.weeks as WeekEntry[]).map((entry) => {
     const sprint = sprints.find((s) => s.id === entry.sprint)
+    const starts = formatWeekStart(entry.starts)
     return {
       id: entry.week,
       stripeClassName:
         entry.sprint === null ? '' : (SPRINT_STRIPE[entry.sprint] ?? ''),
       week: (
-        <>
-          {entry.week}
-          {sprint ? <span className="sr-only"> ({sprint.name})</span> : null}
-        </>
+        // Week number over its start date, so the column reads as one label.
+        <div className="flex flex-col gap-0.5">
+          <span>{entry.week}</span>
+          {starts ? <span className="text-xs text-muted">{starts}</span> : null}
+          {sprint ? <span className="sr-only">({sprint.name})</span> : null}
+        </div>
       ),
       accelerator: <SessionCell session={entry.accelerator} />,
       mle: <OutlineCell outline={entry.mle} />,

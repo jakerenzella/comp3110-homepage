@@ -1,0 +1,41 @@
+# Words cspell should accept across the site.
+# Add one word per line. Comments and blank lines are ignored.
+# Run `npm run spell` to see what is currently unknown.
+
+# People and organisations
+Bellis
+Canva
+chiphuyen
+CSIRO
+Divya
+Hamel
+Husain
+Huyen
+Jayden
+Mensah
+Osei
+
+# Tools, models, and platforms
+Colab
+Kaggle
+Ollama
+smol
+Unsloth
+vLLM
+FineWeb
+SmolLM
+tokenizers
+Weave
+
+# Domain terms
+Auslan
+Backtesting
+Evals
+GRPO
+Likert
+LoRA
+MLCC
+MLOps
+OWASP
+QLoRA
+RLHF

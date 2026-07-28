@@ -7,7 +7,13 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "serve": "npx serve out"
+    "serve": "npx serve out",
+    "spell": "cspell --no-progress --no-must-find-files \"**/*.{md,mdx}\" \"data/**/*.json\"",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "*.{md,mdx}": "cspell --no-must-find-files",
+    "data/**/*.json": "cspell --no-must-find-files"
   },
   "dependencies": {
     "@heroui-pro/react": "^1.0.0-beta.7",
@@ -50,6 +56,9 @@
     "@types/node": "^26.1.1",
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
+    "cspell": "^9.8.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.4.0",
     "puppeteer-core": "^25.3.0",
     "typescript": "^6.0.3"
   }
