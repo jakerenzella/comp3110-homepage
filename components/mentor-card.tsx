@@ -1,6 +1,6 @@
 /**
  * Mentor card: avatar, name, affiliation/role, expertise chips, and short bio.
- * Presentational (rendered from the server /mentors page).
+ * Presentational (rendered from the Mentors section of the server /people page).
  */
 import { Avatar, Chip, Typography } from '@heroui/react'
 import type { Entry, MentorFrontmatter } from '@/lib/content'

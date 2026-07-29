@@ -12,7 +12,7 @@ const NAV_LINKS = [
   { href: '/syllabus', label: 'Syllabus' },
   { href: '/accelerator', label: 'Accelerator' },
   { href: '/projects', label: 'Projects' },
-  { href: '/mentors', label: 'Mentors' },
+  { href: '/people', label: 'People' },
   { href: '/resources', label: 'Resources' },
 ]
 

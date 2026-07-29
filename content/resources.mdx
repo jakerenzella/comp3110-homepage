@@ -17,6 +17,11 @@ These are some tools and readings we have found helpful.
   your datasets, models, and eval sets.
 - [DVC](https://dvc.org/): version control for data and models, if your data lives
   outside the Hub.
+- [LiteLLM](https://docs.litellm.ai/): one API in front of every model provider, with
+  routing, fallbacks, caching, rate limits, and per-key cost tracking. The gateway from
+  Week 1, as something you can install rather than build. Use
+  [OpenRouter](https://openrouter.ai/docs) instead if you would rather route across
+  providers without running the gateway yourself.
 - [Weights & Biases](https://wandb.ai/): experiment tracking and dashboards for
   training runs.
 - [W&B Weave](https://docs.wandb.ai/weave): tracing and evaluation for LLM
@@ -73,6 +78,11 @@ These are some tools and readings we have found helpful.
 - [The Smol Training Playbook](https://huggingface.co/spaces/HuggingFaceTB/smol-training-playbook):
   an honest account of training SmolLM3, including the loss spikes and the 2am
   debugging. A useful antidote to tidy paper narratives.
+- [The LLM Evaluation Guidebook](https://huggingface.co/spaces/OpenEvals/evaluation-guidebook):
+  Clémentine Fourrier and Hugging Face, written out of running the Open LLM Leaderboard.
+  Automatic benchmarks, human evaluation, and a long section on LLM-as-a-judge: picking
+  the judge, designing the prompt, and validating it. Read this before you trust a
+  number you did not check.
 - [FineWeb](https://huggingface.co/datasets/HuggingFaceFW/fineweb): a fully documented
   data curation pipeline with the ablations shown. Evidence for the claim that your
   data matters more than your model.

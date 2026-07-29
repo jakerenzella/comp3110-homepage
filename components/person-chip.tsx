@@ -3,7 +3,7 @@
 /**
  * A person named in the syllabus, rendered inline as part of the sentence that
  * names them, and revealing a profile on hover or keyboard focus: avatar, role
- * and affiliation, bio, achievements, and a link to their page. People come
+ * and affiliation, bio, achievements, and a link to their own page. People come
  * from `data/people.json`, keyed by the ids the syllabus references, so a name
  * only needs writing once.
  *
@@ -11,45 +11,22 @@
  * by <name>" stays a sentence. A dotted accent underline is the only mark that
  * it is interactive, and it goes solid on hover.
  *
- * The trigger is a real <button> (or a link, when the person has an `href`) so
- * the card is reachable by keyboard, not just by pointer: HoverCard opens on
- * focus, and a focusable child is what makes that fire.
+ * The trigger is a link to the person's card on /people, so the card is
+ * reachable by keyboard, not just by pointer: HoverCard opens on focus, and a
+ * focusable child is what makes that fire. The hover card is the summary; the
+ * page is where the full profile and everyone else lives.
  */
 import { useRef, useState } from 'react'
 import { Avatar, Typography } from '@heroui/react'
 import { HoverCard } from '@heroui-pro/react'
 import Link from 'next/link'
-import people from '@/data/people.json'
-
-export type Person = {
-  id: string
-  name: string
-  role: string
-  affiliation: string
-  bio: string
-  achievements: string[]
-  photo: string | null
-  href: string | null
-}
-
-const PEOPLE = people.people as Person[]
-
-export function getPerson(id: string): Person | undefined {
-  return PEOPLE.find((p) => p.id === id)
-}
-
-function initials(name: string) {
-  // Drop honorifics so "Ms Natasha Banks" initials as NB, not MB.
-  const parts = name
-    .split(' ')
-    .filter(Boolean)
-    .filter((p) => !/^(mr|ms|mrs|miss|mx|dr|prof|professor|a\/prof)\.?$/i.test(p))
-  return ((parts[0]?.[0] ?? '') + (parts.at(-1)?.[0] ?? '')).toUpperCase()
-}
-
-function subtitle(person: Person) {
-  return [person.role, person.affiliation].filter(Boolean).join(' · ')
-}
+import {
+  type Person,
+  getPerson,
+  initials,
+  personHref,
+  subtitle,
+} from '@/lib/people'
 
 function PersonProfile({ person }: { person: Person }) {
   return (
@@ -86,20 +63,18 @@ function PersonProfile({ person }: { person: Person }) {
           ))}
         </ul>
       ) : null}
-      {person.href ? (
-        <Link
-          href={person.href}
-          className="text-xs font-medium text-ink-strong underline decoration-accent decoration-2 underline-offset-2 hover:decoration-ink-strong"
-        >
-          View profile
-        </Link>
-      ) : null}
+      <Link
+        href={personHref(person.id)}
+        className="text-xs font-medium text-ink-strong underline decoration-accent decoration-2 underline-offset-2 hover:decoration-ink-strong"
+      >
+        View profile
+      </Link>
     </div>
   )
 }
 
 export function PersonChip({ id }: { id: string }) {
-  const triggerRef = useRef<HTMLElement>(null)
+  const triggerRef = useRef<HTMLAnchorElement>(null)
   const [open, setOpen] = useState(false)
   const person = getPerson(id)
 
@@ -126,11 +101,6 @@ export function PersonChip({ id }: { id: string }) {
     setOpen(next)
   }
 
-  // Inherits the surrounding type, so the name sits in the sentence rather than
-  // on top of it.
-  const triggerClassName =
-    'font-medium text-ink-strong underline decoration-accent decoration-dotted decoration-2 underline-offset-2 hover:decoration-solid'
-
   return (
     <HoverCard
       open={open}
@@ -139,24 +109,16 @@ export function PersonChip({ id }: { id: string }) {
       closeDelay={150}
     >
       <HoverCard.Trigger>
-        {person.href ? (
-          <Link
-            ref={triggerRef as React.Ref<HTMLAnchorElement>}
-            href={person.href}
-            aria-label={`${person.name}, ${subtitle(person)}`}
-            className={triggerClassName}
-          >
-            {person.name}
-          </Link>
-        ) : (
-          <button
-            ref={triggerRef as React.Ref<HTMLButtonElement>}
-            type="button"
-            className={`cursor-help text-left ${triggerClassName}`}
-          >
-            {person.name}
-          </button>
-        )}
+        <Link
+          ref={triggerRef}
+          href={personHref(person.id)}
+          aria-label={`${person.name}, ${subtitle(person)}`}
+          // Inherits the surrounding type, so the name sits in the sentence
+          // rather than on top of it.
+          className="font-medium text-ink-strong underline decoration-accent decoration-dotted decoration-2 underline-offset-2 hover:decoration-solid"
+        >
+          {person.name}
+        </Link>
       </HoverCard.Trigger>
       <HoverCard.Content placement="top">
         <PersonProfile person={person} />

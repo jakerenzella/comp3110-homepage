@@ -6,8 +6,10 @@
 Bellis
 Canva
 chiphuyen
+Clémentine
 CSIRO
 Divya
+Fourrier
 Hamel
 Husain
 Huyen
@@ -32,6 +34,7 @@ Auslan
 Backtesting
 Evals
 GRPO
+headshot
 Likert
 LoRA
 MLCC

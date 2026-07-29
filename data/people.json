@@ -1,15 +1,15 @@
 {
-  "note": "People named in the syllabus (guest lecturers, session leads). A week's track lists `people: [\"<id>\"]` in syllabus.json and the site renders each id as a chip with a hover card. `id` is the slug used from syllabus.json, so keep it unique and stable. `name` is shown on the chip, including any title (e.g. \"Ms Natasha Banks\"). `role` and `affiliation` form the line under the name; either may be an empty string. `bio` is a sentence or two. `achievements` is a short list of bullet points (keep to 2-4; an empty list hides the section). `photo` is optional and falls back to initials: put images in public/staff/ or public/mentors/. `href` is optional and links to the person's page (external URL, or a path on this site); the hover card hides the link when it is absent.",
-  "people": [
-    {
-      "id": "natasha-banks",
-      "name": "Natasha Banks",
-      "role": "TBC: Program Director",
-      "affiliation": "Day of AI Australia",
-      "bio": "TBC: a sentence or two on who Natasha is and the work she draws on for the societal opportunities session.",
-      "achievements": [],
-      "photo": null,
-      "href": null
-    }
-  ]
+    "note": "People named in the syllabus (guest lecturers, session leads). Everyone listed here also gets a card in the \"Guest lecturers\" section of /people, in the order below. A week's track lists `people: [\"<id>\"]` in syllabus.json and the site renders each id as a chip with a hover card, linking to that person's card at /people#<id>. `id` is the slug used from syllabus.json and is the anchor on the People page, so keep it unique and stable. `name` is shown on the chip, including any title (e.g. \"Ms Natasha Banks\"). `role` and `affiliation` form the line under the name; either may be an empty string. `bio` is a sentence or two. `achievements` is a short list of bullet points (keep to 2-4; an empty list hides the section). `photo` is optional and falls back to initials: put the image in public/people/, named after the id (e.g. public/people/natasha-banks.jpeg), and reference it as \"/people/<id>.<ext>\". A square headshot of about 400px is plenty; it is only ever shown as an avatar. `href` is optional and points somewhere else on the web that is theirs (LinkedIn, their own site, their employer's staff page); their card on /people shows it as a \"More about\" link and hides it when absent. It is not their profile on this site: the syllabus chip and the hover card always link to /people#<id>.",
+    "people": [
+        {
+            "id": "natasha-banks",
+            "name": "Natasha Banks",
+            "role": "Program Director",
+            "affiliation": "Day of AI Australia",
+            "bio": "Natasha (Tash) Banks is the Program Director for Day of AI Australia, a free world-class AI literacy program for teachers and students K-12 across Australia. Her mission is to empower young Australians to understand AI, act as responsible and safe users, and confidently shape the AI-powered world of the future. Tash brings over a decade of experience in project management, operations, and stakeholder engagement. She previously served as Head of Operations at Future Women and has held roles at the Australian Broadcasting Corporation (ABC).",
+            "achievements": [],
+            "photo": "/people/natasha-banks.jpeg",
+            "href": "https://www.linkedin.com/in/natasha-banks/"
+        }
+    ]
 }

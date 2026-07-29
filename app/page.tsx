@@ -197,7 +197,7 @@ export default function HomePage() {
               ))}
             </div>
             <Link
-              href="/mentors"
+              href="/people#mentors"
               className="mt-6 inline-flex items-center gap-1.5 font-semibold text-ink-strong underline decoration-accent decoration-2 underline-offset-4"
             >
               Meet the mentors

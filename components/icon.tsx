@@ -26,7 +26,9 @@ import {
   MapPin,
   Monitor,
   Moon,
+  NotebookText,
   Package,
+  Presentation,
   Plus,
   RotateCcw,
   Rocket,
@@ -59,6 +61,9 @@ const ICONS = {
   'arrow-right': ArrowRight,
   'chevron-down': ChevronDown,
   external: ExternalLink,
+  // Syllabus outline: lecture slides and lecture notes for a topic.
+  slides: Presentation,
+  notes: NotebookText,
   // Editing glyphs, used by the syllabus builder.
   plus: Plus,
   trash: Trash2,

@@ -185,11 +185,26 @@ export const course = {
     "campus-energy-forecasting",
   ],
 
+  /** Intro for the /people page, above all three sections. */
+  peopleIntro:
+    "We want to thank everyone who has contributed their valuable time making COMP3110 a success.",
+
+  /** Intro for the staff section of /people. The people are `instructor` above
+   *  plus data/tutors.json. */
+  staffIntro:
+    "",
+
+  /** Intro for the guest lecturer section of /people. The people themselves come
+   *  from data/people.json, which the syllabus references by id. */
+  guestIntro:
+    "",
+
   mentorIntro:
-    "Every team is provided access to philanthropic, industry and academic mentors who have experience in their relevent domain. Mentors have limited time available to book in consult sessions when needed, and may be able to provide guidance on identifying your problem, reviewing technical decisions, and helping your team navigate messy realities.",
+    "",
 
   /**
-   * When true, mentor listings (home strip + /mentors page) show a "coming soon"
+   * When true, mentor listings (home strip + the Mentors section of /people)
+   * show a "coming soon"
    * placeholder instead of the mentor cards. The content/mentors/*.mdx files are
    * kept and re-appear automatically when this is set back to false.
    */
