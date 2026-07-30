@@ -16,6 +16,8 @@ Huyen
 Jayden
 Mensah
 Osei
+Penedo
+Neur
 
 # Tools, models, and platforms
 Colab

@@ -107,14 +107,14 @@
               "Raw and tidy data",
               "Data sanitisation",
               "Training and holdout",
-              "Storage",
+              "Storage and versioning",
               "Pipelines"
             ]
           }
         ],
         "guest": {
           "topic": "Identifying societal opportunities",
-          "detail": "How to spot a problem worth solving, and what separates a real need from a neat idea.",
+          "detail": "TBC.",
           "people": [
             "natasha-banks"
           ],
@@ -152,7 +152,15 @@
             ]
           }
         ],
-        "guest": null
+        "guest": {
+          "topic": "Building a model",
+          "detail": "TBC.",
+          "people": [
+            "kenneth-zhang"
+          ],
+          "slides": null,
+          "notes": null
+        }
       }
     },
     {
@@ -161,7 +169,7 @@
       "sprint": 1,
       "accelerator": {
         "topic": "Talking to users",
-        "detail": "Validating the problem with the people who have it, before the build hardens around a guess.",
+        "detail": "TBC.",
         "people": [],
         "materials": []
       },

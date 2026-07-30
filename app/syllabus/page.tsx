@@ -15,8 +15,7 @@ export default function SyllabusPage() {
       <header className="flex flex-col gap-3">
         <Typography type="h1">Syllabus</Typography>
         <Typography type="body" color="muted" className="max-w-2xl">
-          What each week covers across the technical and accelerator tracks for{' '}
-          {syllabus.term}, and the materials that go with them. Materials are
+          Lectures are two hours a week, accelerator tracks details the project and assesment tasks. Materials may be
           published as the term progresses.
         </Typography>
       </header>

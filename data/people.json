@@ -6,10 +6,20 @@
             "name": "Natasha Banks",
             "role": "Program Director",
             "affiliation": "Day of AI Australia",
-            "bio": "Natasha (Tash) Banks is the Program Director for Day of AI Australia, a free world-class AI literacy program for teachers and students K-12 across Australia. Her mission is to empower young Australians to understand AI, act as responsible and safe users, and confidently shape the AI-powered world of the future. Tash brings over a decade of experience in project management, operations, and stakeholder engagement. She previously served as Head of Operations at Future Women and has held roles at the Australian Broadcasting Corporation (ABC).",
+            "bio": "Natasha (Tash) Banks is the Program Director for Day of AI Australia, a free world-class AI literacy program for teachers and students K-12 across Australia. Her mission is to empower young Australians to confidently shape the AI-powered future. Tash brings over a decade of experience in project management, operations, and stakeholder engagement. She previously served as Head of Operations at Future Women and has held roles at the Australian Broadcasting Corporation (ABC).",
             "achievements": [],
             "photo": "/people/natasha-banks.jpeg",
             "href": "https://www.linkedin.com/in/natasha-banks/"
+        },
+        {
+            "id": "kenneth-zhang",
+            "name": "Kenneth Zhang",
+            "role": "Senior AI Engineer",
+            "affiliation": "Juno AI",
+            "bio": "Kenneth builds and ships LLM-powered systems including fine-tuning foundation models, designing RAG and AI agent architectures, and deploying scalable model services as API microservices on Azure and AWS..",
+            "achievements": [],
+            "photo": "/people/kenneth.jpeg",
+            "href": "https://www.linkedin.com/in/zhihao-ken-zhang/"
         }
     ]
 }

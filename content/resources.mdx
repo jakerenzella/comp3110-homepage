@@ -9,27 +9,25 @@ These are some tools and readings we have found helpful.
 
 ## Tooling
 
-- [Git & GitHub](https://docs.github.com/): you should be familiar from Gitlab in COMP1531.
+- [Git & GitHub](https://docs.github.com/): you should be familiar from Gitlab from COMP1531.
 - [Docker](https://docs.docker.com/): packaging your tools so they run everywhere.
 - [FastAPI](https://fastapi.tiangolo.com/): a straightforward way to serve a model
   behind an API.
 - [Hugging Face Hub](https://huggingface.co/docs/hub/datasets): git-backed hosting for
   your datasets, models, and eval sets.
-- [DVC](https://dvc.org/): version control for data and models, if your data lives
-  outside the Hub.
+- [DVC](https://dvc.org/): version control for data and models.
 - [LiteLLM](https://docs.litellm.ai/): one API in front of every model provider, with
-  routing, fallbacks, caching, rate limits, and per-key cost tracking. The gateway from
-  Week 1, as something you can install rather than build. Use
+  routing, fallbacks, caching, rate limits, and per-key cost tracking.
   [OpenRouter](https://openrouter.ai/docs) instead if you would rather route across
   providers without running the gateway yourself.
 - [Weights & Biases](https://wandb.ai/): experiment tracking and dashboards for
   training runs.
 - [W&B Weave](https://docs.wandb.ai/weave): tracing and evaluation for LLM
-  applications. This is the one most teams will actually need in Sprint 2.
+  applications.
 - [Unsloth](https://unsloth.ai/docs/get-started/fine-tuning-llms-guide): fine-tuning
   and RL that fits on a free Colab or Kaggle tier.
 - [vLLM](https://docs.vllm.ai/): the production standard for serving a model to more
-  than one user at a time. Pair it with [Ollama](https://ollama.com/) for local
+  than one user at a time from your own cluster. [Ollama](https://ollama.com/) for local
   development.
 
 ## Readings
@@ -37,22 +35,22 @@ These are some tools and readings we have found helpful.
 ### Core texts
 
 - *AI Engineering: Building Applications with Foundation Models* by Chip Huyen
-  (O'Reilly, 2025). The closest thing to a textbook for this course: prompting, RAG,
+  (O'Reilly, 2025): prompting, RAG,
   fine-tuning, agents, dataset engineering, and the latency and cost of serving
-  foundation models. There is a free companion repo at
+  foundation models, free companion repo at
   [chiphuyen/aie-book](https://github.com/chiphuyen/aie-book).
 - *Designing Machine Learning Systems* by Chip Huyen (O'Reilly, 2022). Chip's earlier
-  book on classical ML systems, and the direct inspiration for parts of this course.
+  book on classical ML systems, and an inspiration for parts of this course.
 
 ### Engineering practice
 
-- [What We've Learned From A Year of Building with LLMs](https://applied-llms.org/):
-  tactics, operations, and strategy from six people who shipped real LLM products.
+- [Tidy Data](https://doi.org/10.18637/jss.v059.i10) by Hadley Wickham (*Journal of
+  Statistical Software* 59(10), 2014)
+- [What We've Learned From A Year of Building with LLMs](https://applied-llms.org/)
 - [Your AI Product Needs Evals](https://hamel.dev/blog/posts/evals/) and
-  [The Ultimate AI Evals FAQ](https://hamelhusain.substack.com/p/the-ultimate-ai-evals-faq-now-new):
-  Hamel Husain on the error-analysis loop that turns vibe checks into a metric.
+  [The Ultimate AI Evals FAQ](https://hamelhusain.substack.com/p/the-ultimate-ai-evals-faq-now-new)
 - [Rules of Machine Learning](https://developers.google.com/machine-learning/guides/rules-of-ml):
-  Google's field guide to ML engineering. Predates LLMs and is still right.
+  Google's field guide to ML engineering. Predates LLMs but is still good.
 - [The ML Test Score](https://research.google/pubs/pub46555/): a rubric for
   production-readiness.
 - [Hidden Technical Debt in Machine Learning Systems](https://papers.nips.cc/paper/2015/hash/86df7dcfd896fcaf2674f757a2463eba-Abstract.html):
@@ -61,34 +59,25 @@ These are some tools and readings we have found helpful.
 ### If you are building agents
 
 - [Building Effective Agents](https://www.anthropic.com/engineering/building-effective-agents)
-  (Anthropic): start simple and composable, and only reach for an agent when you need one.
+  (Anthropic).
 - [A Practical Guide to Building Agents](https://cdn.openai.com/business-guides-and-resources/a-practical-guide-to-building-agents.pdf)
   (OpenAI): architecture, tooling, and guardrails.
 
 ## Courses and playbooks
 
-- [Google MLCC: Large Language Models](https://developers.google.com/machine-learning/crash-course/llm):
-  free and self-paced, from tokens to transformers. Good if you want the fundamentals
-  we do not have lecture time for.
-- [Hugging Face LLM Course](https://huggingface.co/learn/llm-course): the Transformers,
-  Datasets, and Tokenizers ecosystem, end to end.
-- [Hugging Face smol-course](https://huggingface.co/learn/smol-course): a faster track
-  aimed at engineers. Supervised fine-tuning, preference alignment, evaluation, and
-  vision language models.
-- [The Smol Training Playbook](https://huggingface.co/spaces/HuggingFaceTB/smol-training-playbook):
-  an honest account of training SmolLM3, including the loss spikes and the 2am
-  debugging. A useful antidote to tidy paper narratives.
-- [The LLM Evaluation Guidebook](https://huggingface.co/spaces/OpenEvals/evaluation-guidebook):
-  Clémentine Fourrier and Hugging Face, written out of running the Open LLM Leaderboard.
-  Automatic benchmarks, human evaluation, and a long section on LLM-as-a-judge: picking
-  the judge, designing the prompt, and validating it. Read this before you trust a
-  number you did not check.
+- [Google MLCC: Large Language Models](https://developers.google.com/machine-learning/crash-course/llm)
+- [Hugging Face LLM Course](https://huggingface.co/learn/llm-course).
+- [Hugging Face smol-course](https://huggingface.co/learn/smol-course).
+- [The Smol Training Playbook](https://huggingface.co/spaces/HuggingFaceTB/smol-training-playbook).
+- [The LLM Evaluation Guidebook](https://huggingface.co/spaces/OpenEvals/evaluation-guidebook).
 - [FineWeb](https://huggingface.co/datasets/HuggingFaceFW/fineweb): a fully documented
-  data curation pipeline with the ablations shown. Evidence for the claim that your
-  data matters more than your model.
+  data curation pipeline with the ablations.
+  [The FineWeb Datasets](https://arxiv.org/abs/2406.17557) (Penedo et al., NeurIPS 2024
+  Datasets and Benchmarks)
 
 ## Compute credits
 
+- **SCX.ai**: details to come
 - **UNSW provided compute**: access to the school's GPU resources for enrolled students.
   {/* TODO: link to the internal request form / instructions */}
 - **Cloud credits**: teams can apply for cloud provider credits for deployment.
