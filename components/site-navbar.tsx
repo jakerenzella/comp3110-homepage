@@ -11,7 +11,8 @@ import { ThemeToggle } from './theme-toggle'
 const NAV_LINKS = [
   { href: '/syllabus', label: 'Syllabus' },
   { href: '/accelerator', label: 'Accelerator' },
-  { href: '/projects', label: 'Projects' },
+  // Projects hidden for now; restore when ready to publish.
+  // { href: '/projects', label: 'Projects' },
   { href: '/people', label: 'People' },
   { href: '/resources', label: 'Resources' },
 ]
