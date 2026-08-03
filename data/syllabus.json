@@ -37,8 +37,8 @@
       "starts": "2026-09-14",
       "sprint": null,
       "accelerator": {
-        "topic": "Teams and project selection",
-        "detail": "Teams form and commit to the problem they will carry through the term.",
+        "topic": "Enrolment and course setup",
+        "detail": "Get enrolled and set up the accounts and tooling you will use this term.",
         "people": [],
         "materials": []
       },
@@ -96,7 +96,12 @@
       "week": 2,
       "starts": "2026-09-21",
       "sprint": null,
-      "accelerator": null,
+      "accelerator": {
+        "topic": "Project commitment",
+        "detail": "Teams form and commit to their project.",
+        "people": [],
+        "materials": []
+      },
       "mle": {
         "sections": [
           {
@@ -169,7 +174,7 @@
       "sprint": 1,
       "accelerator": {
         "topic": "Talking to users",
-        "detail": "TBC.",
+        "detail": "Teams seek one or two target users relevant to their project.",
         "people": [],
         "materials": []
       },
@@ -196,7 +201,7 @@
       "sprint": 1,
       "accelerator": {
         "topic": "Baseline review",
-        "detail": "Teams present the baseline and the objective it is measured against.",
+        "detail": "Teams present a baseline metric and the objective it is measured against.",
         "people": [],
         "materials": []
       },
@@ -252,7 +257,7 @@
       "sprint": 2,
       "accelerator": {
         "topic": "Positioning and users",
-        "detail": "Who the system is for, and what it has to be better than to be worth using.",
+        "detail": "Teams understand and co-design their solution.",
         "people": [],
         "materials": []
       },
@@ -279,7 +284,7 @@
       "sprint": 2,
       "accelerator": {
         "topic": "Measuring impact",
-        "detail": "Tying the metric you improved to the outcome someone actually cares about.",
+        "detail": "How well are team's projects shaping up?",
         "people": [],
         "materials": []
       },
@@ -306,7 +311,7 @@
       "sprint": 2,
       "accelerator": {
         "topic": "Design, reliability, scale and cost",
-        "detail": "Sprint 3 starts alongside deployment: what it takes for the thing to survive real use.",
+        "detail": "What it takes for a system to survive real use.",
         "people": [],
         "materials": []
       },
@@ -332,7 +337,7 @@
       "sprint": 3,
       "accelerator": {
         "topic": "Polish and Demo Day prep",
-        "detail": "Finish the landing page, sharpen the pitch, and rehearse for Demo Day.",
+        "detail": "Sprint 3 begins. Create a landing page and project resources, refine and rehearse your pitch.",
         "people": [],
         "materials": []
       },
