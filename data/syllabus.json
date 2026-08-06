@@ -185,10 +185,17 @@
             "slides": null,
             "notes": null,
             "bullets": [
-              "Model, tool, result, repeat",
+              "Connecting models to tools",
               "Designing a tool catalogue",
-              "Agent failure: last good/first bad state",
-              "MCP"
+              "Agent failure: last good/first bad state"
+            ]
+          },
+          {
+            "heading": "MCP",
+            "slides": null,
+            "notes": null,
+            "bullets": [
+              "TBC"
             ]
           }
         ],
