@@ -16,10 +16,30 @@
             "name": "Kenneth Zhang",
             "role": "Senior AI Engineer",
             "affiliation": "Juno AI",
-            "bio": "Kenneth builds and ships LLM-powered systems including fine-tuning foundation models, designing RAG and AI agent architectures, and deploying scalable model services as API microservices on Azure and AWS..",
+            "bio": "Kenneth builds and ships LLM-powered systems including fine-tuning foundation models, designing RAG and AI agent architectures, and deploying scalable model services as API microservices on Azure and AWS.",
             "achievements": [],
             "photo": "/people/kenneth.jpeg",
             "href": "https://www.linkedin.com/in/zhihao-ken-zhang/"
+        },
+        {
+            "id": "shurui-li",
+            "name": "Shurui Li",
+            "role": "Principal Software Engineer",
+            "affiliation": "Atlassian",
+            "bio": "Shurui is a cloud migrations engineer driving initiatives as architect and tech lead to support large-scale customer migrations for Atlassian's server to cloud transition. He focuses on the Extract-Transform-Load streaming pipeline built over Kafka.",
+            "achievements": [],
+            "photo": null,
+            "href": "https://www.linkedin.com/in/shurui-li/"
+        },
+        {
+            "id": "george-ye",
+            "name": "George Ye",
+            "role": "Head of Product",
+            "affiliation": "SCX.AI",
+            "bio": "George Ye leads product at SCX.AI Holdings Limited (ASX-listed), Australia's sovereign AI inference company, where he drives product strategy, model orchestration and customer-facing platform capabilities. Before SCX he held product and data roles at Bigtincan, Westpac, ASIC, CBA and PwC, building large-scale analytics and AI solutions for global enterprise customers. He is a co-inventor on a US patent covering content recommendation technology, and holds degrees from the University of Sydney and Macquarie University.",
+            "achievements": [],
+            "photo": null,
+            "href": "https://www.linkedin.com/in/george-ye-55359863"
         }
     ]
 }

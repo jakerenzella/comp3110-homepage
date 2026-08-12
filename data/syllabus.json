@@ -158,8 +158,8 @@
           }
         ],
         "guest": {
-          "topic": "Building a model",
-          "detail": "TBC.",
+          "topic": "Model Development with Unsloth LoRA Fine-Tuning",
+          "detail": "SFT Unsloth LoRA fine-tuning with FunctionGemma, and DPO Unsloth LoRA fine-tuning with Zephyr.",
           "people": [
             "kenneth-zhang"
           ],
@@ -219,7 +219,11 @@
             "slides": null,
             "notes": null,
             "bullets": [
-              "TBC"
+              "Vibe checks and why they stop working",
+              "Benchmarks measure the model and not the product",
+              "Error analysis: read traces, label failures, count",
+              "Assertions, human eval, A/B",
+              "Hands on: build an eval from twenty traces"
             ]
           },
           {
@@ -335,7 +339,15 @@
             ]
           }
         ],
-        "guest": null
+        "guest": {
+          "topic": "Sovereignty, Silicon and the Cost of Serving",
+          "detail": "A one-hour session on what actually sits behind an inference API call: which jurisdiction the data lands in, what hardware the model runs on, and what that means for cost at production scale. Covers sovereignty as a design constraint rather than a compliance checkbox, walks through the trade-offs between GPUs and purpose-built inference accelerators, and shows where the serving economics land in practice. Includes a live demo on Australian sovereign infrastructure, with time for questions.",
+          "people": [
+            "george-ye"
+          ],
+          "slides": null,
+          "notes": null
+        }
       }
     },
     {

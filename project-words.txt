@@ -16,8 +16,11 @@ Huyen
 Jayden
 Mensah
 Osei
+Bigtincan
 Penedo
 Neur
+shurui
+ASIC
 
 # Tools, models, and platforms
 Colab
@@ -44,3 +47,5 @@ MLOps
 OWASP
 QLoRA
 RLHF
+
+
