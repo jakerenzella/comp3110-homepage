@@ -72,7 +72,7 @@ export const course = {
   // Set to an object to show a slim banner above the navbar; null hides it.
   announcement: {
     message:
-      "This site is under active development. All content is indicative only and subject to change.",
+      "COMP3110 is under active development. All content is indicative only and subject to change.",
   } as Announcement | null,
 
   logistics: [
