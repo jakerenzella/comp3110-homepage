@@ -181,22 +181,10 @@
       "mle": {
         "sections": [
           {
-            "heading": "Agents and tool use",
+            "heading": "No lecture: Labour Day public holiday",
             "slides": null,
             "notes": null,
-            "bullets": [
-              "Connecting models to tools",
-              "Designing a tool catalogue",
-              "Agent failure: last good/first bad state"
-            ]
-          },
-          {
-            "heading": "MCP",
-            "slides": null,
-            "notes": null,
-            "bullets": [
-              "TBC"
-            ]
+            "bullets": []
           }
         ],
         "guest": null
@@ -223,6 +211,7 @@
               "Benchmarks measure the model and not the product",
               "Error analysis: read traces, label failures, count",
               "Assertions, human eval, A/B",
+              "Assertions as a regression suite: run on every prompt or model change",
               "Hands on: build an eval from twenty traces"
             ]
           },
@@ -275,14 +264,14 @@
       "mle": {
         "sections": [
           {
-            "heading": "Serving, security and regression",
+            "heading": "Agents and tool use",
             "slides": null,
             "notes": null,
             "bullets": [
-              "Regressions",
-              "Prompt injection",
-              "System-prompt leakage",
-              "Least privilege for tools"
+              "Connecting models to tools",
+              "Designing a tool catalogue",
+              "MCP: a standard for the tool catalogue",
+              "Agent failure: last good/first bad state"
             ]
           }
         ],
@@ -302,14 +291,24 @@
       "mle": {
         "sections": [
           {
-            "heading": "Monitoring and observability",
+            "heading": "Instruction following",
             "slides": null,
             "notes": null,
             "bullets": [
-              "Logging and dashboards",
-              "Agent traces and spans",
-              "Model drift",
-              "Ease of recovery"
+              "Constraint adherence and structured output (formats, schemas, refusals)",
+              "The instruction hierarchy: system, developer, user, tool output",
+              "Measuring it: checkable constraints as assertions (IFEval-style)",
+              "Why it degrades: long contexts, competing instructions, tool results"
+            ]
+          },
+          {
+            "heading": "Security",
+            "slides": null,
+            "notes": null,
+            "bullets": [
+              "Prompt injection: direct, and indirect via tool results and retrieved content",
+              "System-prompt leakage",
+              "Least privilege for tools"
             ]
           }
         ],
@@ -363,12 +362,15 @@
       "mle": {
         "sections": [
           {
-            "heading": "Launch readiness",
+            "heading": "Demo Day: the five-minute presentation",
             "slides": null,
             "notes": null,
             "bullets": [
-              "Stress-test the deployment before it meets real users",
-              "A final guardrails and safety pass"
+              "One sentence: what it does, for whom",
+              "Five minutes: problem, what you built, show it working, what you measured, what is next",
+              "The demo: golden path, recorded backup, fallback screenshot",
+              "Slides: one claim, seven words, text at the top",
+              "Rehearse to time, handle the questions you will get"
             ]
           }
         ],
