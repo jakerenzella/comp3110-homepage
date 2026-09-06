@@ -61,7 +61,7 @@ export const course = {
   code: "COMP3110",
   title: "Machine Learning Engineering",
   school: "UNSW School of Computer Science and Engineering",
-  term: "UNSW Sydney · Term 2, 2025", // TODO: confirm the offering term
+  term: "UNSW Sydney · Term 3, 2026", // TODO: confirm the offering term
   tagline:
     "An accelerator-style course for applying machine learning to solve real problems.",
 
@@ -100,8 +100,8 @@ export const course = {
       icon: "mail",
       value: [
         {
-          text: "CS3110@unsw.edu.au",
-          href: "mailto:CS3110@unsw.edu.au",
+          text: "cs3110@unsw.edu.au",
+          href: "mailto:cs3110@unsw.edu.au",
         },
         {
           text: "Course forum on Ed",
@@ -211,6 +211,10 @@ export const course = {
   mentorsComingSoon: true,
 
   footerLinks: [
+    {
+      label: "Course Outline",
+      href: "", // TODO: add link
+    },
     {
       label: "UNSW Handbook",
       href: "https://www.handbook.unsw.edu.au/undergraduate/courses/2026/COMP3110",
