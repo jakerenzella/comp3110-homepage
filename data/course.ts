@@ -61,7 +61,7 @@ export const course = {
   code: "COMP3110",
   title: "Machine Learning Engineering",
   school: "UNSW School of Computer Science and Engineering",
-  term: "UNSW Sydney · Term 3, 2026", // TODO: confirm the offering term
+  term: "UNSW Sydney | Term 3, 2026", // TODO: confirm the offering term
   tagline:
     "An accelerator-style course for applying machine learning to solve real problems.",
 
