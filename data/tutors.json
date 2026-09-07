@@ -6,6 +6,18 @@
       "role": "Course Administrator",
       "lead": true,
       "photo": "/staff/sofia.png"
+    },
+    {
+      "name": "Wendy Wong",
+      "role": "Tutor",
+      "lead": false,
+      "photo": "/staff/wendy.png"
+    },
+    {
+      "name": "Yashwanth Madan",
+      "role": "Tutor",
+      "lead": false,
+      "photo": "/staff/yash.png"
     }
   ]
 }
