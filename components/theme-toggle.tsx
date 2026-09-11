@@ -3,10 +3,12 @@
 /**
  * Three-state theme switch (System -> Light -> Dark -> System) built on
  * next-themes' `useTheme`, per HeroUI's dark-mode docs. next-themes owns the
- * pre-hydration script, persistence, and system tracking; this is just the UI.
+ * pre-hydration script, persistence, and system tracking; this is just the UI:
+ * a HeroUI icon-only ghost Button, so it sits in the navbar without a frame.
  */
 import { useEffect, useState } from 'react'
 import { useTheme } from 'next-themes'
+import { Button } from '@heroui/react'
 import { Icon, type IconGlyph } from './icon'
 
 type Mode = 'system' | 'light' | 'dark'
@@ -35,15 +37,14 @@ export function ThemeToggle() {
   const { label, icon } = META[mode]
 
   return (
-    <button
-      type="button"
-      onClick={cycle}
+    <Button
+      isIconOnly
+      variant="ghost"
+      size="sm"
       aria-label={`Theme: ${label}. Click to switch.`}
-      title={`Theme: ${label}`}
-      className="flex h-9 w-9 items-center justify-center rounded-sm border border-subtle bg-surface text-muted transition-colors hover:text-ink-strong hover:border-accent"
+      onPress={cycle}
     >
       <Icon name={icon} size={18} />
-      <span className="sr-only">{label} theme</span>
-    </button>
+    </Button>
   )
 }

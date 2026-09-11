@@ -1,26 +1,31 @@
 'use client'
 
 /**
- * Assessment schedule as a HeroUI Table, using the dynamic-collection API
- * (`columns` on Header, `items` on Body with render functions) per the docs:
- * https://heroui.com/docs/react/components/table. Data comes from
+ * Assessment schedule as two HeroUI Pro DataGrids, per the docs:
+ * https://heroui.pro/docs/react/components/data-grid. Data comes from
  * `data/assessment.json` so it can be updated each term without touching code.
- * Task ids are the row `id`s, keeping SSR/client hydration in sync. Must be a
- * client component because the render-function children can't cross the RSC
- * boundary.
+ * Task ids are the row ids, keeping SSR/client hydration in sync. Must be a
+ * client component because the column `cell` render functions can't cross the
+ * RSC boundary.
  *
- * Rows are the tasks in segment order, with a subtotal row closing each
- * segment, a total row for the 1,000 base marks, and any bonus tasks after
- * that. Subtotal and total rows are set in a heavier weight with a rule above
- * them, so the table reads as three blocks that add up rather than one long
- * list.
+ * The first grid lists every task (segments in outline order, then bonus) and
+ * lets students sort by key, marks, start or deadline. DataGrid sorts
+ * client-side in uncontrolled mode using each column's `sortFn`; the default
+ * sort by key is the outline order, so the grid opens exactly as the course
+ * outline reads and one click on Key brings that order back.
+ *
+ * Subtotals and the 1,000 total live in a second, unsortable grid rather than
+ * as rows in the first: summary rows mixed into a sortable list either break
+ * the sort or get sorted into nonsense positions.
  */
-import type { ReactNode } from 'react'
-import { Table } from '@heroui/react'
+import { Typography } from '@heroui/react'
+import { DataGrid, type DataGridColumn } from '@heroui-pro/react'
 import assessment from '@/data/assessment.json'
 
 type Task = {
   id: string
+  /** Short code students see and sort by, e.g. `tech-t-1`, `acc-t-2`. */
+  key: string
   task: string
   marks: number
   /** Text shown beside the mark, e.g. "required" for a 0-mark hurdle. */
@@ -43,6 +48,8 @@ const MONTHS = [
   'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec',
 ]
 
+const ISO_DATE = /^(\d{4})-(\d{2})-(\d{2})$/
+
 /**
  * `2026-09-14` -> `14 Sep`; anything that isn't an ISO date is shown as
  * written. Formatted by hand rather than through `Date`/`toLocaleDateString`,
@@ -50,7 +57,7 @@ const MONTHS = [
  * the SSR build and the browser.
  */
 function formatDate(value: string): string {
-  const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(value)
+  const match = ISO_DATE.exec(value)
   if (!match) return value
   const month = Number(match[2])
   const day = Number(match[3])
@@ -58,47 +65,52 @@ function formatDate(value: string): string {
   return `${day} ${MONTHS[month - 1]}`
 }
 
-/**
- * Every fixed deadline falls at the end of the day in Sydney, so the time is
- * appended here rather than stored per task: `2026-09-20` -> `20 Sep, 11:59 pm`.
- * Plain-text deadlines (e.g. a TBC event) are shown as written.
- */
-const DEADLINE_TIME = '11:59 pm'
-
-function formatDeadline(value: string): string {
-  const date = formatDate(value)
-  return date === value ? value : `${date}, ${DEADLINE_TIME}`
-}
-
 /** Thousands separator without `toLocaleString`, for the same hydration reason. */
 function formatMarks(marks: number): string {
   return marks.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
 }
 
-type ColId = 'segment' | 'task' | 'marks' | 'start' | 'deadline'
-type Column = {
-  id: ColId
-  name: string
-  isRowHeader?: boolean
-  cellClassName?: string
+/**
+ * Raw marks scaled to the final grade: 1,000 base marks map to 100, so
+ * 300 -> 30. Rounded to one decimal and shown without trailing zeros.
+ */
+function formatWeighted(marks: number): string {
+  return String(Number(((marks / assessment.totalMarks) * 100).toFixed(1)))
 }
 
-const columns: Column[] = [
-  { id: 'segment', name: 'Segment', cellClassName: 'whitespace-nowrap' },
-  { id: 'task', name: 'Task', isRowHeader: true },
-  { id: 'marks', name: 'Marks', cellClassName: 'text-end whitespace-nowrap' },
-  { id: 'start', name: 'Start', cellClassName: 'whitespace-nowrap' },
-  { id: 'deadline', name: 'Deadline (Sydney time)', cellClassName: 'whitespace-nowrap' },
-]
+/**
+ * ISO dates compare as strings. Anything else (a TBC event) is treated as far
+ * in the future, so it lands after every fixed date when sorting ascending.
+ */
+function dateKey(value: string): string {
+  return ISO_DATE.test(value) ? value : '9999-99-99'
+}
 
-// The marks header sits over right-aligned numbers, so it aligns the same way.
-const HEADER_CLASS: Partial<Record<ColId, string>> = { marks: 'text-end' }
+function compareDates(a: string, b: string): number {
+  const [x, y] = [dateKey(a), dateKey(b)]
+  return x < y ? -1 : x > y ? 1 : 0
+}
 
-type Row = {
-  id: string
-  /** Subtotal and total rows: heavier text, rule above. */
-  summary?: boolean
-} & Record<ColId, ReactNode>
+/** A task plus the segment it belongs to and its position in the outline. */
+type Entry = Task & {
+  segment: string
+  order: number
+}
+
+const segments = assessment.segments as Segment[]
+const bonus = assessment.bonus as Task[]
+
+const entries: Entry[] = [
+  ...segments.flatMap((segment) =>
+    segment.tasks.map((task) => ({ ...task, segment: segment.name })),
+  ),
+  ...bonus.map((task) => ({ ...task, segment: 'Optional bonus' })),
+].map((entry, order) => ({ ...entry, order }))
+
+/** Ties keep outline order so equal dates and marks stay predictable. */
+function byOrder(compare: (a: Entry, b: Entry) => number) {
+  return (a: Entry, b: Entry) => compare(a, b) || a.order - b.order
+}
 
 function Marks({ marks, note }: { marks: number; note?: string }) {
   return (
@@ -109,82 +121,131 @@ function Marks({ marks, note }: { marks: number; note?: string }) {
   )
 }
 
-function taskRow(segment: string, task: Task): Row {
-  return {
-    id: task.id,
-    segment: <span className="text-muted">{segment}</span>,
-    task: task.task,
-    marks: <Marks marks={task.marks} note={task.marksNote} />,
-    start: formatDate(task.start),
-    deadline: formatDeadline(task.deadline),
-  }
+const taskColumns: DataGridColumn<Entry>[] = [
+  {
+    id: 'key',
+    header: 'Key',
+    accessorKey: 'key',
+    allowsSorting: true,
+    sortFn: (a, b) => a.order - b.order,
+    cellClassName: 'font-mono text-sm whitespace-nowrap',
+  },
+  {
+    id: 'segment',
+    header: 'Segment',
+    accessorKey: 'segment',
+    cellClassName: 'text-muted',
+  },
+  {
+    id: 'task',
+    header: 'Task',
+    accessorKey: 'task',
+    isRowHeader: true,
+  },
+  {
+    id: 'marks',
+    header: 'Marks',
+    allowsSorting: true,
+    align: 'end',
+    sortFn: byOrder((a, b) => a.marks - b.marks),
+    cell: (entry) => <Marks marks={entry.marks} note={entry.marksNote} />,
+    cellClassName: 'whitespace-nowrap',
+  },
+  {
+    id: 'start',
+    header: 'Start',
+    allowsSorting: true,
+    sortFn: byOrder((a, b) => compareDates(a.start, b.start)),
+    cell: (entry) => formatDate(entry.start),
+    cellClassName: 'whitespace-nowrap',
+  },
+  {
+    id: 'deadline',
+    header: 'Deadline',
+    allowsSorting: true,
+    sortFn: byOrder((a, b) => compareDates(a.deadline, b.deadline)),
+    cell: (entry) => formatDate(entry.deadline),
+    cellClassName: 'whitespace-nowrap',
+  },
+]
+
+type SummaryRow = {
+  id: string
+  segment: string
+  marks: number
+  weight: string
 }
 
-function summaryRow(id: string, label: string, marks: number, weight: string): Row {
-  return {
-    id,
-    summary: true,
-    segment: label,
-    task: null,
-    marks: <Marks marks={marks} note={weight} />,
-    start: null,
-    deadline: null,
-  }
-}
+const summaryRows: SummaryRow[] = [
+  ...segments.map((segment) => ({
+    id: segment.id,
+    segment: segment.name,
+    marks: segment.subtotal,
+    weight: segment.weight,
+  })),
+  {
+    id: 'total',
+    segment: 'Total',
+    marks: assessment.totalMarks,
+    weight: '100%',
+  },
+]
 
-const segments = assessment.segments as Segment[]
-const bonus = assessment.bonus as Task[]
-
-const rows: Row[] = [
-  ...segments.flatMap((segment) => [
-    ...segment.tasks.map((task) => taskRow(segment.name, task)),
-    summaryRow(
-      `${segment.id}-subtotal`,
-      `${segment.name} subtotal`,
-      segment.subtotal,
-      segment.weight,
-    ),
-  ]),
-  summaryRow('total', 'Total', assessment.totalMarks, '100%'),
-  ...bonus.map((task) => taskRow('Optional bonus', task)),
+const summaryColumns: DataGridColumn<SummaryRow>[] = [
+  {
+    id: 'segment',
+    header: 'Segment',
+    accessorKey: 'segment',
+    isRowHeader: true,
+  },
+  {
+    id: 'marks',
+    header: 'Marks',
+    align: 'end',
+    cell: (row) => formatMarks(row.marks),
+    cellClassName: 'whitespace-nowrap',
+  },
+  {
+    id: 'weighted',
+    header: 'After weighting',
+    align: 'end',
+    cell: (row) => formatWeighted(row.marks),
+    cellClassName: 'whitespace-nowrap',
+  },
+  {
+    id: 'weight',
+    header: 'Weight',
+    accessorKey: 'weight',
+    align: 'end',
+    cellClassName: 'whitespace-nowrap',
+  },
 ]
 
 export function AssessmentTable() {
   return (
-    <Table>
-      <Table.ScrollContainer>
-        <Table.Content aria-label="Assessment schedule">
-          <Table.Header columns={columns}>
-            {(column) => (
-              <Table.Column
-                isRowHeader={column.isRowHeader}
-                className={HEADER_CLASS[column.id]}
-              >
-                {column.name}
-              </Table.Column>
-            )}
-          </Table.Header>
-          <Table.Body items={rows}>
-            {(row) => (
-              <Table.Row
-                className={
-                  row.summary
-                    ? 'border-t border-subtle font-medium text-ink-strong'
-                    : undefined
-                }
-              >
-                <Table.Collection items={columns}>
-                  {(column) => (
-                    <Table.Cell className={column.cellClassName}>
-                      {row[column.id]}
-                    </Table.Cell>
-                  )}
-                </Table.Collection>
-              </Table.Row>
-            )}
-          </Table.Body>
-        </Table.Content>
-      </Table.ScrollContainer>
-    </Table>
+    <div className="flex flex-col gap-10">
+      <div className="flex flex-col gap-3">
+        <DataGrid
+          aria-label="Assessment tasks"
+          columns={taskColumns}
+          data={entries}
+          getRowId={(entry) => entry.id}
+          defaultSortDescriptor={{ column: 'key', direction: 'ascending' }}
+        />
+        <Typography type="body-sm" color="muted">
+          Deadlines are 11:59 pm
+          Sydney time unless the task is a scheduled event.
+        </Typography>
+      </div>
+      <div className="flex flex-col gap-3">
+        <Typography type="h2">Marks</Typography>
+        <DataGrid
+          aria-label="Marks by segment"
+          columns={summaryColumns}
+          data={summaryRows}
+          getRowId={(row) => row.id}
+        />
+      </div>
+    </div>
   )
 }
