@@ -14,6 +14,7 @@ export type IconName =
   | "group"
   | "grading"
   | "mail"
+  | "code"
   | "rocket"
   | "deploy"
   | "flag"
@@ -85,7 +86,13 @@ export const course = {
     {
       label: "Location",
       icon: "location",
-      value: "TBC.", // TODO
+      value: [
+        "Lectures: H13 Lawrence East M032",
+        {
+          text: "Tutorials: see the weekly timetable below",
+          href: "#timetable",
+        },
+      ],
     },
     {
       label: "Grading",
@@ -93,6 +100,17 @@ export const course = {
       value: [
         "Portfolio of Tasks (60%): evidence across your onboarding and accelerator tasks, including individual contributions",
         "Final Project (40%): your final deliverable, including your Demo Day performance and communication",
+      ],
+    },
+    {
+      label: "Tasks",
+      icon: "code",
+      value: [
+        "Tasks are submitted through the course GitLab.",
+        {
+          text: "gitlab.cse.unsw.edu.au/coursework/comp3110",
+          href: "https://gitlab.cse.unsw.edu.au/coursework/comp3110",
+        },
       ],
     },
     {
