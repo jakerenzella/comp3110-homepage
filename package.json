@@ -17,10 +17,12 @@
     "data/**/*.json": "cspell --no-must-find-files"
   },
   "dependencies": {
-    "@heroui-pro/react": "^1.0.0-beta.8",
+    "@heroui-pro/react": "^1.0.0-beta.9",
     "@heroui/react": "^3.2.5",
     "@heroui/styles": "^3.2.5",
     "@number-flow/react": "^0.6.1",
+    "@react-aria/interactions": "^3.28.1",
+    "@react-aria/utils": "^3.34.1",
     "@tiptap/core": "^3.27.3",
     "@tiptap/extension-link": "^3.27.3",
     "@tiptap/extension-underline": "^3.27.3",
@@ -44,6 +46,7 @@
     "react-dom": "^19.2.7",
     "react-markdown": "^10.1.0",
     "react-resizable-panels": "^4.12.1",
+    "react-stately": "^3.50.0",
     "recharts": "^3.9.2",
     "remark-breaks": "^4.0.0",
     "remark-gfm": "^4.0.1",
