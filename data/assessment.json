@@ -1,5 +1,5 @@
 {
-  "note": "Assessment schedule shown on /assessment. Edit the segments below to update the site; no code changes needed. Every task needs a unique `id` (used as the table row key) and a `key`: the short code students see and sort by, in the form `<segment>-t-<n>` (e.g. `tech-t-1`, `acc-t-2`, `final-t-1`, `bonus-t-1`), numbered in the order the tasks are listed within their segment. Keep keys stable once published, since students will refer to them. `marks` is the raw mark for the task; `marksNote` is optional text shown beside it (e.g. \"required\" for a hurdle task worth 0). `start` and `deadline` are ISO dates (YYYY-MM-DD), rendered as e.g. `14 Sep`; every ISO deadline is shown as 11:59 pm Sydney time (e.g. `20 Sep, 11:59 pm`). Use plain text instead for a date that isn't fixed yet (e.g. \"Week 11 event (TBC)\"), which is shown as written. Each segment's `subtotal` and `weight` are written out rather than computed so the page shows what the course outline says. `bonus` tasks sit outside the 1,000 base marks and render after the total.",
+  "note": "Assessment schedule shown on /assessment. Edit the segments below to update the site; no code changes needed. Every task needs a unique `id` (used as the table row key) and a `key`: the short code students see and sort by, in the form `<segment>-<n>` (e.g. `tech-1`, `acc-2`, `final-1`, `bonus-1`), numbered in the order the tasks are listed within their segment. Keep keys stable once published, since students will refer to them. `marks` is the raw mark for the task; `marksNote` is optional text shown beside it (e.g. \"required\" for a hurdle task worth 0). `start` and `deadline` are ISO dates (YYYY-MM-DD), rendered as e.g. `14 Sep`; every ISO deadline is shown as 11:59 pm Sydney time (e.g. `20 Sep, 11:59 pm`). Use plain text instead for a date that isn't fixed yet (e.g. \"Week 11 event (TBC)\"), which is shown as written. Each segment's `subtotal` and `weight` are written out rather than computed so the page shows what the course outline says. `bonus` tasks sit outside the 1,000 base marks and render after the total.",
   "totalMarks": 1000,
   "segments": [
     {
@@ -10,7 +10,7 @@
       "tasks": [
         {
           "id": "scx-onboarding",
-          "key": "tech-t-1",
+          "key": "tech-1",
           "task": "SCX onboarding and platform review",
           "marks": 10,
           "start": "2026-09-14",
@@ -18,7 +18,7 @@
         },
         {
           "id": "scx-model-comparison",
-          "key": "tech-t-2",
+          "key": "tech-2",
           "task": "SCX model comparison",
           "marks": 10,
           "start": "2026-09-14",
@@ -26,7 +26,7 @@
         },
         {
           "id": "litellm-onboarding",
-          "key": "tech-t-3",
+          "key": "tech-3",
           "task": "LiteLLM onboarding and comparison",
           "marks": 10,
           "start": "2026-09-14",
@@ -34,7 +34,7 @@
         },
         {
           "id": "data-cleaning",
-          "key": "tech-t-4",
+          "key": "tech-4",
           "task": "Data cleaning and standardisation",
           "marks": 55,
           "start": "2026-09-21",
@@ -42,7 +42,7 @@
         },
         {
           "id": "spam-model",
-          "key": "tech-t-5",
+          "key": "tech-5",
           "task": "Spam model development and evaluation",
           "marks": 55,
           "start": "2026-09-28",
@@ -50,7 +50,7 @@
         },
         {
           "id": "evals",
-          "key": "tech-t-6",
+          "key": "tech-6",
           "task": "Evals task",
           "marks": 50,
           "start": "2026-10-05",
@@ -58,7 +58,7 @@
         },
         {
           "id": "fraud-detection-agent-on-scx",
-          "key": "tech-t-7",
+          "key": "tech-7",
           "task": "Fraud detection agent served on SCX",
           "marks": 110,
           "start": "2026-10-26",
@@ -74,7 +74,7 @@
       "tasks": [
         {
           "id": "proposal-pitch",
-          "key": "acc-t-1",
+          "key": "acc-1",
           "task": "Individual project proposal and pitch",
           "marks": 30,
           "start": "2026-09-14",
@@ -82,15 +82,16 @@
         },
         {
           "id": "registration",
-          "key": "acc-t-2",
+          "key": "acc-2",
           "task": "Group or solo registration",
           "marks": 0,
+          "marksNote": "required",
           "start": "2026-09-21",
           "deadline": "2026-10-04"
         },
         {
           "id": "approach-crit",
-          "key": "acc-t-3",
+          "key": "acc-3",
           "task": "Initial approach crit",
           "marks": 100,
           "start": "2026-10-05",
@@ -98,7 +99,7 @@
         },
         {
           "id": "model-crit",
-          "key": "acc-t-4",
+          "key": "acc-4",
           "task": "Model crit",
           "marks": 100,
           "start": "2026-10-12",
@@ -106,7 +107,7 @@
         },
         {
           "id": "feedback-report",
-          "key": "acc-t-5",
+          "key": "acc-5",
           "task": "Mentor/peer feedback report",
           "marks": 70,
           "start": "2026-09-28",
@@ -122,7 +123,7 @@
       "tasks": [
         {
           "id": "final-evaluation",
-          "key": "final-t-1",
+          "key": "final-1",
           "task": "Final system evaluation",
           "marks": 200,
           "start": "2026-09-28",
@@ -130,7 +131,7 @@
         },
         {
           "id": "demo-day",
-          "key": "final-t-2",
+          "key": "final-2",
           "task": "Demo Day presentation",
           "marks": 200,
           "start": "2026-11-16",
@@ -142,7 +143,7 @@
   "bonus": [
     {
       "id": "dvc-extension",
-      "key": "bonus-t-1",
+      "key": "bonus-1",
       "task": "DVC extension",
       "marks": 10,
       "marksNote": "+1%",
