@@ -81,9 +81,15 @@ type WeekEntry = {
    *  filled in still renders. */
   starts?: string
   sprint: number | null
+  /** False for a non-teaching week (the mid-term break), which is greyed out.
+   *  Omitted for ordinary weeks. */
+  teaching?: boolean
   /** Null for a week with no accelerator session. */
   accelerator: Session | null
   mle: Outline
+  /** A whole-week event (Demo Day) that belongs to neither track. Rendered
+   *  once across both content columns in place of `mle` and `accelerator`. */
+  event?: Session | null
 }
 
 const MONTHS = [
@@ -139,7 +145,15 @@ const columns: Column[] = [
   { id: 'accelerator', name: 'Accelerator', cellClassName: 'align-top' },
 ]
 
-type Row = { id: number; stripeClassName: string } & Record<ColId, ReactNode>
+type Row = {
+  id: number
+  stripeClassName: string
+  /** Set on a non-teaching week: the page-background grey, so the row reads as
+   *  a gap in the term rather than a week of content. */
+  rowClassName?: string
+  /** Set on an event week: one cell spans the two content columns. */
+  event?: ReactNode
+} & Record<ColId, ReactNode>
 
 /** Topic, reading "Topic by <person>" when someone leads the session, then the
  *  detail sentence and any materials. */
@@ -164,9 +178,11 @@ function SessionCell({ session }: { session: Session }) {
           </>
         ) : null}
       </Typography>
-      <Typography type="body-sm" color="muted">
-        {session.detail}
-      </Typography>
+      {session.detail ? (
+        <Typography type="body-sm" color="muted">
+          {session.detail}
+        </Typography>
+      ) : null}
       {session.materials.length ? (
         <ul className="flex flex-col gap-1">
           {session.materials.map((m) => (
@@ -469,6 +485,8 @@ export function SyllabusTable() {
       id: entry.week,
       stripeClassName:
         entry.sprint === null ? '' : (SPRINT_STRIPE[entry.sprint] ?? ''),
+      rowClassName: entry.teaching === false ? 'bg-paper' : undefined,
+      event: entry.event ? <SessionCell session={entry.event} /> : undefined,
       week: (
         // Week number over its start date, so the column reads as one label.
         <div className="flex flex-col gap-0.5">
@@ -498,21 +516,46 @@ export function SyllabusTable() {
             </Table.Header>
             <Table.Body items={rows}>
               {(row) => (
-                <Table.Row>
-                  <Table.Collection items={columns}>
-                    {(column) => (
+                <Table.Row className={row.rowClassName}>
+                  {row.event ? (
+                    // An event week: the week cell as usual, then one cell
+                    // across both content columns. The cells are keyed like the
+                    // Collection keys its cells (`<row>:<column>`) so they stay
+                    // deterministic across SSR and hydration. Bare column ids
+                    // would collide with the column nodes themselves.
+                    <>
                       <Table.Cell
-                        className={[
-                          column.cellClassName,
-                          column.id === 'week' ? row.stripeClassName : '',
-                        ]
+                        id={`${row.id}:week`}
+                        className={[columns[0].cellClassName, row.stripeClassName]
                           .filter(Boolean)
                           .join(' ')}
                       >
-                        {row[column.id]}
+                        {row.week}
                       </Table.Cell>
-                    )}
-                  </Table.Collection>
+                      <Table.Cell
+                        id={`${row.id}:mle`}
+                        colSpan={columns.length - 1}
+                        className="align-top"
+                      >
+                        {row.event}
+                      </Table.Cell>
+                    </>
+                  ) : (
+                    <Table.Collection items={columns}>
+                      {(column) => (
+                        <Table.Cell
+                          className={[
+                            column.cellClassName,
+                            column.id === 'week' ? row.stripeClassName : '',
+                          ]
+                            .filter(Boolean)
+                            .join(' ')}
+                        >
+                          {row[column.id]}
+                        </Table.Cell>
+                      )}
+                    </Table.Collection>
+                  )}
                 </Table.Row>
               )}
             </Table.Body>

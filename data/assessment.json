@@ -1,0 +1,139 @@
+{
+  "note": "Assessment schedule shown on /assessment. Edit the segments below to update the site; no code changes needed. Every task needs a unique `id` (used as the table row key). `marks` is the raw mark for the task; `marksNote` is optional text shown beside it (e.g. \"required\" for a hurdle task worth 0). `start` and `deadline` are ISO dates (YYYY-MM-DD), rendered as e.g. `14 Sep`; every ISO deadline is shown as 11:59 pm Sydney time (e.g. `20 Sep, 11:59 pm`). Use plain text instead for a date that isn't fixed yet (e.g. \"Week 11 event (TBC)\"), which is shown as written. Each segment's `subtotal` and `weight` are written out rather than computed so the page shows what the course outline says. `bonus` tasks sit outside the 1,000 base marks and render after the total.",
+  "totalMarks": 1000,
+  "segments": [
+    {
+      "id": "technical",
+      "name": "Technical",
+      "subtotal": 300,
+      "weight": "30%",
+      "tasks": [
+        {
+          "id": "scx-onboarding",
+          "task": "SCX onboarding and platform review",
+          "marks": 10,
+          "start": "2026-09-14",
+          "deadline": "2026-09-20"
+        },
+        {
+          "id": "scx-model-comparison",
+          "task": "SCX model comparison",
+          "marks": 10,
+          "start": "2026-09-14",
+          "deadline": "2026-09-20"
+        },
+        {
+          "id": "litellm-onboarding",
+          "task": "LiteLLM onboarding and comparison",
+          "marks": 10,
+          "start": "2026-09-14",
+          "deadline": "2026-09-20"
+        },
+        {
+          "id": "data-cleaning",
+          "task": "Data cleaning and standardisation",
+          "marks": 55,
+          "start": "2026-09-21",
+          "deadline": "2026-09-27"
+        },
+        {
+          "id": "spam-model",
+          "task": "Spam model development and evaluation",
+          "marks": 55,
+          "start": "2026-09-28",
+          "deadline": "2026-10-04"
+        },
+        {
+          "id": "evals",
+          "task": "Evals task",
+          "marks": 50,
+          "start": "2026-10-05",
+          "deadline": "2026-10-11"
+        },
+        {
+          "id": "fraud-detection-agent-on-scx",
+          "task": "Fraud detection agent served on SCX",
+          "marks": 110,
+          "start": "2026-10-26",
+          "deadline": "2026-11-08"
+        }
+      ]
+    },
+    {
+      "id": "accelerator",
+      "name": "Accelerator",
+      "subtotal": 300,
+      "weight": "30%",
+      "tasks": [
+        {
+          "id": "proposal-pitch",
+          "task": "Individual project proposal and pitch",
+          "marks": 30,
+          "start": "2026-09-14",
+          "deadline": "2026-09-27"
+        },
+        {
+          "id": "registration",
+          "task": "Group or solo registration",
+          "marks": 0,
+          "marksNote": "required",
+          "start": "2026-09-21",
+          "deadline": "2026-10-04"
+        },
+        {
+          "id": "approach-crit",
+          "task": "Initial approach crit",
+          "marks": 100,
+          "start": "2026-10-05",
+          "deadline": "2026-10-18"
+        },
+        {
+          "id": "model-crit",
+          "task": "Model crit",
+          "marks": 100,
+          "start": "2026-10-12",
+          "deadline": "2026-11-01"
+        },
+        {
+          "id": "feedback-report",
+          "task": "Mentor/peer feedback report",
+          "marks": 70,
+          "start": "2026-09-28",
+          "deadline": "2026-11-15"
+        }
+      ]
+    },
+    {
+      "id": "final",
+      "name": "Final project and demo",
+      "subtotal": 400,
+      "weight": "40%",
+      "tasks": [
+        {
+          "id": "final-evaluation",
+          "task": "Final system evaluation",
+          "marks": 200,
+          "start": "2026-09-28",
+          "deadline": "2026-11-22"
+        },
+        {
+          "id": "demo-day",
+          "task": "Demo Day presentation",
+          "marks": 200,
+          "start": "2026-11-16",
+          "deadline": "Week 11 event (TBC)"
+        }
+      ]
+    }
+  ],
+  "bonus": [
+    {
+      "id": "dvc-extension",
+      "task": "DVC extension",
+      "marks": 10,
+      "marksNote": "+1%",
+      "start": "2026-09-21",
+      "deadline": "2026-09-27"
+    }
+  ]
+}

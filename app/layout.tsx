@@ -54,7 +54,7 @@ export default function RootLayout({
     >
       <body className="min-h-screen flex flex-col">
         <Providers>
-          <AnnouncementBanner announcement={course.announcement} />
+          {/* <AnnouncementBanner announcement={course.announcement} /> */}
           <SiteNavbar />
           <main className="grow w-full">{children}</main>
           <SiteFooter />

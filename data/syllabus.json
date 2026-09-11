@@ -1,7 +1,7 @@
 {
   "term": "Term 3, 2026",
   "teachingPeriod": "14 September to 20 November 2026",
-  "note": "Weekly syllabus shown on /syllabus. Edit the weeks below to update the site; no code changes needed. `week` is the week number (used as the row id, so keep it unique). `starts` is the Monday of that week as an ISO date (YYYY-MM-DD); the table renders it under the week number as e.g. `14 Sep`, so staff outside UNSW can read the schedule without knowing the term calendar. Set it for every week when the term rolls over: weeks are consecutive Mondays, including the non-teaching flexibility week, so only the first Monday really needs looking up. `sprint` colour-codes the row with a left-edge stripe and must be an `id` from `sprints` below, or null for weeks outside a sprint. The table renders two columns: `mle` (the Lecture Content column) and `accelerator` (the venture-building strand). Set `accelerator` to null for a week with no accelerator session. `mle` keeps the outline's own format: a list of `sections`, each with a `heading` and `bullets`, where a bullet is a string or an object with `text` and nested `children`. The heading shows in the table and its bullets fold away behind it, so keep headings short. Each section also takes `slides` and `notes`: a URL or a path under public/ (e.g. \"/slides/week-1.pdf\") for that topic's lecture slides and lecture notes, shown as two icon links to the left of the heading. Leave them null until published: the icon still shows, greyed out. Use an empty `sections` list for a week with no outline content. `mle.guest` is the week's guest lecture, or null when there isn't one: it shows under the sections, below a rule, with `topic` and `people` (ids from data/people.json, rendered as chips with a hover profile) on the visible line and `detail` folded away behind the chevron. It takes the same `slides` and `notes` as a section. `accelerator` has a `topic` (short title), a `detail` (a sentence), `people` (a list of ids from data/people.json, shown as chips with a hover profile; empty for sessions with no named guest), and `materials`: a list of links where `label` is the link text and `href` is a URL or a path under public/ (e.g. \"/slides/week-1.pdf\"). Leave `materials` empty ([]) for anything not published yet.",
+  "note": "Weekly syllabus shown on /syllabus. Edit the weeks below to update the site; no code changes needed. `week` is the week number (used as the row id, so keep it unique). `starts` is the Monday of that week as an ISO date (YYYY-MM-DD); the table renders it under the week number as e.g. `14 Sep`, so staff outside UNSW can read the schedule without knowing the term calendar. Set it for every week when the term rolls over: weeks are consecutive Mondays, including the non-teaching flexibility week, so only the first Monday really needs looking up. `teaching` is optional and defaults to true; set it to false for a non-teaching week (the mid-term break) to grey the row out. `sprint` colour-codes the row with a left-edge stripe and must be an `id` from `sprints` below, or null for weeks outside a sprint. The table renders two columns: `mle` (the Lecture Content column) and `accelerator` (the venture-building strand). Set `accelerator` to null for a week with no accelerator session. `event` is optional: a session shaped like `accelerator` that belongs to the whole week rather than one track (Demo Day). When set, it renders once across both content columns and `accelerator` and `mle.sections` should be empty. `mle` keeps the outline's own format: a list of `sections`, each with a `heading` and `bullets`, where a bullet is a string or an object with `text` and nested `children`. The heading shows in the table and its bullets fold away behind it, so keep headings short. Each section also takes `slides` and `notes`: a URL or a path under public/ (e.g. \"/slides/week-1.pdf\") for that topic's lecture slides and lecture notes, shown as two icon links to the left of the heading. Leave them null until published: the icon still shows, greyed out. Use an empty `sections` list for a week with no outline content. `mle.guest` is the week's guest lecture, or null when there isn't one: it shows under the sections, below a rule, with `topic` and `people` (ids from data/people.json, rendered as chips with a hover profile) on the visible line and `detail` folded away behind the chevron. It takes the same `slides` and `notes` as a section. `accelerator` has a `topic` (short title), a `detail` (a sentence), `people` (a list of ids from data/people.json, shown as chips with a hover profile; empty for sessions with no named guest), and `materials`: a list of links where `label` is the link text and `href` is a URL or a path under public/ (e.g. \"/slides/week-1.pdf\"). Leave `materials` empty ([]) for anything not published yet.",
   "sprints": [
     {
       "id": 1,
@@ -233,9 +233,10 @@
       "week": 6,
       "starts": "2026-10-19",
       "sprint": null,
+      "teaching": false,
       "accelerator": {
         "topic": "Flexibility week",
-        "detail": "No new content.",
+        "detail": "",
         "people": [],
         "materials": []
       },
@@ -381,12 +382,13 @@
       "week": 11,
       "starts": "2026-11-23",
       "sprint": null,
-      "accelerator": {
+      "event": {
         "topic": "Demo Day",
         "detail": "Each team gives a short, live presentation of a deployed system to peers, mentors, and industry guests.",
         "people": [],
         "materials": []
       },
+      "accelerator": null,
       "mle": {
         "sections": [],
         "guest": null
