@@ -158,7 +158,7 @@ export const course = {
       name: "Sprint 2",
       when: "Weeks 7-9",
       summary:
-        "metrics, evals and model improvement.",
+        "Metrics, evals and model improvement.",
       icon: "sprint",
     },
     {
