@@ -220,18 +220,21 @@ export const course = {
   mentorIntro:
     "",
 
+  /** Shared calendar used by every mentor card. Replace when available. */
+  mentorBookingUrl: "#", // TODO: add shared mentor booking link
+
   /**
    * When true, mentor listings (home strip + the Mentors section of /people)
    * show a "coming soon"
    * placeholder instead of the mentor cards. The content/mentors/*.mdx files are
    * kept and re-appear automatically when this is set back to false.
    */
-  mentorsComingSoon: true,
+  mentorsComingSoon: false,
 
   footerLinks: [
     {
       label: "Course Outline",
-      href: "", // TODO: add link
+      href: "https://www.unsw.edu.au/course-outlines/course-outline#year=2026&term=Term%203&deliveryMode=In%20Person&deliveryFormat=Standard&teachingPeriod=T3&deliveryLocation=Kensington&courseCode=COMP3110&activityGroupId=1",
     },
     {
       label: "UNSW Handbook",
