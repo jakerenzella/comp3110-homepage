@@ -19,8 +19,12 @@ Osei
 Bigtincan
 Penedo
 Neur
+schet
+Schet
 shurui
 ASIC
+yash
+Yashwanth
 
 # Tools, models, and platforms
 Colab

@@ -18,6 +18,12 @@
       "role": "Tutor",
       "lead": false,
       "photo": "/staff/yash.png"
+    },
+    {
+      "name": "Schet Varma",
+      "role": "Tutor",
+      "lead": false,
+      "photo": "/staff/schet.png"
     }
   ]
 }
