@@ -22,7 +22,7 @@
           "task": "SCX model comparison",
           "marks": 10,
           "start": "2026-09-14",
-          "deadline": "2026-09-20"
+          "deadline": "2026-09-27"
         },
         {
           "id": "litellm-onboarding",
@@ -30,7 +30,7 @@
           "task": "LiteLLM onboarding and comparison",
           "marks": 10,
           "start": "2026-09-14",
-          "deadline": "2026-09-20"
+          "deadline": "2026-09-27"
         },
         {
           "id": "data-cleaning",
