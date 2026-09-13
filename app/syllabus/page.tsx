@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Alert, Typography } from '@heroui/react'
+import { CalendarSubscribe } from '@/components/calendar-subscribe'
 import { SyllabusTable } from '@/components/syllabus-table'
 import syllabus from '@/data/syllabus.json'
 
@@ -32,6 +33,7 @@ export default function SyllabusPage() {
         </Alert.Content>
       </Alert>
       <SyllabusTable />
+      <CalendarSubscribe />
     </div>
   )
 }

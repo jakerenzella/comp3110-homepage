@@ -40,6 +40,22 @@ You do **not** need to know React or edit any code to keep this site current.
 Everything below is a plain text / Markdown edit. After any change, run
 `npm run build` (or push — if CI is set up it rebuilds for you).
 
+### Calendar subscription
+
+The **Add to your calendar** card on the Assessment and Syllabus pages points at
+`.ics` feeds generated at build time from `data/timetable.json` (class times and
+cancelled dates), `data/syllabus.json` (which weeks are teaching weeks, and each
+week's topics) and `data/assessment.json` (deadlines). There is one feed per lab
+stream plus a lecture-only feed, served from `/calendar/<feed>.ics`.
+
+Nothing extra to maintain: edit those JSON files as usual and the next build
+republishes the feeds. Students' calendar apps re-fetch the URL on their own
+schedule (Apple: user setting, Google: roughly daily, Outlook: every few hours),
+and because each event has a stable id an edited date moves the existing event
+instead of duplicating it. To cancel a class for a public holiday, add the date
+to `cancelled` in `data/timetable.json`. The public site URL used in the links
+is `siteUrl` in `data/course.ts`.
+
 ### Add a project
 
 Create one new file in `content/projects/`, named after the project in lowercase
