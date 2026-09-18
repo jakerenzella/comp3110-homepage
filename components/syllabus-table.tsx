@@ -61,11 +61,15 @@ type OutlineSection = {
 
 /** The week's guest lecture. Shaped like an `OutlineSection` where it has to be
  *  (a title and the same slides link) and like a `Session` where the content
- *  is: a sentence and the people giving it. */
+ *  is: a sentence (or a list of bullets) and the people giving it. */
 type GuestLecture = {
   topic: string
-  detail: string
+  detail: string | string[]
   people: string[]
+  /** Plain names of guests who are not in people.json and so have no chip,
+   *  hover profile or card on /people. Credited after `people` on the visible
+   *  line, as text. */
+  presenters?: string[]
   slides?: string | null
 }
 
@@ -308,6 +312,15 @@ function BulletList({ bullets }: { bullets: Bullet[] }) {
  * topic line takes the space, so the chevron still lines up with the ones above.
  */
 function GuestLectureRow({ guest }: { guest: GuestLecture }) {
+  // Chips for people with a profile, then plain text for anyone without one,
+  // joined into one "by A, B and C" list.
+  const names: { key: string; node: ReactNode }[] = [
+    ...guest.people.map((id) => ({ key: id, node: <PersonChip id={id} /> })),
+    ...(guest.presenters ?? []).map((name) => ({
+      key: name,
+      node: <span className="text-ink-strong">{name}</span>,
+    })),
+  ]
   return (
     <div>
       <Accordion hideSeparator>
@@ -316,17 +329,17 @@ function GuestLectureRow({ guest }: { guest: GuestLecture }) {
             <SectionSlides title={guest.topic} slides={guest.slides} />
             <span className="flex-1 py-1 text-sm font-medium">
               {guest.topic}
-              {guest.people.length ? (
+              {names.length ? (
                 <>
                   {' by '}
-                  {guest.people.map((id, i) => (
-                    <Fragment key={id}>
+                  {names.map(({ key, node }, i) => (
+                    <Fragment key={key}>
                       {i === 0
                         ? null
-                        : i === guest.people.length - 1
+                        : i === names.length - 1
                           ? ' and '
                           : ', '}
-                      <PersonChip id={id} />
+                      {node}
                     </Fragment>
                   ))}
                 </>
@@ -341,9 +354,13 @@ function GuestLectureRow({ guest }: { guest: GuestLecture }) {
           </Accordion.Heading>
           <Accordion.Panel>
             <Accordion.Body className={`pr-0 pb-2 ${GUTTER_INDENT}`}>
-              <Typography type="body-sm" color="muted">
-                {guest.detail}
-              </Typography>
+              {Array.isArray(guest.detail) ? (
+                <BulletList bullets={guest.detail} />
+              ) : (
+                <Typography type="body-sm" color="muted">
+                  {guest.detail}
+                </Typography>
+              )}
             </Accordion.Body>
           </Accordion.Panel>
         </Accordion.Item>
