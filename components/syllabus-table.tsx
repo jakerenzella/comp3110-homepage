@@ -26,6 +26,7 @@ import { Accordion, Table, Typography } from '@heroui/react'
 import Link from 'next/link'
 import syllabus from '@/data/syllabus.json'
 import { Icon } from './icon'
+import { LectureRecording } from './lecture-recording'
 import { PersonChip } from './person-chip'
 
 type Material = {
@@ -50,29 +51,31 @@ type Session = {
 /** A bullet in the MLE outline: plain text, or text with a nested list. */
 type Bullet = string | { text: string; children?: string[] }
 
-/** One heading of the MLE outline and the bullets under it. `slides` / `notes`
- *  are the topic's lecture materials, null until they are published. */
+/** One heading of the MLE outline and the bullets under it. `slides` is the
+ *  topic's slide deck, null until it is published. */
 type OutlineSection = {
   heading: string
   slides?: string | null
-  notes?: string | null
   bullets: Bullet[]
 }
 
 /** The week's guest lecture. Shaped like an `OutlineSection` where it has to be
- *  (a title and the same two material links) and like a `Session` where the
- *  content is: a sentence and the people giving it. */
+ *  (a title and the same slides link) and like a `Session` where the content
+ *  is: a sentence and the people giving it. */
 type GuestLecture = {
   topic: string
   detail: string
   people: string[]
   slides?: string | null
-  notes?: string | null
 }
 
 type Outline = {
   sections: OutlineSection[]
   guest?: GuestLecture | null
+  /** Echo360 public link for the week's lecture recording, null until it is
+   *  published. One recording covers the whole week's lecture, so it sits on
+   *  the outline rather than on a section. */
+  recording?: string | null
 }
 
 type WeekEntry = {
@@ -202,71 +205,60 @@ function SessionCell({ session }: { session: Session }) {
 }
 
 /**
- * Width of the icon gutter: two 16px icons with a 8px gap, then 14px of air
- * before the heading text. Written out as Tailwind classes rather than measured
- * at runtime, and kept next to each other so the gutter and the indent that
- * clears it can't drift apart.
+ * Width of the icon gutter: one 16px icon, then 14px of air before the heading
+ * text. Written out as Tailwind classes rather than measured at runtime, and
+ * kept next to each other so the gutter and the indent that clears it can't
+ * drift apart.
  */
-const GUTTER = 'gap-2' // between the two icons
-const GUTTER_GAP = 'gap-3.5' // between the icons and the heading text
-const GUTTER_INDENT = 'pl-13.5' // 16 + 8 + 16 + 14 = 54px
+const GUTTER_GAP = 'gap-3.5' // between the icon and the heading text
+const GUTTER_INDENT = 'pl-7.5' // 16 + 14 = 30px
 
 /**
- * The slides / notes pair that sits to the left of an outline heading. Both
- * icons always show, so a reader learns where the materials for a topic will
- * appear: an unpublished one is greyed out and inert rather than missing, and
- * carries a `title` for the hover explanation. It's hidden from screen readers,
- * since "slides, not published" is noise on every heading in the table.
+ * The slides icon that sits to the left of an outline heading. It always
+ * shows, so a reader learns where the slides for a topic will appear: an
+ * unpublished deck is greyed out and inert rather than missing, and carries a
+ * `title` for the hover explanation. It's hidden from screen readers, since
+ * "slides, not published" is noise on every heading in the table.
  *
  * Aligned to the first line of the heading (`mt-1.5` = the trigger's 4px of
  * padding plus half a 20px line, less half the icon) rather than centred on the
- * whole heading, so the icons stay level with the text when a long heading
+ * whole heading, so the icon stays level with the text when a long heading
  * wraps to two lines.
  *
- * A published link opens in a new tab: these are PDFs and slide decks, and the
- * table is a thing you read down while opening several of them, so navigating
- * away from it is the wrong default. The label says so, since a link that
- * behaves unexpectedly should announce it.
+ * A published link opens in a new tab: these are PDFs, and the table is a
+ * thing you read down while opening several of them, so navigating away from
+ * it is the wrong default. The label says so, since a link that behaves
+ * unexpectedly should announce it.
  */
-function SectionMaterials({
+function SectionSlides({
   title,
   slides,
-  notes,
 }: {
-  /** What the links are for, used in their labels: a heading or a guest topic. */
+  /** What the link is for, used in its label: a heading or a guest topic. */
   title: string
   slides?: string | null
-  notes?: string | null
 }) {
-  const links = [
-    { glyph: 'slides', label: 'Slides', href: slides },
-    { glyph: 'notes', label: 'Notes', href: notes },
-  ] as const
   return (
-    <span className={`mt-1.5 flex shrink-0 items-center ${GUTTER}`}>
-      {links.map(({ glyph, label, href }) =>
-        href ? (
-          <Link
-            key={glyph}
-            href={href}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={`${label}: ${title} (opens in a new tab)`}
-            title={`${label}: ${title}`}
-            className="text-muted hover:text-ink-strong"
-          >
-            <Icon name={glyph} size={16} />
-          </Link>
-        ) : (
-          <span
-            key={glyph}
-            aria-hidden="true"
-            title={`${label} not published yet`}
-            className="text-muted opacity-35"
-          >
-            <Icon name={glyph} size={16} />
-          </span>
-        ),
+    <span className="mt-1.5 flex shrink-0 items-center">
+      {slides ? (
+        <Link
+          href={slides}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`Slides: ${title} (opens in a new tab)`}
+          title={`Slides: ${title}`}
+          className="text-muted hover:text-ink-strong"
+        >
+          <Icon name="slides" size={16} />
+        </Link>
+      ) : (
+        <span
+          aria-hidden="true"
+          title="Slides not published yet"
+          className="text-muted opacity-35"
+        >
+          <Icon name="slides" size={16} />
+        </span>
       )}
     </span>
   )
@@ -305,9 +297,9 @@ function BulletList({ bullets }: { bullets: Bullet[] }) {
 }
 
 /**
- * The week's guest lecture, under a rule that separates it from the course's
- * own outline above: same icon gutter and same fold-away detail, but the
- * visible line names who is giving it.
+ * The week's guest lecture, in the block under the course's own outline: same
+ * icon gutter and same fold-away detail, but the visible line names who is
+ * giving it.
  *
  * The name is a `PersonChip`, so it keeps its dotted underline and hover
  * profile. That makes it a link, which is why the topic line sits beside the
@@ -317,15 +309,11 @@ function BulletList({ bullets }: { bullets: Bullet[] }) {
  */
 function GuestLectureRow({ guest }: { guest: GuestLecture }) {
   return (
-    <div className="mt-2 border-t border-subtle pt-2">
+    <div>
       <Accordion hideSeparator>
         <Accordion.Item id={guest.topic}>
           <Accordion.Heading className={`items-start ${GUTTER_GAP}`}>
-            <SectionMaterials
-              title={guest.topic}
-              slides={guest.slides}
-              notes={guest.notes}
-            />
+            <SectionSlides title={guest.topic} slides={guest.slides} />
             <span className="flex-1 py-1 text-sm font-medium">
               {guest.topic}
               {guest.people.length ? (
@@ -392,9 +380,14 @@ function groupSections(sections: OutlineSection[]) {
  * Padding is trimmed off the trigger and body (the defaults are sized for a
  * standalone accordion, not a table cell) and separators are hidden, since the
  * row borders already divide the content.
+ *
+ * The guest lecture and the recording sit together under one rule at the
+ * bottom: both belong to the week rather than to a heading in the outline.
  */
-function OutlineCell({ outline }: { outline: Outline }) {
-  if (!outline.sections.length && !outline.guest) return null
+function OutlineCell({ outline, week }: { outline: Outline; week: number }) {
+  if (!outline.sections.length && !outline.guest && !outline.recording) {
+    return null
+  }
   return (
     <div className="flex flex-col gap-1.5">
       {groupSections(outline.sections).map((group) =>
@@ -406,14 +399,13 @@ function OutlineCell({ outline }: { outline: Outline }) {
           >
             {group.sections.map((section) => (
               <Accordion.Item key={section.heading} id={section.heading}>
-                {/* The material links sit in the heading beside the trigger,
+                {/* The slides link sits in the heading beside the trigger,
                     not inside it: a link nested in a button is neither valid
                     HTML nor reachable. */}
                 <Accordion.Heading className={`items-start ${GUTTER_GAP}`}>
-                  <SectionMaterials
+                  <SectionSlides
                     title={section.heading}
                     slides={section.slides}
-                    notes={section.notes}
                   />
                   <Accordion.Trigger className="gap-3 px-0 py-1">
                     {section.heading}
@@ -447,7 +439,17 @@ function OutlineCell({ outline }: { outline: Outline }) {
           </Fragment>
         ),
       )}
-      {outline.guest ? <GuestLectureRow guest={outline.guest} /> : null}
+      {outline.guest || outline.recording ? (
+        <div className="mt-2 flex flex-col gap-1.5 border-t border-subtle pt-2">
+          {outline.guest ? <GuestLectureRow guest={outline.guest} /> : null}
+          {outline.recording ? (
+            <LectureRecording
+              title={`Week ${week} lecture`}
+              href={outline.recording}
+            />
+          ) : null}
+        </div>
+      ) : null}
     </div>
   )
 }
@@ -498,7 +500,7 @@ export function SyllabusTable() {
       accelerator: entry.accelerator ? (
         <SessionCell session={entry.accelerator} />
       ) : null,
-      mle: <OutlineCell outline={entry.mle} />,
+      mle: <OutlineCell outline={entry.mle} week={entry.week} />,
     }
   })
 
