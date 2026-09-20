@@ -15,7 +15,7 @@
             "id": "kenneth-zhang",
             "name": "Kenneth Zhang",
             "role": "Senior AI Engineer",
-            "affiliation": "Juno AI",
+            "affiliation": "Commonwealth Bank of Australia",
             "bio": "Kenneth builds and ships LLM-powered systems including fine-tuning foundation models, designing RAG and AI agent architectures, and deploying scalable model services as API microservices on Azure and AWS.",
             "achievements": [],
             "photo": "/people/kenneth.jpeg",

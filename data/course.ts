@@ -208,10 +208,6 @@ export const course = {
     "campus-energy-forecasting",
   ],
 
-  /** Intro for the /people page, above all three sections. */
-  peopleIntro:
-    "We want to thank everyone who has contributed their valuable time making COMP3110 a success.",
-
   /** Intro for the staff section of /people. The people are `instructor` above
    *  plus data/tutors.json. */
   staffIntro:

@@ -51,13 +51,6 @@ export default function PeoplePage() {
 
   return (
     <div className="doc-column py-10 md:py-14 flex flex-col gap-10">
-      <header className="flex flex-col gap-3">
-        <Typography type="h1">People</Typography>
-        <Typography type="body" color="muted" className="max-w-2xl">
-          {course.peopleIntro}
-        </Typography>
-      </header>
-
       <Section title="Staff" id="staff">
         {/* Each section intro is optional: an empty string in course.ts drops
             the paragraph rather than leaving a blank line's worth of margin. */}

@@ -18,7 +18,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { Avatar, Typography } from '@heroui/react'
 import Link from 'next/link'
-import { type Person, initials, subtitle } from '@/lib/people'
+import { type Person, initials } from '@/lib/people'
 import { Icon } from './icon'
 
 export function GuestCard({ person }: { person: Person }) {
@@ -61,9 +61,14 @@ export function GuestCard({ person }: { person: Person }) {
           <Typography type="body" weight="semibold" className="leading-tight">
             {person.name}
           </Typography>
-          {subtitle(person) ? (
-            <Typography type="body-sm" color="muted">
-              {subtitle(person)}
+          {person.role ? (
+            <Typography type="body-sm" color="muted" className="leading-snug">
+              {person.role}
+            </Typography>
+          ) : null}
+          {person.affiliation ? (
+            <Typography type="body-sm" color="muted" className="leading-snug">
+              {person.affiliation}
             </Typography>
           ) : null}
         </div>
@@ -74,7 +79,7 @@ export function GuestCard({ person }: { person: Person }) {
           id={bioId}
           type="body-sm"
           color="muted"
-          className={expanded ? undefined : 'line-clamp-4'}
+          className={`leading-snug ${expanded ? '' : 'line-clamp-4'}`}
         >
           {person.bio}
         </Typography>

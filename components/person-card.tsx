@@ -24,12 +24,11 @@ function initials(name: string) {
 }
 
 export function PersonCard({ person }: { person: Person }) {
-  const { name, role, photo, url, lead } = person
+  // `lead` only orders the data (tutors.json lists the course administrator
+  // first); every staff card is styled the same.
+  const { name, role, photo, url } = person
   const card = (
-    <ItemCard
-      // Lead tutor / course admin gets an accent edge (no component variant for it).
-      className={lead ? 'border-l-2 border-l-accent' : undefined}
-    >
+    <ItemCard>
       <ItemCard.Icon>
         <Avatar size="lg">
           {photo ? <Avatar.Image src={photo} alt="" /> : null}
