@@ -104,7 +104,7 @@
         "sections": [
           {
             "heading": "Data",
-            "slides": null,
+            "slides": "/slides/2.1-data.pdf",
             "bullets": [
               "Raw and tidy data",
               "Data sanitisation",
