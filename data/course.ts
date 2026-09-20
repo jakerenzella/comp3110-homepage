@@ -221,7 +221,7 @@ export const course = {
     "",
 
   /** Shared calendar used by every mentor card. Replace when available. */
-  mentorBookingUrl: "#", // TODO: add shared mentor booking link
+  mentorBookingUrl: "https://forms.cloud.microsoft/r/zMeeDvFDV6",
 
   /**
    * When true, mentor listings (home strip + the Mentors section of /people)
