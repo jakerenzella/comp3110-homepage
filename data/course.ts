@@ -61,6 +61,11 @@ export type FaqItem = {
 export const course = {
   code: "COMP3110",
   title: "Machine Learning Engineering",
+  /**
+   * Public URL of the deployed site, without a trailing slash. Used for the
+   * calendar subscription links and the links inside calendar events.
+   */
+  siteUrl: "https://comp3110.vercel.app",
   school: "UNSW School of Computer Science and Engineering",
   term: "UNSW Sydney | Term 3, 2026", // TODO: confirm the offering term
   tagline:
@@ -158,7 +163,7 @@ export const course = {
       name: "Sprint 2",
       when: "Weeks 7-9",
       summary:
-        "metrics, evals and model improvement.",
+        "Metrics, evals and model improvement.",
       icon: "sprint",
     },
     {

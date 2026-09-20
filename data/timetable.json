@@ -1,38 +1,52 @@
 {
   "term": "Term 3, 2026",
-  "note": "Weekly class times for the current term. To update for a future term, edit the term label and the classes below. `day` must be a weekday name; `time` is the start time (e.g. \"2:00 PM\"); `location` is optional.",
+  "note": "Weekly class times for the current term. To update for a future term, edit the term label and the classes below. `day` must be a weekday name; `time` is the start time (e.g. \"2:00 PM\"); `durationMinutes` is how long the class runs; `section` is the myUNSW section code (e.g. \"M14A\") students see when they enrol; `location` is optional. These classes also feed the calendar subscription (/calendar/*.ics): one event per teaching week in data/syllabus.json, for every class, with one feed per Lab stream. `cancelled` lists single dates (ISO YYYY-MM-DD) with no classes, such as a public holiday, with a short `reason`; classes on those dates are left out of the calendar and a one-day note is added instead.",
+  "cancelled": [
+    {
+      "date": "2026-10-05",
+      "reason": "Labour Day public holiday. No lecture or lab, and no make-up class."
+    }
+  ],
   "classes": [
     {
       "code": "COMP3110-T3U1-LEC/A:1",
       "type": "Lecture",
       "stream": "A",
+      "section": "A",
       "day": "Monday",
       "time": "11:00 AM",
-      "location": ""
+      "durationMinutes": 120,
+      "location": "H13 Lawrence East M032"
     },
     {
       "code": "COMP3110-T3U1-LAB/01:1",
       "type": "Lab",
       "stream": "01",
+      "section": "M14A",
       "day": "Monday",
       "time": "2:00 PM",
-      "location": ""
+      "durationMinutes": 120,
+      "location": "Bass Lab K15 149B"
     },
     {
       "code": "COMP3110-T3U1-LAB/02:1",
       "type": "Lab",
       "stream": "02",
+      "section": "T14A",
       "day": "Tuesday",
       "time": "2:00 PM",
-      "location": ""
+      "durationMinutes": 120,
+      "location": "Lute Lab M15 530"
     },
     {
       "code": "COMP3110-T3U1-LAB/03:1",
       "type": "Lab",
       "stream": "03",
+      "section": "T16A",
       "day": "Tuesday",
       "time": "4:00 PM",
-      "location": ""
+      "durationMinutes": 120,
+      "location": "Flute Lab J17 303"
     }
   ]
 }

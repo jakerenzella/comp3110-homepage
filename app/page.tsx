@@ -48,7 +48,7 @@ export default function HomePage() {
       <Section title="Overview" id="overview">
         <Typography.Prose>
           <p>
-            What good is AI if doesn't solve real problems?
+            What good is AI if it isn't used to solve real problems?
           </p>
           <p>
             As AI transforms our world, the role of Machine

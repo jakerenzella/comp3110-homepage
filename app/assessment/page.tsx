@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Alert, Typography } from '@heroui/react'
 import { AssessmentTable } from '@/components/assessment-table'
+import { CalendarSubscribe } from '@/components/calendar-subscribe'
 
 export const metadata: Metadata = {
   title: 'Assessment',
@@ -27,6 +28,7 @@ export default function AssessmentPage() {
         </Alert.Content>
       </Alert> */}
       <AssessmentTable />
+      <CalendarSubscribe />
     </div>
   )
 }

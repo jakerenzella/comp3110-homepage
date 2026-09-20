@@ -19,6 +19,8 @@ Osei
 Bigtincan
 Penedo
 Neur
+schet
+Schet
 shurui
 ASIC
 Akanksha
@@ -31,6 +33,8 @@ Sood
 Tharindu
 Yashwanth
 yash
+yash
+Yashwanth
 
 # Tools, models, and platforms
 Colab
