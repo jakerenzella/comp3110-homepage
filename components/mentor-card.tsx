@@ -1,8 +1,9 @@
 /**
- * Mentor card: avatar, name, affiliation/role, expertise chips, and short bio.
- * Presentational (rendered from the Mentors section of the server /people page).
+ * Mentor card: avatar fallback, name, affiliation/role, expertise, bio, and
+ * links supplied by the mentor.
  */
-import { Avatar, Chip, Typography } from '@heroui/react'
+import { Avatar, buttonVariants, Chip, Typography } from '@heroui/react'
+import { course } from '@/data/course'
 import type { Entry, MentorFrontmatter } from '@/lib/content'
 
 function initials(name: string) {
@@ -42,19 +43,25 @@ export function MentorCard({
       <Typography type="body-sm" color="muted">
         {body.trim()}
       </Typography>
-      {fm.links ? (
-        <div className="flex flex-wrap gap-x-4 gap-y-1 text-sm">
-          {Object.entries(fm.links).map(([label, href]) => (
-            <a
-              key={label}
-              href={href}
-              className="capitalize font-medium text-ink-strong underline decoration-accent decoration-2 underline-offset-2 hover:decoration-ink-strong"
-            >
-              {label}
-            </a>
-          ))}
-        </div>
-      ) : null}
+      <div className="mt-auto flex flex-wrap items-center gap-3">
+        {Object.entries(fm.links ?? {}).map(([label, href]) => (
+          <a
+            key={label}
+            href={href}
+            target="_blank"
+            rel="noreferrer"
+            className="capitalize font-medium text-ink-strong underline decoration-accent decoration-2 underline-offset-2 hover:decoration-ink-strong"
+          >
+            {label}
+          </a>
+        ))}
+        <a
+          href={course.mentorBookingUrl}
+          className={buttonVariants({ size: 'sm' })}
+        >
+          Book a session
+        </a>
+      </div>
     </div>
   )
 }
