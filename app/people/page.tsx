@@ -42,11 +42,12 @@ export default function PeoplePage() {
   const guests = getPeople()
   const mentors = getMentors()
   // Lecturer in charge first, then the tutors as tutors.json orders them (lead
-  // tutor / course admin first), so the section reads down from who runs the
-  // course to who to ask day to day.
+  // tutor / course admin first), then the other staff, so the section reads
+  // down from who runs the course to who to ask day to day.
   const staff: StaffMember[] = [
     course.instructor,
     ...(tutorData.tutors as StaffMember[]),
+    ...(tutorData.staff as StaffMember[]),
   ]
 
   return (

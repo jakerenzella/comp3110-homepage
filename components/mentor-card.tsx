@@ -50,7 +50,11 @@ export function MentorCard({ entry }: { entry: Entry<MentorFrontmatter> }) {
   const links = Object.entries(fm.links ?? {})
 
   return (
-    <div className="flex flex-col gap-3 rounded-sm border border-subtle bg-surface p-5">
+    // The id is the anchor the home-page mentor strip links to.
+    <div
+      id={slug}
+      className="flex flex-col gap-3 rounded-sm border border-subtle bg-surface p-5 scroll-mt-24"
+    >
       <div>
         <Typography type="body" weight="semibold" className="leading-tight">
           {fm.name}

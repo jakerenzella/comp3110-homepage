@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Avatar, Typography } from "@heroui/react";
+import { Typography } from "@heroui/react";
 import { EmptyState } from "@heroui-pro/react";
 import { course } from "@/data/course";
 import timetable from "@/data/timetable.json";
@@ -9,23 +9,14 @@ import { Section } from "@/components/section";
 import { Icon } from "@/components/icon";
 import { AcceleratorTimeline } from "@/components/accelerator-timeline";
 import { LogisticsTable } from "@/components/logistics-table";
-import { PersonCard } from "@/components/person-card";
+import { PersonCard, type Person } from "@/components/person-card";
 import { Timetable } from "@/components/timetable";
 import { FaqAccordion } from "@/components/faq-accordion";
 
-function initials(name: string) {
-  const p = name.split(" ").filter(Boolean);
-  return ((p[0]?.[0] ?? "") + (p.at(-1)?.[0] ?? "")).toUpperCase();
-}
-
 export default function HomePage() {
   const mentors = getMentors();
-  const tutors = tutorData.tutors as {
-    name: string;
-    role: string;
-    photo?: string;
-    lead?: boolean;
-  }[];
+  const tutors = tutorData.tutors as Person[];
+  const staff = tutorData.staff as Person[];
 
   return (
     <div className="doc-column py-10 md:py-14 flex flex-col gap-16">
@@ -153,6 +144,20 @@ export default function HomePage() {
             <PersonCard key={tutor.name} person={tutor} />
           ))}
         </div>
+
+        <Typography
+          type="body-xs"
+          color="muted"
+          weight="semibold"
+          className="uppercase tracking-wider mt-6 mb-3"
+        >
+          Staff
+        </Typography>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+          {staff.map((member) => (
+            <PersonCard key={member.name} person={member} />
+          ))}
+        </div>
       </Section>
 
       {/* Mentors strip */}
@@ -174,26 +179,21 @@ export default function HomePage() {
           </EmptyState>
         ) : (
           <>
-            <div className="flex flex-wrap gap-5">
+            {/* Same ItemCard as the tutors above, so the two people strips
+                read as one set. Two columns, not three: mentor names run long
+                and ItemCard truncates its title rather than wrapping it. Each
+                card links to the mentor's full card on /people. */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {mentors.map((m) => (
-                <div key={m.slug} className="flex items-center gap-3">
-                  <Avatar size="md">
-                    {m.frontmatter.photo ? (
-                      <Avatar.Image src={m.frontmatter.photo} alt="" />
-                    ) : null}
-                    <Avatar.Fallback>
-                      {initials(m.frontmatter.name)}
-                    </Avatar.Fallback>
-                  </Avatar>
-                  <div>
-                    <Typography type="body-sm" weight="medium">
-                      {m.frontmatter.name}
-                    </Typography>
-                    <Typography type="body-sm" color="muted">
-                      {m.frontmatter.affiliation}
-                    </Typography>
-                  </div>
-                </div>
+                <PersonCard
+                  key={m.slug}
+                  person={{
+                    name: m.frontmatter.name,
+                    role: m.frontmatter.affiliation,
+                    photo: m.frontmatter.photo,
+                    url: `/people#${m.slug}`,
+                  }}
+                />
               ))}
             </div>
             <Link

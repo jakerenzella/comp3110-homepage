@@ -19,3 +19,13 @@
 - **All text uses HeroUI `Typography`** (`@heroui/react`), not raw `<h1>`/`<p>`/`<span>` + Tailwind text classes. Use the `type` prop (`h1`–`h6`, `body`, `body-sm`, `body-xs`, `code`) with `color="muted"`, `weight`, `align`, `truncate` — Typography renders the matching semantic element, so the global Clancy-heading CSS still applies. For long-form/MDX content use `Typography.Prose` (see `components/mdx.tsx`). Keep only layout classes (margins, flex) in `className`; let Typography own the type styling. Mono metadata (dates, tags, code ids) may stay as `font-mono` spans.
 - **Tables** must use the dynamic-collection API (`columns` on `Table.Header`, `items` on `Table.Body`, with render functions and stable `id`s on the data). Hand-mapping static `<Table.Row>`/`<Table.Cell>` (or inventing cell `id`s) makes react-aria's keys non-deterministic and breaks SSR hydration. Because the render-function children can't cross the RSC boundary, a Table must live in a client component.
 - **Don't browser-test after every change.** A passing `npm run build` (typecheck + static export) is enough for routine edits — the user does their own visual/browser checking. Only run the browser/puppeteer hydration smoke test for genuinely significant changes: new react-aria collection components (Table/Tabs/Timeline/Accordion), new SSR-boundary client components, theming/hydration-sensitive work, or anything that previously caused a hydration/script error. Hydration mismatches only surface in the browser console under `next dev`, so reserve that check for those cases.
+
+<!-- BEGIN:nextjs-agent-rules -->
+
+# This is NOT the Next.js you know
+
+This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
+
+This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
+
+<!-- END:nextjs-agent-rules -->

@@ -1,5 +1,5 @@
 {
-  "note": "Course tutors. The lead tutor / course administrator has \"lead\": true and is listed first. `photo` is optional (falls back to initials).",
+  "note": "Course tutors and other staff, shown under Team on the home page and under Staff on /people. `tutors` are the teaching tutors: the lead tutor / course administrator has \"lead\": true and is listed first. `staff` are the non-tutoring staff (technical and administrative support), shown in their own subsection after the tutors. `photo` is optional (falls back to initials).",
   "tutors": [
     {
       "name": "Sofia De Bellis",
@@ -18,12 +18,18 @@
       "role": "Tutor",
       "lead": false,
       "photo": "/staff/yash.png"
-    },
+    }
+  ],
+  "staff": [
     {
       "name": "Schet Varma",
-      "role": "Tutor",
-      "lead": false,
+      "role": "Course Designer",
       "photo": "/staff/schet.png"
+    },
+    {
+      "name": "Manhua Lu",
+      "role": "Infrastructure Administrator",
+      "photo": "/staff/manhua.png"
     }
   ]
 }
