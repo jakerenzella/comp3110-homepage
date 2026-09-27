@@ -139,7 +139,7 @@
         "sections": [
           {
             "heading": "Model alignment",
-            "slides": null,
+            "slides": "/slides/3.1-model-adaptation.pdf",
             "bullets": [
               "Prompting (n-shot)",
               "Retrieval (RAG)",
@@ -159,7 +159,7 @@
           "people": [
             "kenneth-zhang"
           ],
-          "slides": null
+          "slides": "/slides/3.2-model-tuning-kenneth.pdf"
         }
       }
     },
