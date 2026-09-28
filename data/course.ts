@@ -241,7 +241,6 @@ export const course = {
       label: "UNSW Handbook",
       href: "https://www.handbook.unsw.edu.au/undergraduate/courses/2026/COMP3110",
     },
-    { label: "Moodle", href: "https://moodle.telt.unsw.edu.au/" },
     { label: "Ed forum", href: "https://edstem.org/au/courses/38140/discussion" },
     {
       label: "CSE",

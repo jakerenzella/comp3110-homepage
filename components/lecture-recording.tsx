@@ -1,7 +1,7 @@
 'use client'
 
 /**
- * A week's lecture recording: a "Watch the lecture" button that opens the
+ * A week's lecture recording: a playback icon button that opens the
  * Echo360 player in a Modal, so a student plays the lecture without leaving
  * the schedule. Uses the controlled Modal pattern from the HeroUI docs:
  * https://heroui.com/docs/react/components/modal
@@ -12,12 +12,11 @@
  * "Open in Echo360" fallback. The iframe only exists while the modal is open,
  * so the table doesn't load a player per week up front.
  *
- * The trigger is a ghost Button pulled left by its own horizontal padding, so
- * its play glyph lines up with the slides icons in the gutter above and its
- * label lines up with the headings.
+ * The trigger is an icon-only ghost Button with an accessible name. Its play
+ * glyph lines up with the slides icons above.
  */
 import { useState } from 'react'
-import { Button, Modal, Typography } from '@heroui/react'
+import { Button, Modal, Tooltip, Typography } from '@heroui/react'
 import Link from 'next/link'
 import { Icon } from './icon'
 
@@ -38,18 +37,23 @@ export function LectureRecording({
   href: string
 }) {
   const [isOpen, setIsOpen] = useState(false)
+  const label = `Play ${title.toLowerCase()} recording`
 
   return (
     <>
-      <Button
-        variant="ghost"
-        size="sm"
-        onPress={() => setIsOpen(true)}
-        className="-ml-3 self-start"
-      >
-        <Icon name="play" size={16} />
-        Watch the lecture
-      </Button>
+      <Tooltip>
+        <Button
+          variant="ghost"
+          size="sm"
+          isIconOnly
+          aria-label={label}
+          onPress={() => setIsOpen(true)}
+          className="-ml-2 shrink-0"
+        >
+          <Icon name="play" size={16} />
+        </Button>
+        <Tooltip.Content>{label}</Tooltip.Content>
+      </Tooltip>
       <Modal.Backdrop isOpen={isOpen} onOpenChange={setIsOpen}>
         <Modal.Container size="lg">
           <Modal.Dialog className="sm:max-w-4xl">

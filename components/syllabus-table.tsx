@@ -22,7 +22,7 @@
  */
 import type { ReactNode } from 'react'
 import { Fragment } from 'react'
-import { Accordion, Table, Typography } from '@heroui/react'
+import { Accordion, Link as HeroLink, Table, Tooltip, Typography } from '@heroui/react'
 import Link from 'next/link'
 import syllabus from '@/data/syllabus.json'
 import { Icon } from './icon'
@@ -80,6 +80,8 @@ type Outline = {
    *  published. One recording covers the whole week's lecture, so it sits on
    *  the outline rather than on a section. */
   recording?: string | null
+  /** Downloadable files, shown by filename beside the recording control. */
+  downloads?: Material[]
 }
 
 type WeekEntry = {
@@ -245,16 +247,20 @@ function SectionSlides({
   return (
     <span className="mt-1.5 flex shrink-0 items-center">
       {slides ? (
-        <Link
-          href={slides}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label={`Slides: ${title} (opens in a new tab)`}
-          title={`Slides: ${title}`}
-          className="text-muted hover:text-ink-strong"
-        >
-          <Icon name="slides" size={16} />
-        </Link>
+        <Tooltip>
+          <HeroLink
+            href={slides}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`Slides: ${title} (opens in a new tab)`}
+            className="text-muted hover:text-ink-strong"
+          >
+            <Icon name="slides" size={16} />
+          </HeroLink>
+          <Tooltip.Content>
+            Open slides: {title} (PDF, new tab)
+          </Tooltip.Content>
+        </Tooltip>
       ) : (
         <span
           aria-hidden="true"
@@ -398,11 +404,12 @@ function groupSections(sections: OutlineSection[]) {
  * standalone accordion, not a table cell) and separators are hidden, since the
  * row borders already divide the content.
  *
- * The guest lecture and the recording sit together under one rule at the
- * bottom: both belong to the week rather than to a heading in the outline.
+ * The guest lecture, recording and downloads sit under one rule at the bottom.
+ * The recording control and named downloads share a row that wraps as needed.
  */
 function OutlineCell({ outline, week }: { outline: Outline; week: number }) {
-  if (!outline.sections.length && !outline.guest && !outline.recording) {
+  const hasResources = Boolean(outline.recording || outline.downloads?.length)
+  if (!outline.sections.length && !outline.guest && !hasResources) {
     return null
   }
   return (
@@ -456,14 +463,36 @@ function OutlineCell({ outline, week }: { outline: Outline; week: number }) {
           </Fragment>
         ),
       )}
-      {outline.guest || outline.recording ? (
+      {outline.guest || hasResources ? (
         <div className="mt-2 flex flex-col gap-1.5 border-t border-subtle pt-2">
           {outline.guest ? <GuestLectureRow guest={outline.guest} /> : null}
-          {outline.recording ? (
-            <LectureRecording
-              title={`Week ${week} lecture`}
-              href={outline.recording}
-            />
+          {hasResources ? (
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
+              {outline.recording ? (
+                <LectureRecording
+                  title={`Week ${week} lecture`}
+                  href={outline.recording}
+                />
+              ) : null}
+              {outline.downloads?.map((download) => (
+                <Typography key={download.href} type="body-sm">
+                  <Tooltip>
+                    <HeroLink
+                      href={download.href}
+                      download
+                      aria-label={`Download week ${week} notebook: ${download.label}`}
+                      className="gap-1.5 py-1 text-muted hover:text-ink-strong"
+                    >
+                      <Icon name="download" size={16} />
+                      {download.label}
+                    </HeroLink>
+                    <Tooltip.Content>
+                      Download week {week} notebook: {download.label}
+                    </Tooltip.Content>
+                  </Tooltip>
+                </Typography>
+              ))}
+            </div>
           ) : null}
         </div>
       ) : null}
