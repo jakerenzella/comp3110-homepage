@@ -12,3 +12,6 @@ next-env.d.ts
 # misc
 .DS_Store
 .env*.local
+
+# Student records must never be committed or published with the course site.
+/admin/marking/private-data/
