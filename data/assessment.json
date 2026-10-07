@@ -54,7 +54,7 @@
           "task": "Evals task",
           "marks": 50,
           "start": "2026-10-05",
-          "deadline": "2026-10-11"
+          "deadline": "2026-10-18"
         },
         {
           "id": "fraud-detection-agent-on-scx",
