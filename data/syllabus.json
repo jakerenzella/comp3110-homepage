@@ -215,7 +215,7 @@
         "sections": [
           {
             "heading": "Evals",
-            "slides": null,
+            "slides": "/slides/5.1-evals.pdf",
             "bullets": [
               "Vibe checks and why they stop working",
               "Benchmarks measure the model and not the product",
@@ -235,7 +235,13 @@
             ]
           }
         ],
-        "guest": null
+        "guest": null,
+        "downloads": [
+          {
+            "label": "build-an-eval.ipynb",
+            "href": "/demos/5.1-evals/build-an-eval.ipynb"
+          }
+        ]
       }
     },
     {
