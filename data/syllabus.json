@@ -236,6 +236,7 @@
           }
         ],
         "guest": null,
+        "recording": "https://echo360.net.au/media/a36b2ce4-bc37-4ca2-810e-9c802457193c/public",
         "downloads": [
           {
             "label": "build-an-eval.ipynb",
