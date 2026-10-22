@@ -47,7 +47,7 @@ type Week = {
   accelerator?: { topic: string; detail: string } | null
   mle: {
     sections: { heading: string }[]
-    guest: { topic: string } | null
+    guest: { topic: string; first?: boolean } | null
   }
 }
 
@@ -270,8 +270,12 @@ function classEvents(cls: ClassEntry, skipped: Set<string>): Event[] {
 
     const isLecture = cls.type === 'Lecture'
     const headings = week.mle.sections.map((s) => s.heading)
-    const guest = week.mle.guest?.topic
-    const topics = [...headings, ...(guest ? [`Guest lecture: ${guest}`] : [])]
+    // Topics in the order the lecture runs: a guest who opens it goes first.
+    const guest = week.mle.guest
+    const guestTopic = guest ? [`Guest lecture: ${guest.topic}`] : []
+    const topics = guest?.first
+      ? [...guestTopic, ...headings]
+      : [...headings, ...guestTopic]
 
     const summary = isLecture
       ? `${course.code} Lecture: ${topics.length ? headings.join(', ') : `Week ${week.week}`}`

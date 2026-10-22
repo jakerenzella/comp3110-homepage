@@ -71,6 +71,9 @@ type GuestLecture = {
    *  line, as text. */
   presenters?: string[]
   slides?: string | null
+  /** True when the guest opens the lecture, so the row sits above the course's
+   *  own sections instead of under the rule at the bottom. */
+  first?: boolean
 }
 
 type Outline = {
@@ -405,6 +408,8 @@ function groupSections(sections: OutlineSection[]) {
  * row borders already divide the content.
  *
  * The guest lecture, recording and downloads sit under one rule at the bottom.
+ * A guest who opens the lecture (`first`) sits above the sections instead,
+ * over a rule, so the column reads in the order the lecture runs.
  * The recording control and named downloads share a row that wraps as needed.
  */
 function OutlineCell({ outline, week }: { outline: Outline; week: number }) {
@@ -412,8 +417,21 @@ function OutlineCell({ outline, week }: { outline: Outline; week: number }) {
   if (!outline.sections.length && !outline.guest && !hasResources) {
     return null
   }
+  const guestFirst = outline.guest?.first ? outline.guest : null
+  const guestLast = outline.guest && !outline.guest.first ? outline.guest : null
   return (
     <div className="flex flex-col gap-1.5">
+      {guestFirst ? (
+        <div
+          className={
+            outline.sections.length
+              ? 'mb-2 border-b border-subtle pb-2'
+              : undefined
+          }
+        >
+          <GuestLectureRow guest={guestFirst} />
+        </div>
+      ) : null}
       {groupSections(outline.sections).map((group) =>
         group.collapsible ? (
           <Accordion
@@ -463,9 +481,9 @@ function OutlineCell({ outline, week }: { outline: Outline; week: number }) {
           </Fragment>
         ),
       )}
-      {outline.guest || hasResources ? (
+      {guestLast || hasResources ? (
         <div className="mt-2 flex flex-col gap-1.5 border-t border-subtle pt-2">
-          {outline.guest ? <GuestLectureRow guest={outline.guest} /> : null}
+          {guestLast ? <GuestLectureRow guest={guestLast} /> : null}
           {hasResources ? (
             <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
               {outline.recording ? (
