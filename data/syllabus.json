@@ -290,7 +290,14 @@
             ]
           }
         ],
-        "guest": null
+        "guest": {
+          "topic": "From First Principles to Production: Real-World Engineering at Scale",
+          "detail": "Opens the lecture at 11:00 AM, Monday 26 October. Shurui draws on his work as architect and tech lead on Atlassian's server-to-cloud migration pipeline to show how engineering decisions made from first principles hold up at production scale.",
+          "people": [
+            "shurui-li"
+          ],
+          "slides": null
+        }
       }
     },
     {
