@@ -143,6 +143,10 @@ type Column = {
   id: ColId
   name: string
   isRowHeader?: boolean
+  /** Width class on the header cell. The table is `table-fixed`, so the header
+   *  row sets the column widths and a panel opening in a cell can't widen its
+   *  column. Columns without one share whatever width is left. */
+  columnClassName?: string
   cellClassName?: string
 }
 
@@ -151,9 +155,15 @@ const columns: Column[] = [
     id: 'week',
     name: 'Week',
     isRowHeader: true,
+    columnClassName: 'w-28',
     cellClassName: 'font-mono text-sm text-ink-strong whitespace-nowrap align-top',
   },
-  { id: 'mle', name: 'Lecture Content', cellClassName: 'align-top' },
+  {
+    id: 'mle',
+    name: 'Lecture Content',
+    columnClassName: 'w-[55%]',
+    cellClassName: 'align-top',
+  },
   { id: 'accelerator', name: 'Accelerator', cellClassName: 'align-top' },
 ]
 
@@ -572,10 +582,21 @@ export function SyllabusTable() {
     <div className="flex flex-col gap-6">
       <Table>
         <Table.ScrollContainer>
-          <Table.Content aria-label="Weekly syllabus">
+          {/* Fixed layout so column widths come from the header, not from
+              whichever cell's content is widest: an outline panel opening or
+              closing would otherwise reflow the whole table. The min width
+              keeps the columns readable on narrow screens; the ScrollContainer
+              takes over below it. */}
+          <Table.Content
+            aria-label="Weekly syllabus"
+            className="min-w-[40rem] table-fixed"
+          >
             <Table.Header columns={columns}>
               {(column) => (
-                <Table.Column isRowHeader={column.isRowHeader}>
+                <Table.Column
+                  isRowHeader={column.isRowHeader}
+                  className={column.columnClassName}
+                >
                   {column.name}
                 </Table.Column>
               )}

@@ -281,7 +281,7 @@
         "sections": [
           {
             "heading": "Agents and tool use",
-            "slides": null,
+            "slides": "/slides/7.1-agents.pdf",
             "bullets": [
               "Connecting models to tools",
               "Designing a tool catalogue",
