@@ -9,7 +9,7 @@
  * the RSC boundary.
  */
 import type { ReactNode } from 'react'
-import { Link, Table } from '@heroui/react'
+import { Chip, Link, Table } from '@heroui/react'
 import type { LogisticsLine } from '@/data/course'
 import { course } from '@/data/course'
 import timetable from '@/data/timetable.json'
@@ -49,6 +49,17 @@ type Row = { id: string; item: ReactNode; details: ReactNode }
 const rows: Row[] = course.logistics.map((entry) => {
   const value =
     entry.label === 'Lectures' && lectureLine ? lectureLine : entry.value
+  const details = Array.isArray(value) ? (
+    <ul className="list-disc pl-5 space-y-1">
+      {value.map((v) => (
+        <li key={typeof v === 'string' ? v : v.href}>
+          <Line line={v} />
+        </li>
+      ))}
+    </ul>
+  ) : (
+    <Line line={value} />
+  )
   return {
     id: entry.label,
     item: (
@@ -57,17 +68,24 @@ const rows: Row[] = course.logistics.map((entry) => {
         {entry.label}
       </span>
     ),
-    details: Array.isArray(value) ? (
-      <ul className="list-disc pl-5 space-y-1">
-        {value.map((v) => (
-          <li key={typeof v === 'string' ? v : v.href}>
-            <Line line={v} />
-          </li>
-        ))}
-      </ul>
-    ) : (
-      <Line line={value} />
-    ),
+    // Highlighted rows get bold, full-contrast details and an optional Chip.
+    details:
+      entry.highlight || entry.badge ? (
+        <span className="flex flex-wrap items-center gap-2">
+          <span
+            className={entry.highlight ? 'font-semibold text-ink-strong' : undefined}
+          >
+            {details}
+          </span>
+          {entry.badge && (
+            <Chip color="warning" size="sm">
+              {entry.badge}
+            </Chip>
+          )}
+        </span>
+      ) : (
+        details
+      ),
   }
 })
 

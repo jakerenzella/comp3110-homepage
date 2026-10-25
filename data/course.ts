@@ -36,6 +36,10 @@ export type LogisticsItem = {
   icon: IconName;
   /** A single line, or a bulleted list of lines. */
   value: LogisticsLine | LogisticsLine[];
+  /** Emphasise this row (bold details) so it stands out in the table. */
+  highlight?: boolean;
+  /** Optional short tag shown as a Chip next to the details, e.g. "Tentative". */
+  badge?: string;
 };
 
 export type Staff = {
@@ -87,6 +91,13 @@ export const course = {
       icon: "calendar",
       // Overridden on the home page with live times from data/timetable.json.
       value: "See the weekly timetable below.",
+    },
+    {
+      label: "Demo Day",
+      icon: "trophy",
+      value: "Monday 23 November 2026. Timing to be confirmed.",
+      highlight: true,
+      badge: "Tentative",
     },
     {
       label: "Location",
