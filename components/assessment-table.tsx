@@ -33,6 +33,11 @@ type Task = {
   /** ISO `YYYY-MM-DD`, or plain text for a date not yet fixed. */
   start: string
   deadline: string
+  /**
+   * The deadline as first published, when `deadline` has since been extended.
+   * Shown crossed out beside the new date so students can see the change.
+   */
+  previousDeadline?: string
 }
 
 type Segment = {
@@ -112,6 +117,16 @@ function byOrder(compare: (a: Entry, b: Entry) => number) {
   return (a: Entry, b: Entry) => compare(a, b) || a.order - b.order
 }
 
+/** A deadline, with the original date crossed out if it has been extended. */
+function Deadline({ deadline, previous }: { deadline: string; previous?: string }) {
+  if (!previous) return <>{formatDate(deadline)}</>
+  return (
+    <>
+      <del className="text-muted">{formatDate(previous)}</del> {formatDate(deadline)}
+    </>
+  )
+}
+
 function Marks({ marks, note }: { marks: number; note?: string }) {
   return (
     <>
@@ -164,7 +179,9 @@ const taskColumns: DataGridColumn<Entry>[] = [
     header: 'Deadline',
     allowsSorting: true,
     sortFn: byOrder((a, b) => compareDates(a.deadline, b.deadline)),
-    cell: (entry) => formatDate(entry.deadline),
+    cell: (entry) => (
+      <Deadline deadline={entry.deadline} previous={entry.previousDeadline} />
+    ),
     cellClassName: 'whitespace-nowrap',
   },
 ]
