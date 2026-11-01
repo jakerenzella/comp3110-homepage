@@ -324,7 +324,7 @@
           },
           {
             "heading": "Security",
-            "slides": null,
+            "slides": "/slides/8.2-security.pdf",
             "bullets": [
               "Prompt injection: direct, and indirect via tool results and retrieved content",
               "System-prompt leakage",
