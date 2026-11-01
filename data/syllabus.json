@@ -285,7 +285,6 @@
             "bullets": [
               "Connecting models to tools",
               "Designing a tool catalogue",
-              "MCP: a standard for the tool catalogue",
               "Agent failure: last good/first bad state"
             ]
           }
@@ -314,13 +313,13 @@
       "mle": {
         "sections": [
           {
-            "heading": "Instruction following",
-            "slides": null,
+            "heading": "MCP",
+            "slides": "https://github.com/jakerenzella/unsw-rooms-mcp",
             "bullets": [
-              "Constraint adherence and structured output (formats, schemas, refusals)",
-              "The instruction hierarchy: system, developer, user, tool output",
-              "Measuring it: checkable constraints as assertions (IFEval-style)",
-              "Why it degrades: long contexts, competing instructions, tool results"
+              "MCP: a standard for the tool catalogue",
+              "Servers, clients and hosts: tools, resources and prompts",
+              "Building an MCP server: the UNSW rooms demo",
+              "Where MCP sits in the agent stack, and what it does not solve"
             ]
           },
           {
