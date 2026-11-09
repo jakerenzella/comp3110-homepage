@@ -55,7 +55,13 @@ export type Phase = {
   when: string;
   summary: string;
   icon: IconName;
+  /** Optional call-to-action link shown under the summary, e.g. event registration. */
+  link?: { text: string; href: string };
 };
+
+/** Eventbrite registration page for Demo Day. */
+export const demoDayEventUrl =
+  "https://www.eventbrite.com.au/e/cses-comp3110-machine-learning-engineering-demo-day-tickets-2004338877538?aff=oddtdtcreator";
 
 export type FaqItem = {
   q: string;
@@ -95,9 +101,15 @@ export const course = {
     {
       label: "Demo Day",
       icon: "trophy",
-      value: "Monday 23 November 2026. Timing to be confirmed.",
+      value: [
+        "Monday 23 November 2026, 9:30am",
+        "MCIC (Michael Crouch Innovation Centre), UNSW Kensington",
+        {
+          text: "Please register on Eventbrite",
+          href: demoDayEventUrl,
+        },
+      ],
       highlight: true,
-      badge: "Tentative",
     },
     {
       label: "Location",
@@ -188,8 +200,12 @@ export const course = {
       name: "Demo Day",
       when: "Week 11",
       summary:
-        "Each team gives a short, live presentation of a deployed system to an audience of peers, mentors, and industry guests.",
+        "Each team gives a short, live presentation of a deployed system to an audience of peers, mentors, and industry guests. Monday 23 November 2026, 9:30am at MCIC (Michael Crouch Innovation Centre), UNSW Kensington.",
       icon: "trophy",
+      link: {
+        text: "Register for Demo Day on Eventbrite",
+        href: demoDayEventUrl,
+      },
     },
   ] as Phase[],
 

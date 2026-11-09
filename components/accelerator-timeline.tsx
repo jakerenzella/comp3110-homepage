@@ -7,7 +7,7 @@
  * the component (the connector auto-hides on the last item).
  */
 import { Timeline } from '@heroui-pro/react'
-import { Typography } from '@heroui/react'
+import { Link, Typography } from '@heroui/react'
 import type { Phase } from '@/data/course'
 import { Icon } from './icon'
 
@@ -29,6 +29,19 @@ export function AcceleratorTimeline({ phases }: { phases: readonly Phase[] }) {
             <Typography type="body" color="muted" className="mt-1">
               {phase.summary}
             </Typography>
+            {phase.link && (
+              <Link
+                href={phase.link.href}
+                className="mt-2 underline"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {phase.link.text}
+                <Link.Icon className="ms-1.5 size-3.5">
+                  <Icon name="external" />
+                </Link.Icon>
+              </Link>
+            )}
           </Timeline.Content>
         </Timeline.Item>
       ))}

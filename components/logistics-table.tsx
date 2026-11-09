@@ -15,10 +15,29 @@ import { course } from '@/data/course'
 import timetable from '@/data/timetable.json'
 import { Icon } from './icon'
 
-/** A logistics line renders as text, or as a link when the data gives an href. */
+/**
+ * A logistics line renders as text, or as a link when the data gives an href.
+ * Off-site (http) links open in a new tab and carry the external-link icon via
+ * `Link.Icon`, as the HeroUI Link docs show for external links.
+ */
 function Line({ line }: { line: LogisticsLine }) {
   if (typeof line === 'string') return <>{line}</>
-  return <Link href={line.href}>{line.text}</Link>
+  const external = /^https?:/.test(line.href)
+  return (
+    <Link
+      href={line.href}
+      className="underline"
+      target={external ? '_blank' : undefined}
+      rel={external ? 'noopener noreferrer' : undefined}
+    >
+      {line.text}
+      {external && (
+        <Link.Icon className="ms-1.5 size-3.5">
+          <Icon name="external" />
+        </Link.Icon>
+      )}
+    </Link>
+  )
 }
 
 // Live lecture time(s) from the timetable drive the "Lectures" row.
