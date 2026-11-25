@@ -4,7 +4,7 @@
     "title": "Human-in-the-Loop RL for Autonomous Wheelchairs",
     "group": "G19",
     "clip": "01 - Semi-Auto Wheelchair.mp4",
-    "youtube": "UGALyjZjWiM",
+    "_youtube": "UGALyjZjWiM",
     "cover": "/projects/2026t3/g19.svg"
   },
   {
@@ -12,7 +12,7 @@
     "title": "Auto Screenshot Redaction",
     "group": "G13",
     "clip": "02 - Auto Screenshot Redaction.mp4",
-    "youtube": "VlEPhlPx7A0",
+    "_youtube": "VlEPhlPx7A0",
     "cover": "/projects/2026t3/g13.svg"
   },
   {
@@ -20,7 +20,7 @@
     "title": "AI-Assisted Interactive Data Exploration",
     "group": "G21",
     "clip": "03 - SheetChat.mp4",
-    "youtube": "FLR8vkEeVkA",
+    "_youtube": "FLR8vkEeVkA",
     "cover": "/projects/2026t3/g21.svg"
   },
   {
@@ -29,7 +29,7 @@
     "group": "G06",
     "formerly": "Don't Break the Bank",
     "clip": "04 - BudgetBuddy.mp4",
-    "youtube": "wWNeWNqOlOo",
+    "_youtube": "wWNeWNqOlOo",
     "cover": "/projects/2026t3/g06.svg"
   },
   {
@@ -37,7 +37,7 @@
     "title": "Certstax",
     "group": "G01",
     "clip": "06 - Certstax.mp4",
-    "youtube": "hZxxfl3Zl4w",
+    "_youtube": "hZxxfl3Zl4w",
     "cover": "/projects/2026t3/g01.svg"
   },
   {
@@ -45,7 +45,7 @@
     "title": "Warden",
     "group": "G22",
     "clip": "05 - Warden.mp4",
-    "youtube": "lrjwPY3YDGQ",
+    "_youtube": "lrjwPY3YDGQ",
     "cover": "/projects/2026t3/g22.svg"
   },
   {
@@ -53,7 +53,7 @@
     "title": "Offsider",
     "group": "G17",
     "clip": "07 - Offsider.mp4",
-    "youtube": "uxqnUf1SINw",
+    "_youtube": "uxqnUf1SINw",
     "cover": "/projects/2026t3/g17.svg"
   },
   {
@@ -61,7 +61,7 @@
     "title": "AI Networking & Events Assistant",
     "group": "G10",
     "clip": "08 - Event AI.mp4",
-    "youtube": "DgLmB-U9OS4",
+    "_youtube": "DgLmB-U9OS4",
     "cover": "/projects/2026t3/g10.svg"
   },
   {
@@ -69,7 +69,7 @@
     "title": "Tidea",
     "group": "G25",
     "clip": "09 - Tidea.mp4",
-    "youtube": "6Pp4tqvejjg",
+    "_youtube": "6Pp4tqvejjg",
     "cover": "/projects/2026t3/g25.svg"
   },
   {
@@ -78,7 +78,7 @@
     "group": "G15",
     "formerly": "Tech-9",
     "clip": "10 - Brokkr.mp4",
-    "youtube": "oFH9CIXsnEo",
+    "_youtube": "oFH9CIXsnEo",
     "cover": "/projects/2026t3/g15.svg"
   },
   {
