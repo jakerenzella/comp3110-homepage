@@ -56,33 +56,26 @@ instead of duplicating it. To cancel a class for a public holiday, add the date
 to `cancelled` in `data/timetable.json`. The public site URL used in the links
 is `siteUrl` in `data/course.ts`.
 
-### Add a project
+### Add a Demo Day project
 
-Create one new file in `content/projects/`, named after the project in lowercase
-with dashes, e.g. `content/projects/smart-irrigation.mdx`. Copy this template:
+Each term's projects live in one JSON file, e.g. `data/projects-2026t3.json`.
+Add an entry per project:
 
-```mdx
----
-title: Smart Irrigation Scheduler
-year: 2025
-team: [First Last, Another Name]
-tags: [time-series, IoT]
-cover: /projects/smart-irrigation.svg   # optional; put the image in public/projects/
-demo: https://...                       # optional
-repo: https://...                       # optional
-award: Demo Day Winner                  # optional — remove the line if none
----
-
-## The problem
-Write the write-up here in Markdown — headings, lists, links all work.
+```json
+{
+  "id": "g19",
+  "title": "Human-in-the-Loop RL for Autonomous Wheelchairs",
+  "group": "G19",
+  "formerly": "An earlier name",
+  "cover": "/projects/2026t3/g19.svg",
+  "youtube": "UGALyjZjWiM"
+}
 ```
 
-Save it. The project automatically appears in the **Projects** gallery (and under
-the correct year tab), and gets its own detail page at `/projects/smart-irrigation`.
-Award winners get a yellow badge. No code changes needed.
-
-To feature a project on the home page, add its filename (without `.mdx`) to
-`featuredProjectSlugs` in `data/course.ts`.
+`formerly` is optional. `youtube` is the video id (the part after `v=` in the
+video's URL); leave it as `""` until the pitch is uploaded, and the card shows
+without a player. Put the cover image in `public/projects/<term>/`. For an
+individual project, use `"by": "Student Name"` instead of `group`.
 
 ### Add a mentor
 
@@ -194,7 +187,7 @@ Both are plain Markdown/MDX — edit the prose directly.
 ```
 app/                 Routes (App Router). One folder per page.
 components/           Reusable UI (navbar, footer, timeline, cards, MDX renderer).
-content/             ← EDIT THESE: MDX for projects, mentors, and prose pages.
+content/             ← EDIT THESE: MDX for mentors and prose pages.
 data/course.ts       ← EDIT THIS: logistics, staff, schedule, FAQ, banner.
 lib/content.ts       Build-time loader that turns content/ into typed data.
 public/              Images (project covers, avatars).

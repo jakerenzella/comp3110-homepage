@@ -228,13 +228,6 @@ export const course = {
     },
   ] as FaqItem[],
 
-  /** Slugs (filenames without .mdx) of the projects featured on the home page. */
-  featuredProjectSlugs: [
-    "real-time-fraud-detection",
-    "clinical-note-summariser",
-    "campus-energy-forecasting",
-  ],
-
   /** Intro for the staff section of /people. The people are `instructor` above
    *  plus data/tutors.json. */
   staffIntro:

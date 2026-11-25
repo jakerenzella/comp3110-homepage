@@ -1,0 +1,229 @@
+[
+  {
+    "id": "g19",
+    "title": "Human-in-the-Loop RL for Autonomous Wheelchairs",
+    "group": "G19",
+    "clip": "01 - Semi-Auto Wheelchair.mp4",
+    "youtube": "UGALyjZjWiM",
+    "cover": "/projects/2026t3/g19.svg"
+  },
+  {
+    "id": "g13",
+    "title": "Auto Screenshot Redaction",
+    "group": "G13",
+    "clip": "02 - Auto Screenshot Redaction.mp4",
+    "youtube": "VlEPhlPx7A0",
+    "cover": "/projects/2026t3/g13.svg"
+  },
+  {
+    "id": "g21",
+    "title": "AI-Assisted Interactive Data Exploration",
+    "group": "G21",
+    "clip": "03 - SheetChat.mp4",
+    "youtube": "FLR8vkEeVkA",
+    "cover": "/projects/2026t3/g21.svg"
+  },
+  {
+    "id": "g06",
+    "title": "BudgetBuddy",
+    "group": "G06",
+    "formerly": "Don't Break the Bank",
+    "clip": "04 - BudgetBuddy.mp4",
+    "youtube": "wWNeWNqOlOo",
+    "cover": "/projects/2026t3/g06.svg"
+  },
+  {
+    "id": "g01",
+    "title": "Certstax",
+    "group": "G01",
+    "clip": "06 - Certstax.mp4",
+    "youtube": "hZxxfl3Zl4w",
+    "cover": "/projects/2026t3/g01.svg"
+  },
+  {
+    "id": "g22",
+    "title": "Warden",
+    "group": "G22",
+    "clip": "05 - Warden.mp4",
+    "youtube": "lrjwPY3YDGQ",
+    "cover": "/projects/2026t3/g22.svg"
+  },
+  {
+    "id": "g17",
+    "title": "Offsider",
+    "group": "G17",
+    "clip": "07 - Offsider.mp4",
+    "youtube": "uxqnUf1SINw",
+    "cover": "/projects/2026t3/g17.svg"
+  },
+  {
+    "id": "g10",
+    "title": "AI Networking & Events Assistant",
+    "group": "G10",
+    "clip": "08 - Event AI.mp4",
+    "youtube": "DgLmB-U9OS4",
+    "cover": "/projects/2026t3/g10.svg"
+  },
+  {
+    "id": "g25",
+    "title": "Tidea",
+    "group": "G25",
+    "clip": "09 - Tidea.mp4",
+    "youtube": "6Pp4tqvejjg",
+    "cover": "/projects/2026t3/g25.svg"
+  },
+  {
+    "id": "g15",
+    "title": "MechanicAssistantBot",
+    "group": "G15",
+    "formerly": "Tech-9",
+    "clip": "10 - Brokkr.mp4",
+    "youtube": "oFH9CIXsnEo",
+    "cover": "/projects/2026t3/g15.svg"
+  },
+  {
+    "id": "g23",
+    "title": "ECG Triage: From 12 Leads to Smartwatches",
+    "group": "G23",
+    "clip": "11 - ECG Triage.mp4",
+    "youtube": "",
+    "cover": "/projects/2026t3/g23.svg"
+  },
+  {
+    "id": "g03",
+    "title": "AI Quantitative Trading Researcher",
+    "group": "G03",
+    "clip": "12 - Stockton.mp4",
+    "youtube": "",
+    "cover": "/projects/2026t3/g03.svg"
+  },
+  {
+    "id": "g24",
+    "title": "Mark my words",
+    "group": "G24",
+    "formerly": "Trademark my words",
+    "clip": "13 - Mark My Words.mp4",
+    "youtube": "",
+    "cover": "/projects/2026t3/g24.svg"
+  },
+  {
+    "id": "g04",
+    "title": "DARLA",
+    "group": "G04",
+    "formerly": "DIRA",
+    "clip": "14 - DARLA.mp4",
+    "youtube": "",
+    "cover": "/projects/2026t3/g04.svg"
+  },
+  {
+    "id": "g09",
+    "title": "Athena",
+    "group": "G09",
+    "clip": "15 - Athena.mp4",
+    "youtube": "",
+    "cover": "/projects/2026t3/g09.svg"
+  },
+  {
+    "id": "g16",
+    "title": "VetTutor",
+    "group": "G16",
+    "clip": "16 - VetTutor.mp4",
+    "youtube": "",
+    "cover": "/projects/2026t3/g16.svg"
+  },
+  {
+    "id": "g20",
+    "title": "CurateYourFeed AI",
+    "group": "G20",
+    "clip": "17 - CurateYourFeed AI.mp4",
+    "youtube": "",
+    "cover": "/projects/2026t3/g20.svg"
+  },
+  {
+    "id": "g18",
+    "title": "Livelier / Scout",
+    "group": "G18",
+    "cover": "/projects/2026t3/g18.svg"
+  },
+  {
+    "id": "g11",
+    "title": "Pigeon AI",
+    "group": "G11",
+    "formerly": "Terrivo AI",
+    "clip": "18 - Pigeon AI.mp4",
+    "youtube": "",
+    "cover": "/projects/2026t3/g11.svg"
+  },
+  {
+    "id": "g14",
+    "title": "Ambiguous Legislation Warning System",
+    "group": "G14",
+    "clip": "19 - Ambiguous Legislation Warning System.mp4",
+    "youtube": "",
+    "cover": "/projects/2026t3/g14.svg"
+  },
+  {
+    "id": "g27",
+    "title": "Ora",
+    "group": "G27",
+    "clip": "20 - Ora.mp4",
+    "youtube": "",
+    "cover": "/projects/2026t3/g27.svg"
+  },
+  {
+    "id": "g26",
+    "title": "Peek AI",
+    "group": "G26",
+    "clip": "21 - Peek AI.mp4",
+    "youtube": "",
+    "cover": "/projects/2026t3/g26.svg"
+  },
+  {
+    "id": "g07",
+    "title": "Planora",
+    "group": "G07",
+    "clip": "22 - Planora.mp4",
+    "youtube": "",
+    "cover": "/projects/2026t3/g07.svg"
+  },
+  {
+    "id": "g05",
+    "title": "EchoFeed",
+    "group": "G05",
+    "clip": "23 - EchoFeed.mp4",
+    "youtube": "",
+    "cover": "/projects/2026t3/g05.svg"
+  },
+  {
+    "id": "g08",
+    "title": "DuplicateGene",
+    "group": "G08",
+    "clip": "24 - DuplicateGene.mp4",
+    "youtube": "",
+    "cover": "/projects/2026t3/g08.svg"
+  },
+  {
+    "id": "g02",
+    "title": "RoadWatch",
+    "group": "G02",
+    "clip": "25 - RoadWatch.mp4",
+    "youtube": "",
+    "cover": "/projects/2026t3/g02.svg"
+  },
+  {
+    "id": "g12",
+    "title": "SupplementCheck",
+    "group": "G12",
+    "clip": "26 - Supplifo (SupplementCheck).mp4",
+    "youtube": "",
+    "cover": "/projects/2026t3/g12.svg"
+  },
+  {
+    "id": "individual-mingyuan-zhang",
+    "title": "APPLE ApplyEasy",
+    "by": "Mingyuan Zhang",
+    "clip": "27 - APPLE ApplyEasy.mp4",
+    "youtube": "",
+    "cover": "/projects/2026t3/apple-applyeasy.svg"
+  }
+]

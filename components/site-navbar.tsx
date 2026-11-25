@@ -12,8 +12,7 @@ const NAV_LINKS = [
   { href: '/syllabus', label: 'Syllabus' },
   { href: '/assessment', label: 'Assessment' },
   { href: '/accelerator', label: 'Accelerator' },
-  // Projects hidden for now; restore when ready to publish.
-  // { href: '/projects', label: 'Projects' },
+  { href: '/projects', label: 'Projects' },
   { href: '/people', label: 'People' },
   { href: '/resources', label: 'Resources' },
 ]
