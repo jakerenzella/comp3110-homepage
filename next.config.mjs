@@ -16,6 +16,11 @@ const nextConfig = {
 
   // Emit /projects/foo/index.html so links work without a server rewrite layer.
   trailingSlash: true,
+
+  experimental: {
+    // Let the Next.js agent upgrade flow apply security releases.
+    agentUpgrade: 'security',
+  },
 }
 
 export default nextConfig
